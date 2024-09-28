@@ -12,11 +12,13 @@ interface Start2Props {
     dietPreference: string;
     duration: string;
     healthGoal: string;
+    activity: string;
   };
   onBack: () => void;
 }
 
 export default function Start2({ onSubmit, formData, onBack }: Start2Props) {
+  const [activity,setActivity] = useState(formData.activity);
   const [dietPreference, setDietPreference] = useState(formData.dietPreference);
   const [duration, setDuration] = useState(formData.duration);
   const [healthGoal, setHealthGoal] = useState(formData.healthGoal);
@@ -60,6 +62,17 @@ export default function Start2({ onSubmit, formData, onBack }: Start2Props) {
           className="p-3 border-none rounded-md bg-gray-900 text-white bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-green-500"
         />
       </div>
+      <label className="text-white mb-1">Activity Level:</label>
+      <select
+          value={activity}
+          onChange={(e) => setActivity(e.target.value)}
+          className="p-3 border-none rounded-md bg-gray-900 text-white bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-green-500 appearance-none"
+        >
+          <option value="">Select your activity level</option>
+          <option value="less than average ">less than average </option>
+          <option value="Moderate">Moderate </option>
+          <option value="High">High</option>
+        </select>
       <div className="flex justify-between mt-6">
         <Button 
           type="button" 

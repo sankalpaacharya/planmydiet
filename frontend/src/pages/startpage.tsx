@@ -3,6 +3,7 @@ import Start1 from "@/components/form/start1";
 import Start2 from "@/components/form/start2";
 import ProgressBar from "@/components/form/progressBar";
 import Loading from "@/components/form/loading";
+import { Activity } from "lucide-react";
 
 export default function StartPage() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -14,7 +15,8 @@ export default function StartPage() {
     gender: "",
     dietPreference: "",
     duration: "",
-    healthGoal: ""
+    healthGoal: "",
+    activity:""
   });
 
   const handleNext = (data: { height: string; weight: string; age: string; gender: string }) => {
@@ -30,8 +32,8 @@ export default function StartPage() {
     setLoading(true);
     try {
       // Simulate a POST request (replace this with your actual API call)
-      await new Promise((resolve) => setTimeout(resolve, 20000)); // 10 seconds
       console.log("Submit form data:", formData);
+      await new Promise((resolve) => setTimeout(resolve, 20000)); // 10 seconds
       
     } catch (error) {
       console.error("Error submitting form:", error);
