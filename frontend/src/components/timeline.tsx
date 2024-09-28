@@ -8,7 +8,7 @@ export default function Timeline() {
         September
         <Calendar size={17} />
       </h3>
-      <div className="p-2 flex mt-2 justify-between">
+      <div className="p-2 flex justify-between">
         <Day isToday={false} isComplete={true} date={14} day={"S"} />
         <Day isToday={false} isComplete={false} date={15} day={"M"} />
         <Day isToday={false} isComplete={true} date={16} day={"T"} />
