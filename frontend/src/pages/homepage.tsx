@@ -1,7 +1,5 @@
 import Navbar from "@/components/navbar";
 import Timeline from "@/components/timeline";
-import React from "react";
-
 export default function homepage() {
   return (
     <div className="flex flex-col items-center">
