@@ -9,7 +9,7 @@ import Footer from "@/components/footer";
 export default function homepage() {
   return (
     <div className="flex flex-col items-center">
-      <div className="md:max-w-[95rem] md:px-5 lg:px-0 mt-5 w-full">
+      <div className="max-w-[90%] w-[80%] md:px-5 lg:px-0 mt-5 ">
         <Navbar />
         <Timeline />
         <main>
