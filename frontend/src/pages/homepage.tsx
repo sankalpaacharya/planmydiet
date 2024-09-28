@@ -4,6 +4,7 @@ import Timeline from "@/components/timeline";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 import Mealoverview from "@/components/meal-overview";
+import Footer from "@/components/footer";
 
 export default function homepage() {
   return (
@@ -24,6 +25,7 @@ export default function homepage() {
           </div>
         </main>
       </div>
+      <Footer />
     </div>
   );
 }

@@ -21,7 +21,7 @@ interface MealCardProps {
 }
 
 const MealCard: React.FC<MealCardProps> = ({ name, quantity, calories }) => (
-  <div className="border p-3 w-fit rounded-lg space-y-5 w-[20rem]">
+  <div className="border p-3 rounded-lg space-y-5 w-[20rem]">
     <div className="flex justify-between">
       <h3 className="text-md font-bold">{name}</h3>
       <X size={20} className="cursor-pointer" />
