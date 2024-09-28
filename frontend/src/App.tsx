@@ -6,9 +6,8 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/goal" element={<HomePage />}></Route>
+          <Route path="/home" element={<HomePage />}></Route>
           <Route path="/" element={<StartPage />}></Route>
-          
         </Routes>
       </BrowserRouter>
     </div>
