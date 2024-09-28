@@ -3,11 +3,15 @@ import { generatePrompt } from '../utils/prompt.js';
 import supabase from '../supabaseClient.js'
 
 export const createPlanController = async (req, res) => {
-    const { weight, height, gender, weightloss, dietpreference, user_id, age, goal, activitylevel, calorieintake, duration } = req.body;
-    const prompt = generatePrompt(weight, height, gender, weightloss, dietpreference, user_id, age, goal, activitylevel, calorieintake, duration)
-    const plan = await createResponse(prompt)
-    console.log(plan)
+    const { weight, height, gender, dietpreference, user_id, age, goal, activitylevel, duration } = req.body;
+    // const prompt = generatePrompt(weight, height, gender, dietpreference, user_id, age, goal, activitylevel, duration)
+    // const plan = await createResponse(prompt)
+    // console.log(plan)
 
+    /*
+
+    */
+    plan="abcdef"
     const { data: insert_data, error: insert_error } = await supabase
         .from('diet_plan')
         .insert([{ 
