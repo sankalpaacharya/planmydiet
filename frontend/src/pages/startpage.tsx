@@ -3,7 +3,6 @@ import Start1 from "@/components/form/start1";
 import Start2 from "@/components/form/start2";
 import ProgressBar from "@/components/form/progressBar";
 import Loading from "@/components/form/loading";
-import { Activity } from "lucide-react";
 
 export default function StartPage() {
   const [currentPage, setCurrentPage] = useState(1);
