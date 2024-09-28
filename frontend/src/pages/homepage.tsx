@@ -1,7 +1,10 @@
-import MealInformation from "@/components/meal-information";
+import NutritionOverview from "@/components/nutrition-overview";
 import Navbar from "@/components/navbar";
 import Timeline from "@/components/timeline";
 import { Button } from "@/components/ui/button";
+import { ChevronRight } from "lucide-react";
+import Mealoverview from "@/components/meal-overview";
+
 export default function homepage() {
   return (
     <div className="flex flex-col items-center">
@@ -10,12 +13,15 @@ export default function homepage() {
         <Timeline />
         <main>
           <div className="mt-10">
-            <Button className="text-gray-200 bg-green-900 rounded-full">
+            <Button className="text-gray-200  bg-green-900 rounded-full">
               View My Plans
+              <ChevronRight />
             </Button>
-            <MealInformation />
+            <NutritionOverview />
           </div>
-          <div className="mt-10"></div>
+          <div className="mt-10">
+            <Mealoverview />
+          </div>
         </main>
       </div>
     </div>

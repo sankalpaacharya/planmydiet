@@ -1,12 +1,12 @@
-import { Activity, Check, Utensils } from "lucide-react";
+import { Activity, Atom, Check, Utensils } from "lucide-react";
 import RadialProgressBar from "./radial-progress";
 import Nutritionbadge from "./nutrition-badge";
 
 export default function mealinformation() {
   return (
     <div className="mt-10">
-      <h3 className="text-md uppercase flex items-center gap-2 text-gray-300 font-bold">
-        Nutrition Overview
+      <h3 className="text-xl uppercase flex items-center gap-2 text-gray-300 font-bold">
+        Nutrition Overview <Atom />
       </h3>
       <div className="mt-5 glass p-5 px-10 justify-between flex space-x-10">
         <div className="flex gap-10">
@@ -48,7 +48,7 @@ export default function mealinformation() {
           <Nutritionbadge
             color="bg-pink-400"
             total={200}
-            consumed={200}
+            consumed={300}
             type="Protein"
           />
         </div>
