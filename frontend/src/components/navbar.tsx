@@ -1,3 +1,5 @@
+import React from "react";
+
 export default function navbar() {
-  return <div>navbar</div>;
+  return <div></div>;
 }
