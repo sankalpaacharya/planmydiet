@@ -30,7 +30,7 @@ export default function StartPage() {
   const handleSubmit = async () => {
     setLoading(true);
     try {
-      // Simulate a POST request (replace this with your actual API call)
+      // localhost:3000/user/newUser
       console.log("Submit form data:", formData);
       await new Promise((resolve) => setTimeout(resolve, 100000)); // 10 seconds
       
