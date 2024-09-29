@@ -16,12 +16,14 @@ export default function StartPage() {
     gender: "",
     dietPreference: "",
     duration: "",
+
     healthGoal: "",
     activitylevel: ""
   });
 
   const handleNext = (data: { height: string; weight: string; age: string; gender: string }) => {
     setFormData((prevData) => ({ ...prevData, ...data }));
+
     setCurrentPage(2);
   };
 
@@ -42,13 +44,13 @@ export default function StartPage() {
         },
         body: JSON.stringify(completeFormData),
       });
-  
+
       if (response.status === 201) {
-        navigate("/home"); 
+        navigate("/home");
       } else {
         const errorData = await response.json();
         console.error("Error:", errorData);
-        alert("Failed to submit form. Please try again."); 
+        alert("Failed to submit form. Please try again.");
       }
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -67,7 +69,11 @@ export default function StartPage() {
           {currentPage === 1 ? (
             <Start1 onNext={handleNext} formData={formData} />
           ) : (
-            <Start2 onSubmit={handleSubmit} formData={formData} onBack={handleBack} />
+            <Start2
+              onSubmit={handleSubmit}
+              formData={formData}
+              onBack={handleBack}
+            />
           )}
         </div>
       )}
