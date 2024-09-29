@@ -12,13 +12,13 @@ interface Start2Props {
     dietPreference: string;
     duration: string;
     healthGoal: string;
-    activity: string;
+    activitylevel: string;
   };
   onBack: () => void;
 }
 
 export default function Start2({ onSubmit, formData, onBack }: Start2Props) {
-  const [activity,setActivity] = useState(formData.activity);
+  const [activity,setActivity] = useState(formData.activitylevel);
   const [dietPreference, setDietPreference] = useState(formData.dietPreference);
   const [duration, setDuration] = useState(formData.duration);
   const [healthGoal, setHealthGoal] = useState(formData.healthGoal);
