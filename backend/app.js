@@ -15,7 +15,6 @@ app.use('/plan',dietPlanner);
 app.use('/user',userRoute);
 app.use('/log',logRoute);
 
-// AIzaSyDoimaTwyMcDbpSSjwAp1qmv5POn8f9anM
 
 app.get("/",(req,res)=>{
     res.send("Diet Planner Backend")
