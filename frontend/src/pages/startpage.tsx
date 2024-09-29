@@ -32,7 +32,7 @@ export default function StartPage() {
     try {
       // Simulate a POST request (replace this with your actual API call)
       console.log("Submit form data:", formData);
-      await new Promise((resolve) => setTimeout(resolve, 20000)); // 10 seconds
+      await new Promise((resolve) => setTimeout(resolve, 100000)); // 10 seconds
       
     } catch (error) {
       console.error("Error submitting form:", error);
