@@ -29,21 +29,28 @@ export default function footer() {
 
   const handleAddMeal = () => {
     const mealData = {
-      type: mealType,
-      description: mealDescription,
+      plan_id: "0581b0d2-b6c8-40fe-80e4-4081a8824451",
+      user_id: "97540b8d-26cd-49a4-bb85-e1eafc2abd6c",
+      meal_type: mealType.toLowerCase(), 
+      text: mealDescription,
     };
-
-    // Make a POST request with mealData
-    fetch("https://example.com/api/meal", {
+  
+    fetch("http://localhost:3000/log/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(mealData),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then((data) => {
         console.log("Success:", data);
+        // Clear form values after successful submission
         setMealType("Add Meal Type");
         setMealDescription("");
       })
@@ -51,6 +58,7 @@ export default function footer() {
         console.error("Error:", error);
       });
   };
+  
   const handleDialogClose = (isOpen: boolean) => {
     if (!isOpen) {
       setMealType("Add Meal Type");
