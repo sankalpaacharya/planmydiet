@@ -10,48 +10,41 @@ import {
 
 interface Meal {
   name: string;
-  quantity: string;
-  calories: number;
+  description: string;
+}
+
+interface MealOverviewProps {
+  meals: {
+    breakfast?: Meal[];
+    lunch?: Meal[];
+    dinner?: Meal[];
+    snacks?: Meal[];
+  };
 }
 
 interface MealCardProps {
   name: string;
-  quantity: string;
+  description: string;
   calories: number;
 }
 
-const MealCard: React.FC<MealCardProps> = ({ name, quantity, calories }) => (
+const MealCard: React.FC<MealCardProps> = ({ name, description, nutrition }) => (
   <div className="border p-3 rounded-lg space-y-5 w-[20rem]">
     <div className="flex justify-between">
       <h3 className="text-md font-bold">{name}</h3>
       <X size={20} className="cursor-pointer" />
     </div>
-    <p>{quantity}</p>
-    <p className="font-bold text-xl text-gray-400">{calories} Kal</p>
+    <p>{description}</p>
+    <p className="font-bold text-xl text-gray-400">
+      {nutrition.calories ? `${nutrition.calories} Kal` : "400 Kal"}
+    </p>
   </div>
 );
 
-export default function MealOverview() {
-  const [selectedMeal, setSelectedMeal] = useState("breakfast");
+const MealOverview: React.FC<MealOverviewProps> = ({ meals }) => {
+  const [selectedMeal, setSelectedMeal] = useState<"breakfast" | "lunch" | "dinner" | "snacks">("breakfast");
 
-  const mealData: { [key: string]: Meal[] } = {
-    breakfast: [
-      { name: "Banana", quantity: "1 Medium (7' to 7-8), long", calories: 99 },
-      { name: "Egg", quantity: "1 Medium", calories: 99 },
-    ],
-    lunch: [
-      { name: "Chicken Salad", quantity: "1 bowl", calories: 300 },
-      { name: "Rice", quantity: "1 cup", calories: 200 },
-    ],
-    hiTea: [
-      { name: "Cookies", quantity: "2 pieces", calories: 150 },
-      { name: "Tea", quantity: "1 cup", calories: 50 },
-    ],
-    dinner: [
-      { name: "Grilled Fish", quantity: "1 fillet", calories: 250 },
-      { name: "Vegetables", quantity: "1 cup", calories: 100 },
-    ],
-  };
+  const currentMeals = meals[selectedMeal] || []; // Fallback to an empty array if no data
 
   return (
     <div>
@@ -60,14 +53,14 @@ export default function MealOverview() {
       </h3>
 
       <div className="mt-5">
-        <Select onValueChange={setSelectedMeal} defaultValue={selectedMeal}>
+        <Select onValueChange={(value) => setSelectedMeal(value as "breakfast" | "lunch" | "dinner" | "snacks")} defaultValue={selectedMeal}>
           <SelectTrigger className="w-[200px]">
             <SelectValue placeholder="Select a meal type" />
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="breakfast">Breakfast ☕️</SelectItem>
             <SelectItem value="lunch">Lunch 🍽️</SelectItem>
-            <SelectItem value="hiTea">Hi Tea 🍵</SelectItem>
+            <SelectItem value="snacks">Snacks 🍵</SelectItem>
             <SelectItem value="dinner">Dinner 🍲</SelectItem>
           </SelectContent>
         </Select>
@@ -79,17 +72,23 @@ export default function MealOverview() {
           {selectedMeal === "breakfast"
             ? "☕️"
             : selectedMeal === "lunch"
-              ? "🍽️"
-              : selectedMeal === "hiTea"
-                ? "🍵"
-                : "🍲"}
+            ? "🍽️"
+            : selectedMeal === "snacks"
+            ? "🍵"
+            : "🍲"}
         </h2>
         <div className="flex gap-10">
-          {mealData[selectedMeal].map((meal, index) => (
-            <MealCard key={index} {...meal} />
-          ))}
+          {currentMeals.length > 0 ? (
+            currentMeals.map((meal, index) => (
+              <MealCard key={index} {...meal} />
+            ))
+          ) : (
+            <p>No meals available for {selectedMeal}</p>
+          )}
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default MealOverview;

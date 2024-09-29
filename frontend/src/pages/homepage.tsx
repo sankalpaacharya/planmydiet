@@ -1,10 +1,9 @@
-// Homepage.tsx
 import NutritionOverview from "@/components/nutrition-overview";
 import Navbar from "@/components/navbar";
 import Timeline from "@/components/timeline";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
-import Mealoverview from "@/components/meal-overview";
+import MealOverview from "@/components/meal-overview";
 import Footer from "@/components/footer";
 import { useEffect, useState } from "react";
 
@@ -17,6 +16,16 @@ interface NutritionData {
   remaining_fats: number;
   remaining_carbs: number;
   remaining_proteins: number;
+  breakfast: Meal[];
+  lunch: Meal[];
+  dinner: Meal[];
+  snacks: Meal[];
+}
+
+interface Meal {
+  name: string;
+  description: string;
+  calories: string;
 }
 
 export default function Homepage() {
@@ -27,16 +36,18 @@ export default function Homepage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:3000/0581b0d2-b6c8-40fe-80e4-4081a8824451/2024-09-29");
+        const response = await fetch(
+          "http://localhost:3000/0581b0d2-b6c8-40fe-80e4-4081a8824451/2024-09-29"
+        );
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
         const jsonData: NutritionData = await response.json(); // Type assertion
-        setData(jsonData); 
+        setData(jsonData);
       } catch (err: any) {
         setError(err.message); // Handle the error
       } finally {
-        setLoading(false); 
+        setLoading(false);
       }
     };
 
@@ -58,20 +69,27 @@ export default function Homepage() {
               <ChevronRight />
             </Button>
             {data && (
-              <NutritionOverview
-                completedCalories={data.completed_cal}
-                completedFats={data.completed_fats}
-                completedCarbs={data.completed_carbs}
-                completedProteins={data.completed_proteins}
-                remainingCalories={data.remaining_cal}
-                remainingFats={data.remaining_fats}
-                remainingCarbs={data.remaining_carbs}
-                remainingProteins={data.remaining_proteins}
-              />
+              <>
+                <NutritionOverview
+                  completedCalories={data.completed_cal}
+                  completedFats={data.completed_fats}
+                  completedCarbs={data.completed_carbs}
+                  completedProteins={data.completed_proteins}
+                  remainingCalories={data.remaining_cal}
+                  remainingFats={data.remaining_fats}
+                  remainingCarbs={data.remaining_carbs}
+                  remainingProteins={data.remaining_proteins}
+                />
+                <MealOverview
+                  meals={{
+                    breakfast: data.breakfast,
+                    lunch: data.lunch,
+                    dinner: data.dinner,
+                    snacks: data.snacks,
+                  }}
+                />
+              </>
             )}
-          </div>
-          <div className="mt-10">
-            <Mealoverview />
           </div>
         </main>
       </div>

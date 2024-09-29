@@ -31,10 +31,10 @@ const NutritionOverview: React.FC<NutritionOverviewProps> = ({
       <h3 className="text-xl uppercase flex items-center gap-2 text-gray-300 font-bold">
         Nutrition Overview <Atom />
       </h3>
-      <div className="mt-5 glass p-5 px-10 justify-between flex space-x-10">
-        <div className="flex gap-10">
+      <div className="mt-5 glass p-5 px-10 justify-between flex space-x-10 ">
+        <div className="flex gap-10 ">
           <div className="w-fit flex justify-center flex-col items-center space-y-2">
-            <span className="text-xl font-bold">{completedCalories} kcal</span>
+            <span className="text-xl font-bold ">{completedCalories} kcal</span>
             <p className="gap-2 font-bold flex items-center">Complete</p>
           </div>
           <div className="w-fit flex justify-center flex-col items-center space-y-2">
