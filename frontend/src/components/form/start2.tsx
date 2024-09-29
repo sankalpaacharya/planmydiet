@@ -15,7 +15,7 @@ interface Start2Props {
     gender: string;
     dietPreference: string;
     duration: string;
-    goal: string;
+    healthGoal: string;
     activitylevel: string;
   };
   onBack: () => void;
@@ -85,7 +85,7 @@ export default function Start2({ onSubmit, formData, onBack }: Start2Props) {
         <label className="text-white mb-1">Primary Health Goal:</label>
         <input
           type="text"
-          value={goal}
+          value={healthGoal}
           onChange={(e) => setHealthGoal(e.target.value)}
           className="p-3 border-none rounded-md bg-gray-900 text-white bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-green-500"
         />
