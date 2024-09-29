@@ -15,3 +15,53 @@
 
 https://github.com/user-attachments/assets/c4719b8d-e466-408d-a795-5a1ae24f08bc
 
+# Nutrition and Diet Planner
+
+## Overview
+
+The Nutrition and Diet Planner is a web application designed to help users track their meals and nutritional intake. The app provides an overview of daily nutrition, allowing users to monitor their completed and remaining calories, fats, carbohydrates, and proteins.
+
+## Features
+
+- **Nutrition Overview**: Displays completed and remaining nutritional values.
+- **Meal Tracking**: Allows users to log meals for breakfast, lunch, dinner, and snacks.
+- **Responsive Design**: Optimized for both mobile and desktop views.
+- **Activity Level Tracking**: Monitors user activity and displays corresponding data.
+
+## Technologies Used
+
+- **Frontend**: 
+  - React
+  - TypeScript
+  - Tailwind CSS
+  - Lucide Icons
+  
+- **Backend**:
+  - Node.js
+  - Express
+  - supabase
+
+## Installation
+
+# Navigate to frontend folder
+cd frontend
+npm install
+
+# Navigate to backend folder
+cd backend
+npm install
+
+
+cd backend
+npm start
+
+### How to Use This Template
+
+1. **Project Name**: Update the title and description to fit your project.
+2. **Technologies**: Adjust the list of technologies based on what you are actually using.
+3. **Installation Instructions**: Modify the installation steps to reflect your project’s structure.
+4. **API Endpoints**: Provide accurate API endpoints based on your implementation.
+5. **Contributing**: Update the contribution guidelines if you have specific requirements.
+6. **License**: Ensure the license section matches your project's licensing.
+
+Feel free to let me know if you need any additional sections or modifications!
