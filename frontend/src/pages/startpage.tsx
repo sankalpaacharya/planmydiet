@@ -4,6 +4,7 @@ import Start2 from "@/components/form/start2";
 import ProgressBar from "@/components/form/progressBar";
 import Loading from "@/components/form/loading";
 import { useNavigate } from "react-router-dom";
+
 export default function StartPage() {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
@@ -15,17 +16,14 @@ export default function StartPage() {
     gender: "",
     dietPreference: "",
     duration: "",
-    goal: "",
-    activitylevel: "",
+
+    healthGoal: "",
+    activitylevel: ""
   });
 
-  const handleNext = (data: {
-    height: string;
-    weight: string;
-    age: string;
-    gender: string;
-  }) => {
-    setFormData({ ...formData, ...data });
+  const handleNext = (data: { height: string; weight: string; age: string; gender: string }) => {
+    setFormData((prevData) => ({ ...prevData, ...data }));
+
     setCurrentPage(2);
   };
 
@@ -33,15 +31,18 @@ export default function StartPage() {
     setCurrentPage(1);
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (data: { dietPreference: string; duration: string; healthGoal: string; activitylevel: string }) => {
     setLoading(true);
+    
+    const completeFormData = { ...formData, ...data };
+    console.log(completeFormData);
     try {
       const response = await fetch("http://localhost:3000/plan/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(completeFormData),
       });
 
       if (response.status === 201) {

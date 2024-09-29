@@ -1,9 +1,13 @@
-// Start2.tsx
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface Start2Props {
-  onSubmit: () => void;
+  onSubmit: (formData: {
+    dietPreference: string;
+    duration: string;
+    healthGoal: string;
+    activitylevel: string;
+  }) => void;
   formData: {
     height: string;
     weight: string;
@@ -18,15 +22,39 @@ interface Start2Props {
 }
 
 export default function Start2({ onSubmit, formData, onBack }: Start2Props) {
-  const [activity, setActivity] = useState(formData.activitylevel);
-  const [dietPreference, setDietPreference] = useState(formData.dietPreference);
-  const [duration, setDuration] = useState(formData.duration);
-  const [goal, setHealthGoal] = useState(formData.goal);
+
+
+  console.log("Initial formData:", formData);
+
+
+  const [activity, setActivity] = useState<string>(formData.activitylevel || ''); 
+  const [dietPreference, setDietPreference] = useState<string>(formData.dietPreference || '');
+  const [duration, setDuration] = useState<string>(formData.duration || '');
+  const [healthGoal, setHealthGoal] = useState<string>(formData.healthGoal || '');
+
+  useEffect(() => {
+    setActivity(formData.activitylevel);
+    setDietPreference(formData.dietPreference);
+    setDuration(formData.duration);
+    setHealthGoal(formData.healthGoal);
+  }, [formData]);
+
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you can implement the POST request
-    onSubmit();
+    console.log("here")
+    console.log(formData);
+    const updatedFormData = {
+      dietPreference,
+      duration,
+      healthGoal,
+      activitylevel: activity,
+      height: formData.height,  // Include height from formData
+      weight: formData.weight,    // Include weight from formData
+      age: formData.age,         
+      gender: formData.gender,    
+    };
+    onSubmit(updatedFormData);
   };
 
   return (
@@ -69,8 +97,10 @@ export default function Start2({ onSubmit, formData, onBack }: Start2Props) {
         className="p-3 border-none rounded-md bg-gray-900 text-white bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-green-500 appearance-none"
       >
         <option value="">Select your activity level</option>
-        <option value="less than average ">less than average </option>
-        <option value="Moderate">Moderate </option>
+
+        <option value="less than average">Less than average</option>
+        <option value="Moderate">Moderate</option>
+
         <option value="High">High</option>
       </select>
       <div className="flex justify-between mt-6">
