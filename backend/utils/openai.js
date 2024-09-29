@@ -3,21 +3,29 @@ import dotenv from 'dotenv';
 dotenv.config();
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API);
 
+// export async function createResponse(prompt) {
+//   const model = genAI.getGenerativeModel({
+//     model: "gemini-1.5-flash",
+//   });
+
+//   try {
+//     const result = await model.generateContent(prompt);
+//     return result.response.text();
+//   } catch (error) {
+//     console.error("Error generating response:", error);
+//     throw error;
+//   }
+// }
+
+import OpenAI from "openai";
+const openai = new OpenAI({apiKey:process.env.GOOGLE_API});
 export async function createResponse(prompt) {
-  const model = genAI.getGenerativeModel({
-    model: "gemini-1.5-flash",
+  const completion = await openai.chat.completions.create({
+    messages: [{ role: "system", content: prompt }],
+    model: "gpt-3.5-turbo",
   });
-
-  try {
-    const result = await model.generateContent(prompt);
-    return result.response.text();
-  } catch (error) {
-    console.error("Error generating response:", error);
-    throw error;
-  }
+  return completion.choices[0].message.content;
 }
-
-
 
 // -> /goal/
 // {user_id:"",date:""} 
