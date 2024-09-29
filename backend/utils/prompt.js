@@ -307,4 +307,34 @@ structure the json data in this format ,  provide me only JSON string, don't quo
 }
 
 `;}
+// LA-7c8b77366d884fb6959073c259fd6dc0554393c741034353bcf4421cf4bc1f95
 
+
+
+const generateMealLogPrompt = (text,meal_type)=>{
+
+return `You are provided with the meals a user had during breakfast, lunch, snacks, and dinner. Your task is to convert the meal descriptions into a structured JSON format as shown below. If the text includes details about the fat, carbs, protein, and calories, use those values directly. Otherwise, if it's possible to calculate or estimate based on common nutritional data, provide an estimate. If the nutritional information cannot be calculated or estimated, leave the values as an empty string.
+
+meal_type: ${meal_type}
+
+
+
+This is the JSON format, provide me only JSON String nothing except that.
+
+{
+  "name": "Grilled Chicken Sandwich",
+  "description": "A sandwich made with grilled chicken breast, lettuce, tomato, and whole wheat bread.",
+  "nutrition": {
+    "fat": 7,
+    "carbs": 30,
+    "protein": 25,
+    "calories": 320
+  }
+}
+
+
+`
+
+
+
+}
