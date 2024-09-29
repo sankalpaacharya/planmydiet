@@ -1,8 +1,31 @@
-import { Activity, Atom, Check, Utensils } from "lucide-react";
+// NutritionOverview.tsx
+import React from 'react';
+import { Activity, Atom } from "lucide-react";
 import RadialProgressBar from "./radial-progress";
-import Nutritionbadge from "./nutrition-badge";
+import NutritionBadge from "./nutrition-badge";
 
-export default function mealinformation() {
+interface NutritionOverviewProps {
+  completedCalories: number;
+  completedFats: number;
+  completedCarbs: number;
+  completedProteins: number;
+  remainingCalories: number;
+  remainingFats: number;
+  remainingCarbs: number;
+  remainingProteins: number;
+  activityLevel?: number; // Made optional
+}
+
+const NutritionOverview: React.FC<NutritionOverviewProps> = ({
+  completedCalories,
+  completedFats,
+  completedCarbs,
+  completedProteins,
+  remainingFats,
+  remainingCarbs,
+  remainingProteins,
+  activityLevel = 0, // Default value if not provided
+}) => {
   return (
     <div className="mt-10">
       <h3 className="text-xl uppercase flex items-center gap-2 text-gray-300 font-bold">
@@ -11,20 +34,16 @@ export default function mealinformation() {
       <div className="mt-5 glass p-5 px-10 justify-between flex space-x-10">
         <div className="flex gap-10">
           <div className="w-fit flex justify-center flex-col items-center space-y-2">
-            <Check size={20} />
-            <div className="w-[9rem] h-[9rem] bg-gray-800 flex justify-center items-center rounded-full">
-              <span className="text-xl font-bold">300 kal</span>
-            </div>
+            <span className="text-xl font-bold">{completedCalories} kcal</span>
             <p className="gap-2 font-bold flex items-center">Complete</p>
           </div>
           <div className="w-fit flex justify-center flex-col items-center space-y-2">
-            <Utensils size={20} />
             <RadialProgressBar />
             <p className="gap-2 font-bold flex items-center">Remaining</p>
           </div>
         </div>
         <div>
-          <p className="px-5 py-2 bg-green-700 rounded-full w-fit">2 🔥</p>
+          <p className="px-5 py-2 bg-green-700 rounded-full w-fit">{activityLevel} 🔥</p>
           <div className="mt-5">
             <p className="flex items-center gap-2">
               <Activity size={16} />
@@ -33,26 +52,28 @@ export default function mealinformation() {
           </div>
         </div>
         <div className="flex gap-10">
-          <Nutritionbadge
+          <NutritionBadge
             color="bg-green-400"
-            total={200}
-            consumed={120}
+            total={remainingFats}
+            consumed={completedFats}
             type="Fat"
           />
-          <Nutritionbadge
+          <NutritionBadge
             color="bg-indigo-400"
-            total={200}
-            consumed={120}
+            total={remainingCarbs}
+            consumed={completedCarbs}
             type="Carbs"
           />
-          <Nutritionbadge
+          <NutritionBadge
             color="bg-pink-400"
-            total={200}
-            consumed={300}
+            total={remainingProteins}
+            consumed={completedProteins}
             type="Protein"
           />
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default NutritionOverview;
