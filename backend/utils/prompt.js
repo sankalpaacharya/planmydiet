@@ -12,6 +12,8 @@ Design a personalized nutrition and diet plan for a user based on their provided
 - Daily calorie intake limit: ${calorieintake ? calorieintake + ' calories' : 'not specified'}
 - Duration: ${duration} days
 
+You have to provide the diet according to the diet preferences if user is non-veg provide the non-veg diet and same for veg and vegan
+
 Requirements for the diet plan:
 - Provide daily calorie distribution broken down into macronutrients (carbohydrates, proteins, fats).
 - Create a daily meal plan with breakfast, lunch, dinner, and snacks.
@@ -307,7 +309,6 @@ structure the json data in this format ,  provide me only JSON string, don't quo
 }
 
 `;}
-// LA-7c8b77366d884fb6959073c259fd6dc0554393c741034353bcf4421cf4bc1f95
 
 
 
