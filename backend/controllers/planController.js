@@ -16,3 +16,16 @@ export const createPlanController = async (req, res) => {
         });
         res.status(201).json({ message: 'User Log registered successfully'});
 };
+
+export const getPlanController = async (req, res) => {
+    const user_id = req.params.user_id;
+    // user_id = "97540b8d-26cd-49a4-bb85-e1eafc2abd6c"
+
+    const { data: mealData, error: mealError } = await supabase
+        .from("plans")
+        .select("id,created_at")
+        .eq("user_id", user_id);
+    
+        console.log(mealData);
+        res.send(mealData)
+};
