@@ -11,17 +11,17 @@ interface Start2Props {
     gender: string;
     dietPreference: string;
     duration: string;
-    healthGoal: string;
+    goal: string;
     activitylevel: string;
   };
   onBack: () => void;
 }
 
 export default function Start2({ onSubmit, formData, onBack }: Start2Props) {
-  const [activity,setActivity] = useState(formData.activitylevel);
+  const [activity, setActivity] = useState(formData.activitylevel);
   const [dietPreference, setDietPreference] = useState(formData.dietPreference);
   const [duration, setDuration] = useState(formData.duration);
-  const [healthGoal, setHealthGoal] = useState(formData.healthGoal);
+  const [goal, setHealthGoal] = useState(formData.goal);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -57,32 +57,32 @@ export default function Start2({ onSubmit, formData, onBack }: Start2Props) {
         <label className="text-white mb-1">Primary Health Goal:</label>
         <input
           type="text"
-          value={healthGoal}
+          value={goal}
           onChange={(e) => setHealthGoal(e.target.value)}
           className="p-3 border-none rounded-md bg-gray-900 text-white bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-green-500"
         />
       </div>
       <label className="text-white mb-1">Activity Level:</label>
       <select
-          value={activity}
-          onChange={(e) => setActivity(e.target.value)}
-          className="p-3 border-none rounded-md bg-gray-900 text-white bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-green-500 appearance-none"
-        >
-          <option value="">Select your activity level</option>
-          <option value="less than average ">less than average </option>
-          <option value="Moderate">Moderate </option>
-          <option value="High">High</option>
-        </select>
+        value={activity}
+        onChange={(e) => setActivity(e.target.value)}
+        className="p-3 border-none rounded-md bg-gray-900 text-white bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-green-500 appearance-none"
+      >
+        <option value="">Select your activity level</option>
+        <option value="less than average ">less than average </option>
+        <option value="Moderate">Moderate </option>
+        <option value="High">High</option>
+      </select>
       <div className="flex justify-between mt-6">
-        <Button 
-          type="button" 
-          onClick={onBack} 
+        <Button
+          type="button"
+          onClick={onBack}
           className="text-gray-200 bg-green-900 rounded-full flex items-center justify-center gap-2 p-3 focus:ring-2 focus:ring-green-500"
         >
           Back
         </Button>
-        <Button 
-          type="submit" 
+        <Button
+          type="submit"
           className="text-gray-200 bg-green-900 rounded-full flex items-center justify-center gap-2 p-3 focus:ring-2 focus:ring-green-500"
         >
           Submit
