@@ -12,7 +12,7 @@ export const createPlanController = async (req, res) => {
         
         .from('plans')
         .insert({ 
-            user_id,data
+            user_id,data,title:goal
         });
         res.status(201).json({ message: 'User Log registered successfully'});
 };

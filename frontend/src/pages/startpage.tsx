@@ -3,8 +3,9 @@ import Start1 from "@/components/form/start1";
 import Start2 from "@/components/form/start2";
 import ProgressBar from "@/components/form/progressBar";
 import Loading from "@/components/form/loading";
-
+import { useNavigate } from "react-router-dom";
 export default function StartPage() {
+  const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -15,7 +16,7 @@ export default function StartPage() {
     dietPreference: "",
     duration: "",
     healthGoal: "",
-    activity:""
+    activitylevel:""
   });
 
   const handleNext = (data: { height: string; weight: string; age: string; gender: string }) => {
@@ -30,10 +31,21 @@ export default function StartPage() {
   const handleSubmit = async () => {
     setLoading(true);
     try {
-      // localhost:3000/user/newUser
-      console.log("Submit form data:", formData);
-      await new Promise((resolve) => setTimeout(resolve, 100000)); // 10 seconds
-      
+      const response = await fetch("http://localhost:3000/plan/create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      if (response.status === 201) {
+        navigate("/home"); 
+      } else {
+        const errorData = await response.json();
+        console.error("Error:", errorData);
+        alert("Failed to submit form. Please try again."); 
+      }
     } catch (error) {
       console.error("Error submitting form:", error);
     } finally {
