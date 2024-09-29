@@ -5,18 +5,16 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 export default function PlanPage() {
-  const { id } = useParams(); // Get the ID from the URL parameters
-  const [plans, setPlans] = useState([]); // State to hold the plans array
-
+  const { id } = useParams(); 
+  const [plans, setPlans] = useState([]); 
   useEffect(() => {
-    // Fetch the plans array using the ID from the route
     fetch(`http://localhost:3000/plan/${id}`)
       .then((response) => response.json())
       .then((data) => {
-        setPlans(data); // Set the plans array to state
+        setPlans(data); 
       })
       .catch((error) => console.error("Error fetching plans:", error));
-  }, [id]); // Re-fetch data if the ID changes
+  }, [id]); 
 
   return (
     <div className="flex flex-col items-center">
