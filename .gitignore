@@ -1,0 +1,15 @@
+node_modules/
+npm-debug.log*
+pnpm-debug.log*
+
+logs/
+*.log
+
+package-lock.json
+
+# Build outputs
+dist/
+out/
+build/
+
+
