@@ -7,12 +7,12 @@ This is a full-stack monorepo that contains both the frontend and backend of the
 
 
 ### Built With
-- [React](!https://react.dev)
-- [Express](!https://react.dev)
-- [Shadcn](!https://react.dev)
-- [Zod](!https://react.dev)
-- [Drizzle](!https://react.dev)
-- [Neon](!https://react.dev)
+- [React](https://react.dev)
+- [Express](https://react.dev)
+- [Shadcn](https://react.dev)
+- [Zod](https://react.dev)
+- [Drizzle](https://react.dev)
+- [Neon](https://react.dev)
 
 
 ### Setup
