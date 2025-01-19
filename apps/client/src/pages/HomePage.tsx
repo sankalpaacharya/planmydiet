@@ -1,10 +1,8 @@
 type Props = {};
-import { Button } from "@/components/ui/button";
+import ChallengeProgress from '@/components/homepage/challengeProgress'
 
-export default function HomePage({}: Props) {
+export default function HomePage({ }: Props) {
   return (
-    <div className="p-6">
-      <Button>Click me Daddy</Button>
-    </div>
+    <ChallengeProgress planDuration={30} currDay={14} />
   );
 }
