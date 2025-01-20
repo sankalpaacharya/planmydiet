@@ -1,6 +1,5 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
 import { Plus } from "lucide-react";
 
@@ -41,7 +40,7 @@ interface Meals {
   dinner: MealData[];
 }
 
-export default function MealLogger({ meal = defaultData }: { meal?: Meals } = {}) {
+export default function MealLogger({ meal = defaultData }) {
   function renderMeal(
     mealType: keyof Meals,
     mealData: MealData[]
@@ -120,10 +119,10 @@ export default function MealLogger({ meal = defaultData }: { meal?: Meals } = {}
         </Tabs>
       </CardContent>
       <CardFooter className="flex justify-center ">
-        <Button className="w-60 h-12 flex items-center justify-center space-x-2">
-          <Plus size={20} strokeWidth={3} />
-          <span className="text-xl font-normal">Add Meal</span>
-        </Button>
+        <div className="w-[470px] p-3 h-24 flex items-center justify-center space-x-2 border-dashed border-2 border-neutral-500 rounded-md">
+          <Plus size={24} strokeWidth={3} />
+          <span className="text-2xl font-normal">Add Meal</span>
+        </div>
       </CardFooter>
     </Card>
   );

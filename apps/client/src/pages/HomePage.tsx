@@ -1,6 +1,7 @@
 import ChallengeProgress from "@/components/challengeProgress";
 import QuickStats from "@/components/quickStats";
 import MealLogger from "@/components/mealLogger";
+import DailyProgress from "@/components/dailyProgress";
 
 export default function HomePage() {
   return (
@@ -16,6 +17,9 @@ export default function HomePage() {
       </div>
       <div className="flex">
         <MealLogger />
+      </div>
+      <div className="flex">
+        <DailyProgress />
       </div>
     </main>
   );
