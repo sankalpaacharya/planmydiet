@@ -1,8 +1,10 @@
 import express, { Request, Response } from 'express';
-
+import {selectUserById} from "./db/queries/select"
 const app = express();
 
-app.get("/", (req: Request, res: Response) => {
+app.get("/", async (req: Request, res: Response) => {
+    const user = await selectUserById("clerk_id")
+    console.log(user)
     res.send({ message: "Hello world" });
 });
 

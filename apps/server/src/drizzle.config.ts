@@ -1,10 +1,10 @@
 import { config } from 'dotenv';
 import { defineConfig } from "drizzle-kit";
 
-config({ path: '.env' });
+config({ path: './../../../.env' });
 
 export default defineConfig({
-  schema: "./schema.ts",
+  schema: "./db/schema.ts",
   out: "./migrations",
   dialect: "postgresql",
   casing:"snake_case",

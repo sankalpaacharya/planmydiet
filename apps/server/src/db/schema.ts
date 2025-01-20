@@ -2,7 +2,8 @@ import { pgEnum } from "drizzle-orm/pg-core";
 import { pgTable } from "drizzle-orm/pg-core"
 import {integer,text,uuid,timestamp,boolean,decimal,json} from "drizzle-orm/pg-core"
 
-export const usersTable = pgTable('user', {
+
+export const userTable = pgTable('user', {
     id: uuid().defaultRandom().primaryKey(),
     createdAt:timestamp().notNull().defaultNow(),
     clerkUserId:text().notNull().unique(),
@@ -11,9 +12,8 @@ export const usersTable = pgTable('user', {
     points:integer().notNull().default(0)
   });
 
-
 export const userMeasurement = pgTable("user_measurement",{
-    userId:text().primaryKey().references(()=>usersTable.clerkUserId),
+    userId:text().primaryKey().references(()=>userTable.clerkUserId),
     height:integer().notNull(),
     age:integer().notNull(),
     bfp:decimal().notNull(), // body fat percentage
@@ -22,7 +22,7 @@ export const userMeasurement = pgTable("user_measurement",{
 export const plan = pgTable("plan",{
     id:uuid().primaryKey().defaultRandom(),
     goal:text().notNull(),
-    creator:text().notNull().references(()=>usersTable.clerkUserId),
+    creator:text().notNull().references(()=>userTable.clerkUserId),
     aiPlan:json().notNull()
 })
 
@@ -36,7 +36,7 @@ export const challenge = pgTable("challenge",{
     createdAt:timestamp().notNull().defaultNow(),
     title:text().notNull(),
     goal:text().notNull(),
-    creatorId:text().notNull().references(()=>usersTable.clerkUserId),
+    creatorId:text().notNull().references(()=>userTable.clerkUserId),
     endDate:timestamp().notNull(),
 })
 
@@ -44,7 +44,7 @@ export const challenge = pgTable("challenge",{
 export const challengeParticipants = pgTable("participant", {
     id: uuid().defaultRandom().primaryKey(),
     challengeId: uuid().notNull().references(() => challenge.id),
-    userId: text().notNull().references(() => usersTable.clerkUserId),
+    userId: text().notNull().references(() => userTable.clerkUserId),
     joinedAt: timestamp().notNull().defaultNow(),
     hasCustomMealPlan: boolean().notNull().default(false),
     points:integer().notNull().default(0),
@@ -60,6 +60,8 @@ export const mealLog = pgTable("meallog",{
     created_at:timestamp().notNull().defaultNow(),
     kal:integer().notNull(),
     title:text().notNull(),
-    userId: text().notNull().references(() => usersTable.clerkUserId),
+    userId: text().notNull().references(() => userTable.clerkUserId),
     type:mealTypeEnum().notNull()
 })
+
+export type SelectUser = typeof userTable.$inferSelect
