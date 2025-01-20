@@ -20,9 +20,9 @@ const ChallengeProgress = ({ planDuration, currDay }: ChallengeProps) => {
   const currIndex = days.findIndex((day) => day === curDay);
 
   return (
-    <Card className="w-72">
+    <Card className="w-80">
       <CardHeader>
-        <CardTitle className="text-xl font-normal text-center">
+        <CardTitle className="text-2xl font-normal text-center">
           Challenge Progress
         </CardTitle>
       </CardHeader>
