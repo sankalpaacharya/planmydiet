@@ -7,12 +7,7 @@ type QuickStatsProps = {
   remainingTime: number;
 };
 
-const QuickStats = ({
-  currentStreak,
-  teamSize,
-  remainingTime,
-  rank,
-}: QuickStatsProps) => {
+const QuickStats = ({ currentStreak, teamSize, remainingTime, rank }: QuickStatsProps) => {
   return (
     <Card className="w-80">
       <CardHeader>

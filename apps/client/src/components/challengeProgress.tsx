@@ -1,16 +1,9 @@
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
 type ChallengeProps = {
   planDuration: number;
   currDay: number;
 };
-
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardFooter,
-} from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
 
 const ChallengeProgress = ({ planDuration, currDay }: ChallengeProps) => {
   const days = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
@@ -37,19 +30,17 @@ const ChallengeProgress = ({ planDuration, currDay }: ChallengeProps) => {
         {days.map((day, index) => (
           <div
             key={index}
-            className={`flex flex-col items-center gap-2 ${
-              index > currIndex ? "font-normal text-gray-500" : "text-white-600"
-            }`}
+            className={`flex flex-col items-center gap-2 ${index > currIndex ? "font-normal text-gray-500" : "text-white-600"
+              }`}
           >
             <span className="text-sm">{day}</span>
             <div
-              className={`w-4 h-4 rounded-full ${
-                index < currIndex
-                  ? "bg-rose-600" //prevoius days
-                  : index === currIndex
+              className={`w-4 h-4 rounded-full ${index < currIndex
+                ? "bg-rose-600" //prevoius days
+                : index === currIndex
                   ? "bg-rose-300 animate-pulse" //current day as blue
                   : "border-2 bg-gray-500" // next day
-              }`}
+                }`}
             ></div>
           </div>
         ))}
