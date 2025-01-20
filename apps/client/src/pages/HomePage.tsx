@@ -1,6 +1,6 @@
 type Props = {};
-import ChallengeProgress from "@/components/homepage/challengeProgress";
-import QuickStats from "@/components/homepage/quickStats";
+import ChallengeProgress from "@/components/challengeProgress";
+import QuickStats from "@/components/quickStats";
 
 export default function HomePage({}: Props) {
   return (
