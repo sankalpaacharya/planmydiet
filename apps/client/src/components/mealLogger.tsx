@@ -52,35 +52,47 @@ export default function MealLogger({ meal = defaultData }: { meal?: Meals } = {}
     if (!mealData || mealData.length === 0) return null;
 
     return (
-      <div className="">
-        <p >
-          {mealType.charAt(0).toUpperCase() + mealType.slice(1).replace("_", "-")}
-        </p>
-        <div>
+      <div className="flex flex-col p-4">
+        <div className="flex justify-between items-center mb-4">
+          <p className="text-lg font-semibold text-white">
+            {mealType.charAt(0).toUpperCase() + mealType.slice(1).replace("_", "-")}
+          </p>
+          <p className="text-gray-500 text-base font-medium">
+            {mealData.reduce((sum, item) => sum + item.cal, 0)} kcal
+          </p>
+        </div>
+    
+        <div className="space-y-4">
           {mealData.map((item, index) => (
-            <div className="parent" key={index}>
-              <div>{item.food}</div>
-              <div>{item.cal} kcal</div>
-              {item.count > 0 ? (
-                <div>{item.count} Pcs</div>
-              ) : (
-                <div>{item.amount} Grms</div>
-              )}
+            <div
+              className="flex items-center justify-between bg-gray-600 bg-opacity-20 p-4 rounded-md shadow-md"
+              key={index}
+            >
+              <div className="text-base font-medium text-slate-100 text-left">
+                {item.food}
+                <div className="text-sm text-gray-400 mt-1">
+                  {item.count > 0 ? `${item.count} Pcs` : `${item.amount} Grms`}
+                </div>
+              </div>
+    
+              <div className="text-base font-normal text-slate-100">
+                {item.cal} kcal
+              </div>
             </div>
           ))}
         </div>
       </div>
-    );
+    );    
   }
 
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Today's Meals</CardTitle>
+        <CardTitle className="text-2xl font-normal ">Today's Meals</CardTitle>
       </CardHeader>
       <CardContent>
-        <Tabs defaultValue="all" className="w-[400px]">
-          <TabsList>
+        <Tabs defaultValue="all" className="w-[500px] text-center">
+          <TabsList className="w-[500px] justify-around">
             <TabsTrigger value="all">ALL</TabsTrigger>
             <TabsTrigger value="breakfast">Breakfast</TabsTrigger>
             <TabsTrigger value="lunch">Lunch</TabsTrigger>
