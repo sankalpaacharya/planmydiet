@@ -1,11 +1,8 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardFooter,
-} from "@/components/ui/card";
+import { ScrollArea } from "@/components/ui/scroll-area"
+import { Button } from "@/components/ui/button"
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
+import { Plus } from "lucide-react";
 
 const defaultData = {
   breakfast: [
@@ -52,7 +49,7 @@ export default function MealLogger({ meal = defaultData }: { meal?: Meals } = {}
     if (!mealData || mealData.length === 0) return null;
 
     return (
-      <div className="flex flex-col p-4">
+      <div className="flex flex-col p-4 pt-0">
         <div className="flex justify-between items-center mb-4">
           <p className="text-lg font-semibold text-white">
             {mealType.charAt(0).toUpperCase() + mealType.slice(1).replace("_", "-")}
@@ -61,7 +58,7 @@ export default function MealLogger({ meal = defaultData }: { meal?: Meals } = {}
             {mealData.reduce((sum, item) => sum + item.cal, 0)} kcal
           </p>
         </div>
-    
+
         <div className="space-y-4">
           {mealData.map((item, index) => (
             <div
@@ -74,7 +71,7 @@ export default function MealLogger({ meal = defaultData }: { meal?: Meals } = {}
                   {item.count > 0 ? `${item.count} Pcs` : `${item.amount} Grms`}
                 </div>
               </div>
-    
+
               <div className="text-base font-normal text-slate-100">
                 {item.cal} kcal
               </div>
@@ -82,7 +79,7 @@ export default function MealLogger({ meal = defaultData }: { meal?: Meals } = {}
           ))}
         </div>
       </div>
-    );    
+    );
   }
 
   return (
@@ -92,36 +89,41 @@ export default function MealLogger({ meal = defaultData }: { meal?: Meals } = {}
       </CardHeader>
       <CardContent>
         <Tabs defaultValue="all" className="w-[500px] text-center">
-          <TabsList className="w-[500px] justify-around">
+          <TabsList className="w-[500px] justify-around mb-4">
             <TabsTrigger value="all">ALL</TabsTrigger>
             <TabsTrigger value="breakfast">Breakfast</TabsTrigger>
             <TabsTrigger value="lunch">Lunch</TabsTrigger>
             <TabsTrigger value="high_tea">High-Tea</TabsTrigger>
             <TabsTrigger value="dinner">Dinner</TabsTrigger>
           </TabsList>
-          <TabsContent value="all">
-            {(["breakfast", "lunch", "high_tea", "dinner"] as Array<keyof Meals>).map(
-              (mealType) => (
-                <div key={mealType}>{renderMeal(mealType, meal[mealType])}</div>
-              )
-            )}
-          </TabsContent>
-          <TabsContent value="breakfast">
-            {renderMeal("breakfast", meal.breakfast)}
-          </TabsContent>
-          <TabsContent value="lunch">
-            {renderMeal("lunch", meal.lunch)}
-          </TabsContent>
-          <TabsContent value="high_tea">
-            {renderMeal("high_tea", meal.high_tea)}
-          </TabsContent>
-          <TabsContent value="dinner">
-            {renderMeal("dinner", meal.dinner)}
-          </TabsContent>
+          <ScrollArea className="h-[330px] w-[500px] rounded-md">
+            <TabsContent value="all">
+              {(["breakfast", "lunch", "high_tea", "dinner"] as Array<keyof Meals>).map(
+                (mealType) => (
+                  <div key={mealType}>{renderMeal(mealType, meal[mealType])}</div>
+                )
+              )}
+            </TabsContent>
+            <TabsContent value="breakfast">
+              {renderMeal("breakfast", meal.breakfast)}
+            </TabsContent>
+            <TabsContent value="lunch">
+              {renderMeal("lunch", meal.lunch)}
+            </TabsContent>
+            <TabsContent value="high_tea">
+              {renderMeal("high_tea", meal.high_tea)}
+            </TabsContent>
+            <TabsContent value="dinner">
+              {renderMeal("dinner", meal.dinner)}
+            </TabsContent>
+          </ScrollArea>
         </Tabs>
       </CardContent>
-      <CardFooter>
-        <p>Add Meal</p>
+      <CardFooter className="flex justify-center ">
+        <Button className="w-60 h-12 flex items-center justify-center space-x-2">
+          <Plus size={20} strokeWidth={3} />
+          <span className="text-xl font-normal">Add Meal</span>
+        </Button>
       </CardFooter>
     </Card>
   );
