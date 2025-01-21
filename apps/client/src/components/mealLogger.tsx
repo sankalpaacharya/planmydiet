@@ -1,6 +1,12 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ScrollArea } from "@/components/ui/scroll-area"
-import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
 import { Plus } from "lucide-react";
 
 const defaultData = {
@@ -41,17 +47,15 @@ interface Meals {
 }
 
 export default function MealLogger({ meal = defaultData }) {
-  function renderMeal(
-    mealType: keyof Meals,
-    mealData: MealData[]
-  ) {
+  function renderMeal(mealType: keyof Meals, mealData: MealData[]) {
     if (!mealData || mealData.length === 0) return null;
 
     return (
       <div className="flex flex-col p-4 pt-0">
         <div className="flex justify-between items-center mb-4">
           <p className="text-lg font-semibold text-white">
-            {mealType.charAt(0).toUpperCase() + mealType.slice(1).replace("_", "-")}
+            {mealType.charAt(0).toUpperCase() +
+              mealType.slice(1).replace("_", "-")}
           </p>
           <p className="text-gray-500 text-base font-medium">
             {mealData.reduce((sum, item) => sum + item.cal, 0)} kcal
@@ -97,11 +101,13 @@ export default function MealLogger({ meal = defaultData }) {
           </TabsList>
           <ScrollArea className="h-[330px] w-[500px] rounded-md">
             <TabsContent value="all">
-              {(["breakfast", "lunch", "high_tea", "dinner"] as Array<keyof Meals>).map(
-                (mealType) => (
-                  <div key={mealType}>{renderMeal(mealType, meal[mealType])}</div>
-                )
-              )}
+              {(
+                ["breakfast", "lunch", "high_tea", "dinner"] as Array<
+                  keyof Meals
+                >
+              ).map((mealType) => (
+                <div key={mealType}>{renderMeal(mealType, meal[mealType])}</div>
+              ))}
             </TabsContent>
             <TabsContent value="breakfast">
               {renderMeal("breakfast", meal.breakfast)}
