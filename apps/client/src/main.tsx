@@ -1,14 +1,32 @@
-import { createRoot } from "react-dom/client";
+import { StrictMode } from "react";
+import ReactDOM from "react-dom/client";
+import { RouterProvider, createRouter } from "@tanstack/react-router";
 import "./index.css";
-import App from "./App.tsx";
-import { ThemeProvider } from "./components/theme-provider.tsx";
+import { ThemeProvider } from "./components/theme-provider";
 
-createRoot(document.getElementById("root")!).render(
-  <ThemeProvider
-    attribute="class"
-    defaultTheme="dark"
-    disableTransitionOnChange
-  >
-    <App />
-  </ThemeProvider>
-);
+import { routeTree } from "./routeTree.gen";
+
+const router = createRouter({ routeTree });
+
+declare module "@tanstack/react-router" {
+  interface Register {
+    router: typeof router;
+  }
+}
+
+const rootElement = document.getElementById("root")!;
+if (!rootElement.innerHTML) {
+  const root = ReactDOM.createRoot(rootElement);
+  root.render(
+    <StrictMode>
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="dark"
+        enableSystem
+        disableTransitionOnChange
+      >
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </StrictMode>
+  );
+}
