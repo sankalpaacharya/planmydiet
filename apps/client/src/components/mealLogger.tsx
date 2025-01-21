@@ -82,7 +82,7 @@ export default function MealLogger({ meal = defaultData }) {
   }
 
   return (
-    <Card>
+    <Card className="h-max">
       <CardHeader>
         <CardTitle className="text-2xl font-normal ">Today's Meals</CardTitle>
       </CardHeader>
