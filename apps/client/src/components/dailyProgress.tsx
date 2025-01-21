@@ -6,7 +6,7 @@ import {
 	CardDescription,
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { ScrollArea } from "@/components/ui/scroll-area"
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const defaultData = {
 	consumedCal: 300,
@@ -72,7 +72,7 @@ const NutrientProgress = ({ title, data }: { title: string; data: NutrientData }
 				className="w-full h-2 mt-1"
 			/>
 
-			<div className="mt-2  text-gray-500">
+			<div className="mt-2 text-gray-500">
 				{Object.entries(data.meals).map(
 					([meal, value]) =>
 						value > 0 && (
