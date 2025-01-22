@@ -1,11 +1,14 @@
 import Groq from "groq-sdk";
 import {generatePlanPrompt} from "./prompt"
+import { PromptData } from "./prompt";
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
 
-type GroqChatCompletion = {
-    promptMaker: (arq:any)=>string,
-    promptData:any
+export type PromptMaker<T> = (data:T) => string;
+
+interface GroqChatCompletion<T>{
+    promptMaker: PromptMaker<T>;
+    promptData:T
 }
 
 // export async function main() {
@@ -13,7 +16,7 @@ type GroqChatCompletion = {
 //   console.log(chatCompletion.choices[0]?.message?.content || "");
 // }
 
-export async function getGroqChatCompletion({promptMaker,promptData}:GroqChatCompletion) {
+export async function getGroqChatCompletion<T>({promptMaker,promptData}:GroqChatCompletion<T>) {
   return groq.chat.completions.create({
     messages: [
       {
@@ -26,7 +29,22 @@ export async function getGroqChatCompletion({promptMaker,promptData}:GroqChatCom
   });
 }
 
+const promptData: PromptData = {
+    weight: "70",
+    height: "175",
+    gender: "male",
+    weightloss: "5",
+    dietpreference: "vegetarian",
+    user_id: "123",
+    age: "30",
+    goal: "weight loss",
+    activitylevel: "moderate",
+    calorieintake: "2000",
+    duration: "12"
+  };
+
+
 export async function getPlan(){
-//   const chatCompletion = await getGroqChatCompletion(generatePlanPrompt,{name:string});
+  const chatCompletion = await getGroqChatCompletion({promptMaker:generatePlanPrompt,promptData:promptData});
 
 }
