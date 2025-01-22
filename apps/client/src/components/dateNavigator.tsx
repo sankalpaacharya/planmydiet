@@ -19,7 +19,7 @@ export default function DateNavigator() {
         onClick={handlePreviousDay}
         className="pr-3"
       >
-        <ChevronLeft size={30}/>
+        <ChevronLeft size={30} className="hover:text-rose-500"/>
       </button>
 
       <div className="text-lg font-medium text-white">
@@ -30,7 +30,7 @@ export default function DateNavigator() {
         onClick={handleNextDay}
         className="pl-3"
       >
-        <ChevronRight size={30}/>
+        <ChevronRight size={30} className="hover:text-rose-500"/>
       </button>
     </div>
   );

@@ -5,22 +5,24 @@ import DailyProgress from "@/components/dailyProgress";
 
 export default function HomePage() {
   return (
-    <main className="flex gap-4 p-8">
-      <div className="flex flex-col gap-4">
-        <ChallengeProgress planDuration={30} currDay={14} />
-        <QuickStats
-          currentStreak={7}
-          remainingTime={16}
-          rank={2}
-          teamSize={12}
-        />
-      </div>
-      <div className="flex">
-        <MealLogger />
-      </div>
-      <div className="flex">
-        <DailyProgress />
-      </div>
-    </main>
+    <div className="m-auto pb-16">
+      <main className="flex gap-4 px-8 py-2 max-w-7xl">
+        <div className="flex flex-col gap-4">
+          <ChallengeProgress planDuration={30} currDay={14} />
+          <QuickStats
+            currentStreak={7}
+            remainingTime={16}
+            rank={2}
+            teamSize={12}
+          />
+        </div>
+        <div className="flex">
+          <MealLogger />
+        </div>
+        <div className="flex">
+          <DailyProgress />
+        </div>
+      </main>
+    </div>
   );
 }

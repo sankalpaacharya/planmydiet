@@ -33,13 +33,13 @@ const defaultData = {
       },
     },
     proteins: {
-      consumed: 300,
+      consumed: 150,
       target: 200,
       meals: {
-        breakfast: 150,
-        lunch: 150,
-        highTea: 50,
-        dinner: 100,
+        breakfast: 30,
+        lunch: 50,
+        highTea: 20,
+        dinner: 50,
       },
     },
   },
@@ -66,10 +66,10 @@ const NutrientProgress = ({
   data: NutrientData;
 }) => {
   return (
-    <div className="w-full p-2">
+    <div className="w-full">
       <div className="flex justify-between">
-        <h3 className="text-xl font-medium mb-2">{title}</h3>
-        <div className="font-medium">
+        <h3 className="text-2xl font-medium mb-2">{title}</h3>
+        <div className="font-medium text-xl">
           {data.consumed}/{data.target}g
         </div>
       </div>
@@ -78,7 +78,7 @@ const NutrientProgress = ({
         className="w-full h-2 mt-1"
       />
 
-      <div className="mt-2 text-gray-500">
+      <div className="mt-3 text-gray-500">
         {Object.entries(data.meals).map(
           ([meal, value]) =>
             value > 0 && (
@@ -95,7 +95,7 @@ const NutrientProgress = ({
 
 export default function DailyProgress({ dailyData = defaultData }) {
   return (
-    <Card className="w-80 h-max rounded-lg">
+    <Card className="w-125 rounded-lg">
       <CardHeader className="pb-6">
         <CardTitle className="text-2xl font-normal text-center mb-3">
           Daily Progress
@@ -108,12 +108,12 @@ export default function DailyProgress({ dailyData = defaultData }) {
           <div className="flex justify-center">
             <Progress
               value={(dailyData.consumedCal * 100) / dailyData.targetCal}
-              className="h-2 mt-3 w-[calc(100%-1rem)] max-w-[320px]"
+              className="h-3 mt-3 max-w-72"
             />
           </div>
         </CardDescription>
       </CardHeader>
-      <ScrollArea className="w-full h-[405px] mb-6">
+      <ScrollArea className="w-full h-125 p-4">
         <CardContent className="flex flex-col items-center gap-4">
           <NutrientProgress title="Fat" data={dailyData.nutrients.fats} />
           <NutrientProgress title="Carbs" data={dailyData.nutrients.carbs} />
