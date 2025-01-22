@@ -9,7 +9,7 @@ import { Progress } from "@/components/ui/progress";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 const defaultData = {
-  consumedCal: 300,
+  consumedCal: 600,
   targetCal: 900,
   nutrients: {
     fats: {
@@ -95,9 +95,9 @@ const NutrientProgress = ({
 
 export default function DailyProgress({ dailyData = defaultData }) {
   return (
-    <Card className="w-125 rounded-lg">
+    <Card className="w-96 rounded-lg">
       <CardHeader className="pb-6">
-        <CardTitle className="text-2xl font-normal text-center mb-3">
+        <CardTitle className="text-2xl font-semibold text-center mb-2">
           Daily Progress
         </CardTitle>
         <CardDescription className="text-center">
@@ -108,12 +108,12 @@ export default function DailyProgress({ dailyData = defaultData }) {
           <div className="flex justify-center">
             <Progress
               value={(dailyData.consumedCal * 100) / dailyData.targetCal}
-              className="h-3 mt-3 max-w-72"
+              className="h-2 mt-3 max-w-60"
             />
           </div>
         </CardDescription>
       </CardHeader>
-      <ScrollArea className="w-full h-125 p-4">
+      <ScrollArea className="w-full h-125 p-3 mb-1">
         <CardContent className="flex flex-col items-center gap-4">
           <NutrientProgress title="Fat" data={dailyData.nutrients.fats} />
           <NutrientProgress title="Carbs" data={dailyData.nutrients.carbs} />

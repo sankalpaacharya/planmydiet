@@ -21,7 +21,7 @@ const ChallengeProgress = ({ planDuration, currDay }: ChallengeProps) => {
   return (
     <Card className="w-96 h-72 flex flex-col gap-4">
       <CardHeader>
-        <CardTitle className="text-2xl font-normal text-center">
+        <CardTitle className="text-2xl font-semibold text-center">
           Challenge Progress
         </CardTitle>
       </CardHeader>
