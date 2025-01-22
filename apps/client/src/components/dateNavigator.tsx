@@ -14,10 +14,10 @@ export default function DateNavigator() {
   };
 
   return (
-    <div className="flex items-center justify-center gap-4 p-4">
+    <div className="flex items-center justify-center gap-4">
       <button
         onClick={handlePreviousDay}
-        className="px-3 py-2"
+        className="pr-3"
       >
         <ChevronLeft size={30}/>
       </button>
@@ -28,7 +28,7 @@ export default function DateNavigator() {
 
       <button
         onClick={handleNextDay}
-        className="px-3 py-2"
+        className="pl-3"
       >
         <ChevronRight size={30}/>
       </button>
