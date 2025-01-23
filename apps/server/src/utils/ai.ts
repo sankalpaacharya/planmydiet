@@ -1,6 +1,9 @@
 import Groq from "groq-sdk";
 import {generatePlanPrompt} from "./prompt"
 import { PromptData } from "./prompt";
+import { config } from "dotenv";
+
+config({ path:'.env' });
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
 
@@ -30,12 +33,12 @@ export async function getGroqChatCompletion<T>({promptMaker,promptData}:GroqChat
 }
 
 const promptData: PromptData = {
+
     weight: "70",
     height: "175",
     gender: "male",
     weightloss: "5",
     dietpreference: "vegetarian",
-    user_id: "123",
     age: "30",
     goal: "weight loss",
     activitylevel: "moderate",
@@ -46,5 +49,9 @@ const promptData: PromptData = {
 
 export async function getPlan(){
   const chatCompletion = await getGroqChatCompletion({promptMaker:generatePlanPrompt,promptData:promptData});
-
+  const planData = chatCompletion.choices[0]?.message?.content || ""
+  if(planData==""){
+    throw Error("couldn't generate the data")
+  }
+  return planData;
 }
