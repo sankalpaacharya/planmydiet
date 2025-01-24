@@ -1,6 +1,6 @@
 import Groq from "groq-sdk";
 import {generatePlanPrompt} from "./prompt"
-import { PromptData } from "./prompt";
+import { DietPlanType } from "./prompt";
 import { config } from "dotenv";
 
 config({ path:'.env' });
@@ -32,18 +32,18 @@ export async function getGroqChatCompletion<T>({promptMaker,promptData}:GroqChat
   });
 }
 
-const promptData: PromptData = {
+const promptData: DietPlanType = {
 
-    weight: "70",
-    height: "175",
+    weight:70,
+    height:175,
     gender: "male",
-    weightloss: "5",
+    weightloss: 5,
     dietpreference: "vegetarian",
-    age: "30",
+    age:30,
     goal: "weight loss",
     activitylevel: "moderate",
-    calorieintake: "2000",
-    duration: "12"
+    calorieintake:2000,
+    duration:12
   };
 
 
