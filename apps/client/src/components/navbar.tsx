@@ -1,5 +1,5 @@
 import DateNavigator from "@/components/dateNavigator";
-import ViewPlan from "@/components/viewPlan";
+import ViewPlan from "@/components/viewPlanButton";
 
 export default function navbar() {
   return (
