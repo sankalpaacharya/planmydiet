@@ -1,11 +1,9 @@
-import { PromptMaker} from "./ai";
 export interface PromptData  {
     weight: string;
     height: string;
     gender: string;
     weightloss: string;
     dietpreference: string;
-    user_id: string;
     age: string;
     goal: string;
     activitylevel: string;
@@ -13,7 +11,7 @@ export interface PromptData  {
     duration: string;
   };
   
-export  const generatePlanPrompt = ({weight, height, gender, weightloss, dietpreference, user_id, age, goal, activitylevel, calorieintake, duration}:PromptData):string=>{return `
+export  const generatePlanPrompt = ({weight, height, gender, weightloss, dietpreference, age, goal, activitylevel, calorieintake, duration}:PromptData):string=>{return `
     Design a personalized nutrition and diet plan for a user based on their provided details:
     
     - Weight: ${weight} kg
