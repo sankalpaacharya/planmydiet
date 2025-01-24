@@ -15,8 +15,8 @@ body{
 .glass-effect {
   background: rgba( 28, 25, 23, 0.6 );
   box-shadow: -3px 1px 14px 0 rgba( 225, 29, 72, 0.25 );
-  backdrop-filter: blur( 10px );
   -webkit-backdrop-filter: blur( 10px );
+  backdrop-filter: blur( 10px );
   border-radius: 10px;
   border: 1px solid rgba( 255, 255, 255, 0.18 );
 }

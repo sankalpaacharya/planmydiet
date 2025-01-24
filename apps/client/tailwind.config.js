@@ -50,7 +50,13 @@ export default {
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
   			}
-  		}
+  		},
+			spacing :{
+				'125': '25.2rem',
+				'128': '30rem',
+        '144': '35rem',
+        '150': '40.5rem',
+			}
   	}
   },
   plugins: [require("tailwindcss-animate")],

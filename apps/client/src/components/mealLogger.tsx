@@ -51,7 +51,7 @@ export default function MealLogger({ meal = defaultData }) {
     if (!mealData || mealData.length === 0) return null;
 
     return (
-      <div className="flex flex-col p-4 pt-0">
+      <div className="flex flex-col">
         <div className="flex justify-between items-center mb-4">
           <p className="text-lg font-semibold text-white">
             {mealType.charAt(0).toUpperCase() +
@@ -86,20 +86,20 @@ export default function MealLogger({ meal = defaultData }) {
   }
 
   return (
-    <Card className="h-max">
+    <Card className="w-150 h-max flex flex-col items-center pb-2">
       <CardHeader>
-        <CardTitle className="text-2xl font-normal ">Today's Meals</CardTitle>
+        <CardTitle className="text-2xl font-semibold ">Today's Meals</CardTitle>
       </CardHeader>
       <CardContent>
-        <Tabs defaultValue="all" className="w-[500px] text-center">
-          <TabsList className="w-[500px] justify-around mb-4">
+        <Tabs defaultValue="all">
+          <TabsList className="w-144 justify-around mb-4">
             <TabsTrigger value="all">ALL</TabsTrigger>
             <TabsTrigger value="breakfast">Breakfast</TabsTrigger>
             <TabsTrigger value="lunch">Lunch</TabsTrigger>
             <TabsTrigger value="high_tea">High-Tea</TabsTrigger>
             <TabsTrigger value="dinner">Dinner</TabsTrigger>
           </TabsList>
-          <ScrollArea className="h-[330px] w-[500px] rounded-md">
+          <ScrollArea className="h-72 rounded-md mb-2">
             <TabsContent value="all">
               {(
                 ["breakfast", "lunch", "high_tea", "dinner"] as Array<
@@ -124,8 +124,8 @@ export default function MealLogger({ meal = defaultData }) {
           </ScrollArea>
         </Tabs>
       </CardContent>
-      <CardFooter className="flex justify-center ">
-        <div className="w-[470px] p-3 h-24 flex items-center justify-center space-x-2 border-dashed border-2 border-neutral-500 rounded-md">
+      <CardFooter className="flex justify-center hover:text-rose-500 ">
+        <div className="w-96 p-3 h-24 flex items-center justify-center space-x-2 border-dashed border-2 border-neutral-500 rounded-md">
           <Plus size={24} strokeWidth={3} />
           <span className="text-2xl font-normal">Add Meal</span>
         </div>
