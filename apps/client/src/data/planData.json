@@ -1,24 +1,46 @@
 {
   "dailyCalorieDistribution": {
-    "carbohydrates": "50%",
-    "proteins": "30%",
+    "carbohydrates": "55%",
+    "proteins": "25%",
     "fats": "20%"
   },
+  "dailyNutritionAverage": {
+    "calories": "1900",
+    "carbs": "261",
+    "fats": "42",
+    "protein": "118"
+  },
   "dailyWaterIntake": "4 liters",
+  "primaryGoal": "muscle building + fat loss",
+  "workoutRoutine": {
+    "Monday": "Cardio - 30 minutes",
+    "Tuesday": "Strength training - Chest and Triceps",
+    "Wednesday": "Rest day",
+    "Thursday": "Cardio - 30 minutes",
+    "Friday": "Strength training - Back and Biceps",
+    "Saturday": "Rest day",
+    "Sunday": "Cardio - 30 minutes"
+  },
   "mealPlans": [
     {
       "day": "Monday",
-      "calories": 2200,
+      "calories": 2000,
       "macronutrients": {
-        "carbohydrates": 275,
-        "proteins": 165,
-        "fats": 49
+        "carbohydrates": "275",
+        "proteins": "125",
+        "fats": "40"
       },
       "meals": {
         "breakfast": [
           {
             "name": "Idli with Sambhar",
-            "ingredients": ["rawa", "tomatoes", "dal", "spices", "onions"],
+            "ingredients": [
+              "rawa",
+              "tomatoes",
+              "dal",
+              "spices",
+              "onions"
+            ],
             "calories": 350
           },
           {
@@ -47,31 +69,50 @@
           },
           {
             "name": "Chappati",
-            "ingredients": ["Wheat Flour", "Ghee"],
+            "ingredients": [
+              "Wheat Flour",
+              "Ghee"
+            ],
             "calories": 100
           }
         ],
         "dinner": [
           {
             "name": "Rajma Chawal",
-            "ingredients": ["rajma", "rice", "carrots", "chappati"],
+            "ingredients": [
+              "rajma",
+              "rice",
+              "carrots",
+              "chappati"
+            ],
             "calories": 650
           },
           {
-            "name": "Saag Aloo",
-            "ingredients": ["spinach", "potatoes", "garlic", "ginger"],
-            "calories": 250
+            "name": "Naan",
+            "ingredients": [
+              "wheat",
+              "olive oil",
+              "carrots",
+              "chappati"
+            ],
+            "calories": 650
           }
         ],
         "snacks": [
           {
-            "name": "Fruits Salad",
-            "ingredients": ["apple", "banana", "orange"],
+            "name": "Roasted Makhana",
+            "ingredients": [
+              "makhana",
+              "olive oil",
+              "salt"
+            ],
             "calories": 150
           },
           {
-            "name": "Roasted Chana",
-            "ingredients": ["chana", "salt", "pepper"],
+            "name": "Fresh Fruit Salad",
+            "ingredients": [
+              "mixed fruits"
+            ],
             "calories": 100
           }
         ]
@@ -79,99 +120,309 @@
     },
     {
       "day": "Tuesday",
-      "calories": 2200,
+      "calories": 2000,
       "macronutrients": {
-        "carbohydrates": 275,
-        "proteins": 165,
-        "fats": 49
+        "carbohydrates": "275",
+        "proteins": "125",
+        "fats": "40"
       },
       "meals": {
         "breakfast": [
           {
-            "name": "Poha",
-            "ingredients": ["poha", "onions", "potatoes", "peas"],
+            "name": "Poha with Nuts",
+            "ingredients": [
+              "poha",
+              "nuts",
+              "dried fruits"
+            ],
             "calories": 350
           },
           {
-            "name": "Vegetable Juice",
-            "ingredients": ["carrots", "beetroot", "apple"],
-            "calories": 100
-          }
-        ],
-        "lunch": [
-          {
-            "name": "Chickpea Curry",
-            "ingredients": ["chickpeas", "onions", "tomatoes", "garlic"],
-            "calories": 600
-          },
-          {
-            "name": "Brown Rice",
-            "ingredients": ["brown rice"],
-            "calories": 150
-          }
-        ],
-        "dinner": [
-          {
-            "name": "Vegetable Jalfrezi",
+            "name": "Vegetable Omelette",
             "ingredients": [
-              "mixed vegetables",
+              "tofu",
               "onions",
               "bell peppers",
               "tomatoes"
             ],
-            "calories": 650
+            "calories": 200
+          }
+        ],
+        "lunch": [
+          {
+            "name": "Lentil Soup",
+            "ingredients": [
+              "lentils",
+              "vegetables",
+              "spices"
+            ],
+            "calories": 400
           },
           {
-            "name": "Roti",
-            "ingredients": ["wheat flour"],
+            "name": "Brown Rice",
+            "ingredients": [
+              "brown rice"
+            ],
+            "calories": 100
+          }
+        ],
+        "dinner": [
+          {
+            "name": "Vegetable Curry",
+            "ingredients": [
+              "mixed vegetables",
+              "coconut milk",
+              "spices"
+            ],
+            "calories": 500
+          },
+          {
+            "name": "Whole Wheat Roti",
+            "ingredients": [
+              "whole wheat flour"
+            ],
             "calories": 100
           }
         ],
         "snacks": [
           {
-            "name": "Cucumber Slice",
-            "ingredients": ["cucumber"],
-            "calories": 45
+            "name": "Carrot Sticks with Hummus",
+            "ingredients": [
+              "carrots",
+              "chickpeas",
+              "tahini"
+            ],
+            "calories": 100
           },
           {
-            "name": "Humus",
-            "ingredients": ["chickpeas", "tahini", "garlic"],
-            "calories": 100
+            "name": "Apple Slices",
+            "ingredients": [
+              "apples"
+            ],
+            "calories": 50
           }
         ]
       }
     },
     {
       "day": "Wednesday",
-      "calories": 2200,
+      "calories": 2000,
       "macronutrients": {
-        "carbohydrates": 275,
-        "proteins": 165,
-        "fats": 49
+        "carbohydrates": "275",
+        "proteins": "125",
+        "fats": "40"
       },
       "meals": {
         "breakfast": [
           {
-            "name": "Oatmeal",
-            "ingredients": ["oats", "milk", "honey"],
-            "calories": 350
+            "name": "Oatmeal with Fresh Fruits",
+            "ingredients": [
+              "oats",
+              "milk",
+              "fresh fruits"
+            ],
+            "calories": 300
           },
           {
-            "name": "Banana",
-            "ingredients": ["banana"],
+            "name": "Vegetable Smoothie",
+            "ingredients": [
+              "yogurt",
+              "spinach",
+              "banana",
+              "almonds"
+            ],
+            "calories": 200
+          }
+        ],
+        "lunch": [
+          {
+            "name": "Grilled Vegetable Skewers",
+            "ingredients": [
+              "mixed vegetables",
+              "olive oil",
+              "salt"
+            ],
+            "calories": 200
+          },
+          {
+            "name": "Quinoa Salad",
+            "ingredients": [
+              "quinoa",
+              "mixed vegetables",
+              "lemon juice"
+            ],
+            "calories": 400
+          }
+        ],
+        "dinner": [
+          {
+            "name": "Vegetable Stir-Fry",
+            "ingredients": [
+              "mixed vegetables",
+              "soy sauce",
+              "olive oil"
+            ],
+            "calories": 400
+          },
+          {
+            "name": "Brown Rice",
+            "ingredients": [
+              "brown rice"
+            ],
+            "calories": 100
+          }
+        ],
+        "snacks": [
+          {
+            "name": "Cucumber Slices",
+            "ingredients": [
+              "cucumber"
+            ],
+            "calories": 10
+          },
+          {
+            "name": "Rice Cakes with Almond Butter",
+    "ingredients": [
+              "rice cakes",
+              "almond butter"
+            ],
+            "calories": 150
+          }
+        ]
+      }
+    },
+    {
+      "day": "Thursday",
+      "calories": 2000,
+      "macronutrients": {
+        "carbohydrates": "275",
+        "proteins": "125",
+        "fats": "40"
+      },
+      "meals": {
+        "breakfast": [
+          {
+            "name": "Whole Wheat Toast with Avocado",
+            "ingredients": [
+              "whole wheat bread",
+              "avocado"
+            ],
+            "calories": 300
+          },
+          {
+            "name": "Fresh Fruit Salad",
+            "ingredients": [
+              "mixed fruits"
+            ],
             "calories": 100
           }
         ],
         "lunch": [
           {
-            "name": "Lentil Soup",
-            "ingredients": ["lentils", "onions", "carrots", "celery"],
-            "calories": 600
+            "name": "Lentil Curry",
+            "ingredients": [
+              "lentils",
+              "onions",
+              "garlic",
+              "spices"
+            ],
+            "calories": 400
           },
           {
-            "name": "Whole Wheat Bread",
-            "ingredients": ["whole wheat flour"],
+            "name": "Whole Wheat Roti",
+            "ingredients": [
+              "whole wheat flour"
+            ],
+            "calories": 100
+          }
+        ],
+        "dinner": [
+          {
+            "name": "Grilled Tofu with Roasted Vegetables",
+            "ingredients": [
+              "tofu",
+              "mixed vegetables",
+              "olive oil"
+            ],
+            "calories": 400
+          },
+          {
+            "name": "Quinoa",
+            "ingredients": [
+              "quinoa"
+            ],
             "calories": 150
+          }
+        ],
+        "snacks": [
+          {
+            "name": "Carrot Sticks with Hummus",
+            "ingredients": [
+              "carrots",
+              "chickpeas",
+              "tahini"
+            ],
+            "calories": 100
+          },
+          {
+            "name": "Rice Crackers with Peanut Butter",
+    "ingredients": [
+              "rice crackers",
+              "peanut butter"
+            ],
+            "calories": 150
+          }
+        ]
+      }
+    },
+    {
+      "day": "Friday",
+      "calories": 2000,
+      "macronutrients": {
+        "carbohydrates": "275",
+        "proteins": "125",
+        "fats": "40"
+      },
+      "meals": {
+        "breakfast": [
+          {
+            "name": "Oatmeal with Banana and Honey",
+            "ingredients": [
+              "oats",
+              "banana",
+              "honey"
+            ],
+            "calories": 300
+          },
+          {
+            "name": "Spinach and Mushroom Scramble",
+            "ingredients": [
+              "tofu",
+              "spinach",
+              "mushrooms",
+              "olive oil"
+            ],
+            "calories": 200
+          }
+        ],
+        "lunch": [
+          {
+            "name": "Vegetable Wrap",
+            "ingredients": [
+              "whole wheat wrap",
+              "mixed vegetables",
+              "hummus"
+            ],
+            "calories": 400
+          },
+          {
+            "name": "Mixed Greens Salad",
+            "ingredients": [
+              "mixed greens",
+              "mixed vegetables",
+              "lemon juice"
+            ],
+            "calories": 100
           }
         ],
         "dinner": [
@@ -179,156 +430,34 @@
             "name": "Grilled Vegetable Skewers",
             "ingredients": [
               "mixed vegetables",
-              "onions",
-              "bell peppers",
-              "tomatoes"
+              "olive oil",
+              "salt"
             ],
-            "calories": 650
+            "calories": 200
           },
           {
-            "name": "Quinoa",
-            "ingredients": ["quinoa"],
-            "calories": 150
-          }
-        ],
-        "snacks": [
-          {
-            "name": "Carrot Stick",
-            "ingredients": ["carrot"],
-            "calories": 45
-          },
-          {
-            "name": "Rice Cakes",
-            "ingredients": ["rice flour"],
-            "calories": 100
-          }
-        ]
-      }
-    },
-    {
-      "day": "Thursday",
-      "calories": 2200,
-      "macronutrients": {
-        "carbohydrates": 275,
-        "proteins": 165,
-        "fats": 49
-      },
-      "meals": {
-        "breakfast": [
-          {
-            "name": "Dosa",
-            "ingredients": ["rice", "lentils", "onions"],
-            "calories": 350
-          },
-          {
-            "name": "Coconut Water",
-            "ingredients": ["coconut water"],
-            "calories": 45
-          }
-        ],
-        "lunch": [
-          {
-            "name": "Vegetable Curry",
-            "ingredients": ["mixed vegetables", "onions", "garlic", "ginger"],
-            "calories": 600
-          },
-          {
-            "name": "Brown Rice",
-            "ingredients": ["brown rice"],
-            "calories": 150
-          }
-        ],
-        "dinner": [
-          {
-            "name": "Stuffed Bell Peppers",
-            "ingredients": ["bell peppers", "onions", "tomatoes", "quinoa"],
-            "calories": 650
-          },
-          {
-            "name": "Roti",
-            "ingredients": ["wheat flour"],
-            "calories": 100
-          }
-        ],
-        "snacks": [
-          {
-            "name": "Cucumber Slice",
-            "ingredients": ["cucumber"],
-            "calories": 45
-          },
-          {
-            "name": "Roasted Makhana",
-            "ingredients": ["makhana", "salt", "pepper"],
-            "calories": 100
-          }
-        ]
-      }
-    },
-    {
-      "day": "Friday",
-      "calories": 2200,
-      "macronutrients": {
-        "carbohydrates": 275,
-        "proteins": 165,
-        "fats": 49
-      },
-      "meals": {
-        "breakfast": [
-          {
-            "name": "Upma",
-            "ingredients": ["semolina", "onions", "tomatoes", "peas"],
-            "calories": 350
-          },
-          {
-            "name": "Fresh Fruit Salad",
-            "ingredients": ["apple", "banana", "orange"],
-            "calories": 150
-          }
-        ],
-        "lunch": [
-          {
-            "name": "Vegetable Biryani",
+            "name": "Quinoa and Black Bean Bowl",
             "ingredients": [
-              "basmati rice",
-              "carrots",
-              "peas",
-              "cauliflower",
-              "onions"
+              "quinoa",
+              "black beans",
+              "mixed vegetables"
             ],
-            "calories": 600
-          },
-          {
-            "name": "Raita",
-            "ingredients": ["yogurt", "cucumber", "cumin"],
-            "calories": 100
-          }
-        ],
-        "dinner": [
-          {
-            "name": "Grilled Portobello Mushrooms",
-            "ingredients": [
-              "portobello mushrooms",
-              "onions",
-              "bell peppers",
-              "tomatoes"
-            ],
-            "calories": 650
-          },
-          {
-            "name": "Naan",
-            "ingredients": ["wheat flour"],
-            "calories": 150
+            "calories": 400
           }
         ],
         "snacks": [
           {
-            "name": "Carrot Stick",
-            "ingredients": ["carrot"],
-            "calories": 45
+            "name": "Apple Slices",
+            "ingredients": [
+              "apples"
+            ],
+            "calories": 50
           },
           {
-            "name": "Hummus",
-            "ingredients": ["chickpeas", "tahini", "garlic"],
+            "name": "Almonds",
+            "ingredients": [
+              "almonds"
+            ],
             "calories": 100
           }
         ]
@@ -336,99 +465,136 @@
     },
     {
       "day": "Saturday",
-      "calories": 2200,
+      "calories": 2000,
       "macronutrients": {
-        "carbohydrates": 275,
-        "proteins": 165,
-        "fats": 49
+        "carbohydrates": "275",
+        "proteins": "125",
+        "fats": "40"
       },
       "meals": {
         "breakfast": [
           {
-            "name": "Idli",
-            "ingredients": ["rawa", "urad dal", "onions"],
-            "calories": 350
+            "name": "Whole Wheat Pancakes with Fresh Fruits",
+            "ingredients": [
+              "whole wheat flour",
+              "fresh fruits"
+            ],
+            "calories": 300
           },
           {
-            "name": "Sambar",
-            "ingredients": ["lentils", "onions", "tomatoes", "tamarind"],
-            "calories": 150
-          }
-        ],
-        "lunch": [
-          {
-            "name": "Vegetable Jalfrezi",
+            "name": "Tofu Scramble",
             "ingredients": [
-              "mixed vegetables",
+              "tofu",
               "onions",
               "bell peppers",
               "tomatoes"
             ],
-            "calories": 600
+            "calories": 200
+          }
+        ],
+        "lunch": [
+          {
+            "name": "Lentil Soup",
+            "ingredients": [
+              "lentils",
+              "vegetables",
+              "spices"
+            ],
+            "calories": 400
           },
           {
-            "name": "Brown Rice",
-            "ingredients": ["brown rice"],
-            "calories": 150
+            "name": "Whole Wheat Bread",
+            "ingredients": [
+              "whole wheat flour"
+            ],
+            "calories": 100
           }
         ],
         "dinner": [
           {
-            "name": "Stuffed Bell Peppers",
-            "ingredients": ["bell peppers", "onions", "tomatoes", "quinoa"],
-            "calories": 650
+            "name": "Grilled Tofu with Roasted Vegetables",
+            "ingredients": [
+              "tofu",
+              "mixed vegetables",
+              "olive oil"
+            ],
+            "calories": 400
           },
           {
-            "name": "Roti",
-            "ingredients": ["wheat flour"],
+            "name": "Brown Rice",
+            "ingredients": [
+              "brown rice"
+            ],
             "calories": 100
           }
         ],
         "snacks": [
           {
-            "name": "Cucumber Slice",
-            "ingredients": ["cucumber"],
-            "calories": 45
+            "name": "Cucumber Slices",
+            "ingredients": [
+              "cucumber"
+            ],
+            "calories": 10
           },
           {
-            "name": "Roasted Chickpeas",
-            "ingredients": ["chickpeas", "salt", "pepper"],
-            "calories": 100
+            "name": "Rice Cakes with Almond Butter",
+    "ingredients": [
+              "rice cakes",
+              "almond butter"
+            ],
+            "calories": 150
           }
         ]
       }
     },
     {
       "day": "Sunday",
-      "calories": 2200,
+      "calories": 2000,
       "macronutrients": {
-        "carbohydrates": 275,
-        "proteins": 165,
-        "fats": 49
+        "carbohydrates": "275",
+        "proteins": "125",
+        "fats": "40"
       },
       "meals": {
         "breakfast": [
           {
-            "name": "Poha",
-            "ingredients": ["poha", "onions", "potatoes", "peas"],
-            "calories": 350
+            "name": "Oatmeal with Banana and Honey",
+            "ingredients": [
+              "oats",
+              "banana",
+              "honey"
+            ],
+            "calories": 300
           },
           {
-            "name": "Fresh Fruit Salad",
-            "ingredients": ["apple", "banana", "orange"],
-            "calories": 150
+            "name": "Spinach and Mushroom Scramble",
+            "ingredients": [
+              "tofu",
+              "spinach",
+              "mushrooms",
+              "olive oil"
+            ],
+            "calories": 200
           }
         ],
         "lunch": [
           {
-            "name": "Vegetable Curry",
-            "ingredients": ["mixed vegetables", "onions", "garlic", "ginger"],
-            "calories": 600
+            "name": "Vegetable Wrap",
+            "ingredients": [
+              "whole wheat wrap",
+              "mixed vegetables",
+              "hummus"
+            ],
+            "calories": 400
           },
           {
-            "name": "Brown Rice",
-            "ingredients": ["brown rice"],
-            "calories": 150
+            "name": "Mixed Greens Salad",
+            "ingredients": [
+              "mixed greens",
+              "mixed vegetables",
+              "lemon juice"
+            ],
+            "calories": 100
           }
         ],
         "dinner": [
@@ -436,27 +602,34 @@
             "name": "Grilled Vegetable Skewers",
             "ingredients": [
               "mixed vegetables",
-              "onions",
-              "bell peppers",
-              "tomatoes"
+              "olive oil",
+              "salt"
             ],
-            "calories": 650
+            "calories": 200
           },
           {
-            "name": "Quinoa",
-            "ingredients": ["quinoa"],
-            "calories": 150
+            "name": "Quinoa and Black Bean Bowl",
+            "ingredients": [
+              "quinoa",
+              "black beans",
+              "mixed vegetables"
+            ],
+            "calories": 400
           }
         ],
         "snacks": [
           {
-            "name": "Carrot Stick",
-            "ingredients": ["carrot"],
-            "calories": 45
+            "name": "Apple Slices",
+            "ingredients": [
+              "apples"
+            ],
+            "calories": 50
           },
           {
-            "name": "Hummus",
-            "ingredients": ["chickpeas", "tahini", "garlic"],
+            "name": "Almonds",
+            "ingredients": [
+              "almonds"
+            ],
             "calories": 100
           }
         ]
