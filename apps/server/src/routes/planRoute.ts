@@ -3,7 +3,6 @@ import { getPlanController } from '../controllers/planController'
 
 const router = express.Router()
 
-router.get("/get",getPlanController)
-
+router.get("/create",getPlanController)
 
 export default router

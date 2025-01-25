@@ -38,7 +38,7 @@ export const challenge = pgTable("challenge",{
     title:text().notNull(),
     goal:text().notNull(),
     creatorId:text().notNull().references(()=>userTable.clerkUserId),
-    endDate:timestamp().notNull(),
+    endAfter:integer().notNull(),
 })
 
 
@@ -70,3 +70,4 @@ export type InsertChallenge = typeof challenge.$inferInsert
 
 
 export const insertChallengeSchema = createInsertSchema(challenge)
+export const selectPlanSchema = createSelectSchema(plan)
