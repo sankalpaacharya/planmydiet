@@ -1,6 +1,7 @@
 import { pgEnum } from "drizzle-orm/pg-core";
 import { pgTable } from "drizzle-orm/pg-core"
 import {integer,text,uuid,timestamp,boolean,decimal,json} from "drizzle-orm/pg-core"
+import { createSelectSchema,createInsertSchema} from 'drizzle-zod';
 
 
 export const userTable = pgTable('user', {
@@ -65,3 +66,7 @@ export const mealLog = pgTable("meallog",{
 })
 
 export type SelectUser = typeof userTable.$inferSelect
+export type InsertChallenge = typeof challenge.$inferInsert
+
+
+export const insertChallengeSchema = createInsertSchema(challenge)
