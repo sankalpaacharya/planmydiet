@@ -1,7 +1,11 @@
-import { InsertChallenge } from "../schema";
+import { InsertChallenge,InsertChallengeParticipant,challenge, challengeParticipant} from "../schema";
 import { db } from "../db";
-import { challenge } from "../schema";
 
-export const insertChallengeController = async (challengeData:InsertChallenge)=>{
-    await db.insert(challenge).values(challengeData)
+export const insertChallenge = async (challengeData:InsertChallenge):Promise<{ challengeId: string}[]>=>{
+  const result = await db.insert(challenge).values(challengeData).returning({challengeId:challenge.id})
+  return result
+}
+
+export const insertChallengeParticipant = async (challengeParticipantData:InsertChallengeParticipant)=>{
+    await db.insert(challengeParticipant).values(challengeParticipantData)
 }

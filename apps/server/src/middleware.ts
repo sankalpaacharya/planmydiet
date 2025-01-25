@@ -12,8 +12,9 @@ declare global {
     }
 }
 
-
 export function checkUserAuth(req:Request,res:Response,next:NextFunction){ 
-    req.auth.userId = "clerkid123"
+    req.auth = {
+        userId:"clerk_id"
+    }
     next()
 }

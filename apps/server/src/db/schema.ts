@@ -3,7 +3,6 @@ import { pgTable } from "drizzle-orm/pg-core"
 import {integer,text,uuid,timestamp,boolean,decimal,json} from "drizzle-orm/pg-core"
 import { createSelectSchema,createInsertSchema} from 'drizzle-zod';
 
-
 export const userTable = pgTable('user', {
     id: uuid().defaultRandom().primaryKey(),
     createdAt:timestamp().notNull().defaultNow(),
@@ -38,11 +37,11 @@ export const challenge = pgTable("challenge",{
     title:text().notNull(),
     goal:text().notNull(),
     creatorId:text().notNull().references(()=>userTable.clerkUserId),
-    endAfter:integer().notNull(),
+    endsIn:integer().notNull(),
 })
 
 
-export const challengeParticipants = pgTable("participant", {
+export const challengeParticipant = pgTable("participant", {
     id: uuid().defaultRandom().primaryKey(),
     challengeId: uuid().notNull().references(() => challenge.id),
     userId: text().notNull().references(() => userTable.clerkUserId),
@@ -50,7 +49,6 @@ export const challengeParticipants = pgTable("participant", {
     hasCustomMealPlan: boolean().notNull().default(false),
     points:integer().notNull().default(0),
     planId: uuid().notNull().references(()=>plan.id),
-    streak:integer().notNull().default(0)
 });
 
 // for now we assume everyone has a same timezone and allow user to tick a daily goal at 9pm
@@ -65,9 +63,21 @@ export const mealLog = pgTable("meallog",{
     type:mealTypeEnum().notNull()
 })
 
+
+export const dailyGoalCompletion = pgTable("daily_goal_completion", {
+    id: uuid().defaultRandom().primaryKey(),
+    userId: text().notNull().references(() => userTable.clerkUserId),
+    challengeId: uuid().notNull().references(() => challenge.id),
+    completedDate: timestamp().notNull(),
+    isCompleted: boolean().notNull().default(false)
+  });
+
 export type SelectUser = typeof userTable.$inferSelect
 export type InsertChallenge = typeof challenge.$inferInsert
+export type InsertChallengeParticipant= typeof challengeParticipant.$inferInsert
+
 
 
 export const insertChallengeSchema = createInsertSchema(challenge)
 export const selectPlanSchema = createSelectSchema(plan)
+export const insertChallengeParticipantSchema = createInsertSchema(challengeParticipant)
