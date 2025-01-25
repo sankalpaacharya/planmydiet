@@ -1,7 +1,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Card } from "@/components/ui/card";
-import plan from "@/data/planData.json";
+import {mealPlans} from "@/data/planData.json";
 
 export default function Plan() {
   const days = [
@@ -28,7 +28,7 @@ export default function Plan() {
         ))}
       </TabsList>
       {days.map((day) => {
-        const currentPlan = plan.mealPlans.find(
+        const currentPlan = mealPlans.find(
           (mealPlan) => mealPlan.day.toUpperCase() === day
         );
         if (!currentPlan) return null;
@@ -36,9 +36,9 @@ export default function Plan() {
 
         return (
           <TabsContent key={day} value={day} className="border rounded-md">
-            <h2 className="text-lg font-bold px-4 pt-4">{day}'s Meal Plan</h2>
+            <h2 className="text-lg font-bold px-4 py-3">{day}'s Meal Plan</h2>
 
-            <ScrollArea className="h-125 p-4">
+            <ScrollArea className="h-128 p-4">
               {Object.entries(meals).map(([mealType, dishes]) => {
                 const totalCalories = dishes.reduce((sum, food) => sum + food.calories,0);
                 return (
@@ -48,7 +48,7 @@ export default function Plan() {
                         {mealType}
                       </h3>
                       <div className="text-normal font-medium text-gray-300 border rounded-lg px-5 py-1">
-                        {totalCalories} cal
+                        {totalCalories} kcal
                       </div>
                     </div>
                     <div className="space-y-2">
