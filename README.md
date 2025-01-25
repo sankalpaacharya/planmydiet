@@ -25,11 +25,11 @@ pnpm dev
 
 ```
 # for no migration push
-npx drizzle-kit push
+pnpm exec drizzle-kit push
 
 # to generate migration files
-npx drizzle-kit generate
-npx drizzle-kit migrate
+pnpm exec drizzle-kit generate
+pnpm exec drizzle-kit migrate
 
 ```
 
