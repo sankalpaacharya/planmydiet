@@ -122,6 +122,9 @@ importers:
       drizzle-orm:
         specifier: ^0.38.4
         version: 0.38.4(@neondatabase/serverless@0.10.4)(@types/pg@8.11.6)(@types/react@18.3.18)(react@18.3.1)
+      drizzle-zod:
+        specifier: ^0.6.1
+        version: 0.6.1(drizzle-orm@0.38.4(@neondatabase/serverless@0.10.4)(@types/pg@8.11.6)(@types/react@18.3.18)(react@18.3.1))(zod@3.24.1)
       express:
         specifier: ^4.21.2
         version: 4.21.2
@@ -131,6 +134,9 @@ importers:
       shared:
         specifier: workspace:*
         version: link:../../shared
+      zod:
+        specifier: ^3.24.1
+        version: 3.24.1
     devDependencies:
       drizzle-kit:
         specifier: ^0.30.2
@@ -1731,6 +1737,12 @@ packages:
         optional: true
       sqlite3:
         optional: true
+
+  drizzle-zod@0.6.1:
+    resolution: {integrity: sha512-huEbUgnsuR8tupnmLiyB2F1I2H9dswI3GfM36IbIqx9i0YUeYjRsDpJVyFVeziUvI1ogT9JHRL2Q03cC4QmvxA==}
+    peerDependencies:
+      drizzle-orm: '>=0.36.0'
+      zod: '>=3.0.0'
 
   dunder-proto@1.0.1:
     resolution: {integrity: sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==}
@@ -4061,6 +4073,11 @@ snapshots:
       '@types/pg': 8.11.6
       '@types/react': 18.3.18
       react: 18.3.1
+
+  drizzle-zod@0.6.1(drizzle-orm@0.38.4(@neondatabase/serverless@0.10.4)(@types/pg@8.11.6)(@types/react@18.3.18)(react@18.3.1))(zod@3.24.1):
+    dependencies:
+      drizzle-orm: 0.38.4(@neondatabase/serverless@0.10.4)(@types/pg@8.11.6)(@types/react@18.3.18)(react@18.3.1)
+      zod: 3.24.1
 
   dunder-proto@1.0.1:
     dependencies:
