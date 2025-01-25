@@ -20,3 +20,16 @@ This is a full-stack monorepo that contains both the frontend and backend of the
 pnpm install
 pnpm dev
 ```
+
+### Database
+
+```
+# for no migration push
+npx drizzle-kit push
+
+# to generate migration files
+npx drizzle-kit generate
+npx drizzle-kit migrate
+
+```
+
