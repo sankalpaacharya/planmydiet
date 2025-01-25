@@ -1,8 +1,8 @@
 import express from 'express'
-import { createChallengeController } from 'controllers/challengeController'
+import { createChallengeController } from '../controllers/challengeController'
+
 const router = express.Router()
 
-router.get("/get",createChallengeController)
-
+router.post("/create",createChallengeController)
 
 export default router
