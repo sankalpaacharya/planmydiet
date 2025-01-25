@@ -4,9 +4,9 @@ import { ZodError } from "zod"
 import { zodErrorParser } from "../utils/zodErrorParser"
 import { insertChallenge,insertChallengeParticipant } from "../db/queries/insert"
 
+
 export const createChallengeController = async (req:Request,res:Response):Promise<any>=>{
     try {
-
         const userId = req.auth.userId; // way of getting the userID
         const challengeData = insertChallengeSchema.parse({...req.body,creatorId:userId})
         const {challengeId} = (await insertChallenge(challengeData))[0]
