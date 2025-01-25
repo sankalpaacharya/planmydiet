@@ -14,3 +14,14 @@ export const getPlanController = async (req:Request,res:Response):Promise<any>=>
         }
     }
 }
+
+
+export const createPlanController = async (req:Request,res:Response):Promise<any>=>{
+    try{
+
+    }
+    catch(error){
+        if(error instanceof ZodError) {errors:zodErrorParser(error)}
+    }
+
+}
