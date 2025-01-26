@@ -42,7 +42,7 @@ export default function WorkoutRoutine() {
           </div>
           <div className="p-2">
             {Object.entries(workoutRoutine).map(([day, exercises]) => (
-              <div key={day} className="flex justify-between py-1 border-b-2">
+              <div key={day} className="flex justify-between py-1 ">
                 <span className="font-normal">{day}</span>
                 <span className="font-light">{exercises}</span>
               </div>

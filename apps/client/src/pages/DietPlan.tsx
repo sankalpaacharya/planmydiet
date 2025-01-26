@@ -3,6 +3,7 @@ import PlanStats from "@/components/planStats"
 import Plan from "@/components/plan"
 import WorkoutRoutine from "@/components/workoutRoutine"
 import DailyNutrition from "@/components/dailyNutrition"
+import PersonalDetails from "@/components/personalDetails"
 
 export default function DietPlan() {
 	return (
@@ -15,6 +16,7 @@ export default function DietPlan() {
 			<Plan />
 			<div className="flex gap-6 py-6">
 				<WorkoutRoutine />
+				<PersonalDetails />
 				<DailyNutrition />
 			</div>
 		</div>
