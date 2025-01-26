@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import DietPlan from "@/pages/DietPlan"
+import DietPlan from "@/pages/DietPlan";
+import Menubar from "@/components/menubar";
 
 export const Route = createFileRoute("/plan/$id")({
   component: RouteComponent,
@@ -8,6 +9,9 @@ export const Route = createFileRoute("/plan/$id")({
 function RouteComponent() {
   // const { id } = Route.useParams();
   return (
-    <DietPlan />
+    <div>
+      <DietPlan />
+      <Menubar />
+    </div>
   );
 }
