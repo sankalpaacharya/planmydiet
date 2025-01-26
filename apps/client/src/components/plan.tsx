@@ -1,7 +1,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Card } from "@/components/ui/card";
-import {mealPlans} from "@/data/planData.json";
+import { mealPlans } from "@/data/planData.json";
 
 export default function Plan() {
   const days = [
@@ -40,7 +40,10 @@ export default function Plan() {
 
             <ScrollArea className="h-128 p-4">
               {Object.entries(meals).map(([mealType, dishes]) => {
-                const totalCalories = dishes.reduce((sum, food) => sum + food.calories,0);
+                const totalCalories = dishes.reduce(
+                  (sum, food) => sum + food.calories,
+                  0
+                );
                 return (
                   <Card key={mealType} className="p-4 mb-4">
                     <div className="flex justify-between items-center pb-3">

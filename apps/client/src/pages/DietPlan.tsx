@@ -6,7 +6,7 @@ import DailyNutrition from "@/components/dailyNutrition"
 
 export default function DietPlan() {
 	return (
-		<div className="px-12 py-4">
+		<div className="px-12 py-4 mb-16">
 			<div className="flex gap-4">
 				<Utensils  className="text-rose-600"/>
 				<span>Personalized Diet Plan</span>
