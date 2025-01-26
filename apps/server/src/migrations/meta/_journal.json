@@ -8,6 +8,20 @@
       "when": 1737386427432,
       "tag": "0000_cheerful_fenris",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1737884324205,
+      "tag": "0001_new_maelstrom",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1737886222280,
+      "tag": "0002_blue_dorian_gray",
+      "breakpoints": true
     }
   ]
 }

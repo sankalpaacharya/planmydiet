@@ -12,19 +12,34 @@ export const userTable = pgTable('user', {
     points:integer().notNull().default(0)
   });
 
+export const gendertypeEnum = pgEnum("gender",["Male","Female"])
 export const userMeasurement = pgTable("user_measurement",{
     userId:text().primaryKey().references(()=>userTable.clerkUserId),
     height:integer().notNull(),
+    weight:integer().notNull(),
     age:integer().notNull(),
+    gender:gendertypeEnum().notNull(),
     bfp:decimal().notNull(), // body fat percentage
 })
 
-export const plan = pgTable("plan",{
-    id:uuid().primaryKey().defaultRandom(),
-    goal:text().notNull(),
-    creator:text().notNull().references(()=>userTable.clerkUserId),
-    aiPlan:json().notNull()
-})
+export const plan = pgTable("plan", {
+    id: uuid().primaryKey().defaultRandom(),
+    goal: text().notNull(),
+    userId: text().notNull().references(() => userTable.clerkUserId),
+    dietPreference: text().notNull(),
+    activityLevel: text().notNull(),
+    height:integer().notNull(),
+    weight:integer().notNull(),
+    gender:gendertypeEnum().notNull(),
+    age:integer().notNull(),
+    calorieIntake: integer().notNull(),
+    duration: integer().notNull(),
+    foodAllergies: text(),
+    medicalConditions: text(),
+    existingSupplements: text(),
+    budget: text().notNull(),
+    aiPlan: json().notNull()
+ })
 
 // single challenge can have the multiple meal plan, it has to be according to user not everyone inside 
 // challenge will have same plan 
@@ -36,10 +51,9 @@ export const challenge = pgTable("challenge",{
     createdAt:timestamp().notNull().defaultNow(),
     title:text().notNull(),
     goal:text().notNull(),
-    creatorId:text().notNull().references(()=>userTable.clerkUserId),
+    userId:text().notNull().references(()=>userTable.clerkUserId),
     endsIn:integer().notNull(),
 })
-
 
 export const challengeParticipant = pgTable("participant", {
     id: uuid().defaultRandom().primaryKey(),
@@ -63,21 +77,22 @@ export const mealLog = pgTable("meallog",{
     type:mealTypeEnum().notNull()
 })
 
-
 export const dailyGoalCompletion = pgTable("daily_goal_completion", {
     id: uuid().defaultRandom().primaryKey(),
     userId: text().notNull().references(() => userTable.clerkUserId),
     challengeId: uuid().notNull().references(() => challenge.id),
     completedDate: timestamp().notNull(),
     isCompleted: boolean().notNull().default(false)
-  });
+ });
 
 export type SelectUser = typeof userTable.$inferSelect
 export type InsertChallenge = typeof challenge.$inferInsert
 export type InsertChallengeParticipant= typeof challengeParticipant.$inferInsert
-
+export type SelectUserMeasurement = typeof userMeasurement.$inferSelect
+export type InserPlan = typeof plan.$inferInsert
 
 
 export const insertChallengeSchema = createInsertSchema(challenge)
 export const selectPlanSchema = createSelectSchema(plan)
 export const insertChallengeParticipantSchema = createInsertSchema(challengeParticipant)
+export const insertPlanSchema = createInsertSchema(plan)
