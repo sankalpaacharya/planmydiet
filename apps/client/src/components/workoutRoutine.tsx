@@ -24,11 +24,11 @@ export default function WorkoutRoutine() {
                   <>
                     Muscle Gain <Dumbbell className="inline ml-2" />
                   </>
-                ) : primaryGoal.toLowerCase().includes("weight loss") ? (
+                ) : primaryGoal.toLowerCase().includes("loss") ? (
                   <>
                     Weight Loss <ArrowDownCircle className="inline ml-2" />
                   </>
-                ) : primaryGoal.toLowerCase().includes("weight gain") ? (
+                ) : primaryGoal.toLowerCase().includes("gain") ? (
                   <>
                     Weight Gain <ArrowUpCircle className="inline ml-2" />
                   </>

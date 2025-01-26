@@ -11,11 +11,18 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as VideosImport } from './routes/videos'
 import { Route as AboutImport } from './routes/about'
 import { Route as IndexImport } from './routes/index'
 import { Route as PlanIdImport } from './routes/plan/$id'
 
 // Create/Update Routes
+
+const VideosRoute = VideosImport.update({
+  id: '/videos',
+  path: '/videos',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const AboutRoute = AboutImport.update({
   id: '/about',
@@ -53,6 +60,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutImport
       parentRoute: typeof rootRoute
     }
+    '/videos': {
+      id: '/videos'
+      path: '/videos'
+      fullPath: '/videos'
+      preLoaderRoute: typeof VideosImport
+      parentRoute: typeof rootRoute
+    }
     '/plan/$id': {
       id: '/plan/$id'
       path: '/plan/$id'
@@ -68,12 +82,14 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/videos': typeof VideosRoute
   '/plan/$id': typeof PlanIdRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/videos': typeof VideosRoute
   '/plan/$id': typeof PlanIdRoute
 }
 
@@ -81,27 +97,30 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/videos': typeof VideosRoute
   '/plan/$id': typeof PlanIdRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/plan/$id'
+  fullPaths: '/' | '/about' | '/videos' | '/plan/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/plan/$id'
-  id: '__root__' | '/' | '/about' | '/plan/$id'
+  to: '/' | '/about' | '/videos' | '/plan/$id'
+  id: '__root__' | '/' | '/about' | '/videos' | '/plan/$id'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  VideosRoute: typeof VideosRoute
   PlanIdRoute: typeof PlanIdRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  VideosRoute: VideosRoute,
   PlanIdRoute: PlanIdRoute,
 }
 
@@ -117,6 +136,7 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/about",
+        "/videos",
         "/plan/$id"
       ]
     },
@@ -125,6 +145,9 @@ export const routeTree = rootRoute
     },
     "/about": {
       "filePath": "about.tsx"
+    },
+    "/videos": {
+      "filePath": "videos.tsx"
     },
     "/plan/$id": {
       "filePath": "plan/$id.tsx"
