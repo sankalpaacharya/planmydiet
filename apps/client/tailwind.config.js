@@ -54,6 +54,7 @@ export default {
 			spacing :{
 				'125': '25.2rem',
 				'128': '27rem',
+				'128': '27rem',
         '144': '35rem',
         '150': '39rem',
 			},

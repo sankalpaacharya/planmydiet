@@ -4,6 +4,6 @@ import { getPlanController, createPlanController} from '../controllers/planContr
 const router = express.Router()
 
 router.get("/get",getPlanController)
-router.get("/create",createPlanController)
+router.post("/create",createPlanController)
 
 export default router
