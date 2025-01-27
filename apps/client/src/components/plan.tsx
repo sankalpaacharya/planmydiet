@@ -14,15 +14,15 @@ export default function Plan() {
   ];
 
   return (
-    <Tabs
+    <Tabs className="w-full"
       defaultValue={new Date()
         .toLocaleDateString("en-US", { weekday: "long" })
         .toUpperCase()}
     >
-      <TabsList className="w-full justify-around my-2">
+      <TabsList className="justify-around my-2 overflow-x-scroll xs:overflow-clip w-full">
         {days.map((day) => (
-          <TabsTrigger key={day} value={day} className="w-40">
-            {day.slice(0, 3)}
+          <TabsTrigger key={day} value={day} className="w-full">
+        {day.slice(0, 3)}
           </TabsTrigger>
         ))}
       </TabsList>
@@ -34,7 +34,7 @@ export default function Plan() {
         const { meals } = currentPlan;
 
         return (
-          <TabsContent key={day} value={day} className="border rounded-md px-6 py-2">
+          <TabsContent key={day} value={day} className="border rounded-md px-4 py-2">
             <h2 className="text-lg font-bold py-3">{day}'s Meal Plan</h2>
 
             {Object.entries(meals).map(([mealType, dishes]) => {

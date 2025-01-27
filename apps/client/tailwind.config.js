@@ -56,7 +56,10 @@ export default {
 				'128': '27rem',
         '144': '35rem',
         '150': '39rem',
-			}
+			},
+			screens: {
+				'xs': '400px',
+			},
   	}
   },
   plugins: [require("tailwindcss-animate")],

@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Beef, Carrot, User, Vegan } from "lucide-react";
 
 const PersonalData = {
-	diet_prefrence: "Vegeterian",
+  diet_prefrence: "Vegetarian",
   height: 180,
   weight: 70,
   age: 20,
@@ -72,27 +72,27 @@ export default function PersonalDetails(props: PersonalDataProps) {
         </CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col gap-2">
-          <div className="flex justify-between pb-5">
-            <span className="text-xl font-semibold">Diet Prefrence : </span>
-            <Badge className="text-sm ">
+          <div className="flex justify-between mb-5 items-center">
+            <span className="text-xl font-semibold ">Diet Prefrence : </span>
+            <Badge className="text-sm max-h-8">
               {diet_prefrence ? (
-                diet_prefrence.toLowerCase().includes("vegan") ? (
-                  <>
-                    Vegan <Vegan  className="inline ml-2" />
-                  </>
-                ) : diet_prefrence.toLowerCase().includes("vegeterian") ? (
-                  <>
-                    Vegeterian <Carrot  className="inline ml-2" />
-                  </>
-                ) : diet_prefrence.toLowerCase().includes("non-vegeterian") ? (
-                  <>
-                    Non-Vegeterian <Beef className="inline ml-2" />
-                  </>
-                ) : (
-                  diet_prefrence
-                )
+              diet_prefrence.toLowerCase().includes("vegan") ? (
+                <>
+                Vegan <Vegan className="inline ml-2" />
+                </>
+              ) : diet_prefrence.toLowerCase().includes("vegetarian") ? (
+                <>
+                Vegetarian <Carrot className="inline ml-2" />
+                </>
+              ) : diet_prefrence.toLowerCase().includes("non-vegeterian") ? (
+                <>
+                Non-Vegeterian <Beef className="inline ml-2" />
+                </>
               ) : (
-                "No Diet Set"
+                diet_prefrence
+              )
+              ) : (
+              "No Diet Set"
               )}
             </Badge>
           </div>
