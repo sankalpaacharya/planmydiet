@@ -16,7 +16,7 @@ export default function WorkoutRoutine() {
       </CardHeader>
       <CardContent>
         <div className="flex flex-col">
-          <div className="flex justify-between p-2">
+          <div className="flex justify-between px-2 pt-1 pb-3">
             <span className="text-xl font-semibold">Goal : </span>
             <Badge className="text-sm">
               {primaryGoal ? (
@@ -42,10 +42,10 @@ export default function WorkoutRoutine() {
           </div>
           <div className="p-2">
             {Object.entries(workoutRoutine).map(([day, exercises]) => (
-              <div key={day} className="flex justify-between py-1 border-b-2">
-                <span className="font-normal">{day}</span>
+                <div key={day} className="flex flex-col xs:flex-row justify-between py-2 xs:py-1">
+                <span className="font-normal">{day} :</span>
                 <span className="font-light">{exercises}</span>
-              </div>
+                </div>
             ))}
           </div>
         </div>

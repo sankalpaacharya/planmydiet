@@ -4,18 +4,18 @@ export default function Videos() {
 
   return (
     <div className="p-4 max-w-7xl">
-      <h1 className="text-2xl font-semibold mb-4">Recommended Videos</h1>
+      <h1 className="text-2xl font-semibold mb-6">Recommended Videos</h1>
       <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {videos.map((video) => (
-          <div key={video.id} className="rounded-lg shadow-lg overflow-hidden group">
-            <div className="relative">
+        {videos && videos.length > 0 && videos.map((video) => (
+          <div key={video.id} className="rounded-lg shadow-lg overflow-hidden group hover:cursor-pointer">
+            <div className="relative rounded-lg overflow-hidden h-0 pb-[56.25%]">
               <img
-                src={video.thumbnail}
-                alt={video.title}
-                className="w-full h-auto object-cover"
+              src={video.thumbnail}
+              alt={video.title}
+              className="absolute top-0 left-0 w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition duration-300 flex items-center justify-center">
-                <Play className="text-white w-12 h-12 opacity-0 group-hover:opacity-100 transition duration-300" />
+              <Play className="w-12 h-12 opacity-0 group-hover:opacity-100 transition duration-300" />
               </div>
             </div>
             <div className="p-2">
