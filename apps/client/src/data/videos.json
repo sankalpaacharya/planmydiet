@@ -1,101 +1,90 @@
 [
-  {
-    "id": 1,
-    "thumbnail": "https://i.ytimg.com/vi/rxEMKXW2Wqs/hqdefault.jpg",
-    "title": "Home Chest Workout | 10 Minutes (FOLLOW ALONG!)",
-    "channel": "Chris Heria",
-    "views": "2.3M views",
-    "uploaded": "2 years ago",
-    "url": "https://youtu.be/rxEMKXW2Wqs"
-  },
-  {
-    "id": 2,
-    "thumbnail": "https://i.ytimg.com/vi/snA6ls2kG3U/hqdefault.jpg",
-    "title": "GROW YOUR BICEPS! 10 Min [PERFECT] Bicep Workout with Dumbbells",
-    "channel": "Fraser Wilson",
-    "views": "1.8M views",
-    "uploaded": "1 year ago",
-    "url": "https://youtu.be/snA6ls2kG3U"
-  },
-  {
-    "id": 3,
-    "thumbnail": "https://i.ytimg.com/vi/jBPdbt0Fxb4/hqdefault.jpg",
-    "title": "10 Min Abs Workout to Get SHREDDED | No Equipment",
-    "channel": "Pamela Reif",
-    "views": "5.5M views",
-    "uploaded": "3 years ago",
-    "url": "https://youtu.be/jBPdbt0Fxb4"
-  },
-  {
-    "id": 4,
-    "thumbnail": "https://i.ytimg.com/vi/k8mkr459wA8/hqdefault.jpg",
-    "title": "7 Minute Triceps Workout (JUST DUMBBELLS!!)",
-    "channel": "Jeff Nippard",
-    "views": "1.2M views",
-    "uploaded": "2 years ago",
-    "url": "https://youtu.be/k8mkr459wA8"
-  },
-  {
-    "id": 5,
-    "thumbnail": "https://i.ytimg.com/vi/ifQgmbr18kk/hqdefault.jpg",
-    "title": "10 Min Complete Back Workout Dumbbells ONLY (Follow Along)",
-    "channel": "Bulldog Mindset",
-    "views": "900K views",
-    "uploaded": "1 year ago",
-    "url": "https://youtu.be/ifQgmbr18kk"
-  },
-  {
-    "id": 6,
-    "thumbnail": "https://i.ytimg.com/vi/g7mWc25j5VQ/hqdefault.jpg",
-    "title": "20 Min Full Body Stretching Routine for Flexibility & Relaxation",
-    "channel": "MadFit",
-    "views": "3.7M views",
-    "uploaded": "2 years ago",
-    "url": "https://youtu.be/g7mWc25j5VQ"
-  },
-  {
-    "id": 7,
-    "thumbnail": "https://i.ytimg.com/vi/3Ymjw7TSzrE/hqdefault.jpg",
-    "title": "15 Minute Hamstring Flexibility Routine (FOLLOW ALONG)",
-    "channel": "Tom Merrick",
-    "views": "1.5M views",
-    "uploaded": "3 years ago",
-    "url": "https://youtu.be/3Ymjw7TSzrE"
-  },
-  {
-    "id": 8,
-    "thumbnail": "https://i.ytimg.com/vi/-ciMG4K4Fdk/hqdefault.jpg",
-    "title": "10 MINUTE HIP & GLUTE Stretching Routine | No More Stiff Muscles",
-    "channel": "Yoga With Adriene",
-    "views": "2.1M views",
-    "uploaded": "2 years ago",
-    "url": "https://youtu.be/-ciMG4K4Fdk"
-  },
-  {
-    "id": 9,
-    "thumbnail": "https://i.ytimg.com/vi/jyFMBf-SrHs/hqdefault.jpg",
-    "title": "Trap Workout (SORE IN 6 MINUTES!)",
-    "channel": "ATHLEAN-X™",
-    "views": "1.9M views",
-    "uploaded": "1 year ago",
-    "url": "https://youtu.be/jyFMBf-SrHs"
-  },
-  {
-    "id": 10,
-    "thumbnail": "https://i.ytimg.com/vi/JyV7mUFSpXs/hqdefault.jpg",
-    "title": "10 Min Morning Yoga Full Body Stretch",
-    "channel": "Yoga With Kassandra",
-    "views": "4.2M views",
-    "uploaded": "3 years ago",
-    "url": "https://youtu.be/JyV7mUFSpXs"
-  },
-  {
-    "id": 11,
-    "thumbnail": "https://i.ytimg.com/vi/3YL8Tfr73rE/hqdefault.jpg",
-    "title": "Complete 20 Min Full Body Workout | Follow Along",
-    "channel": "FitnessBlender",
-    "views": "6.8M views",
-    "uploaded": "4 years ago",
-    "url": "https://youtu.be/3YL8Tfr73rE"
-  }
+	{
+		"id": 1,
+		"thumbnail": "https://i.ytimg.com/vi/vJefOB8kec8/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCo3BIJWY_1qEZykIWQ4a2A9jT3Pw",
+		"title": "The Truth about Artificial Intelligence and ChatGPT | Dhruv Rathee",
+		"channel": "Dhruv Rathee",
+		"views": "11M views",
+		"uploaded": "1 year ago"
+	},
+	{
+		"id": 1,
+		"thumbnail": "https://i.ytimg.com/vi/vJefOB8kec8/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCo3BIJWY_1qEZykIWQ4a2A9jT3Pw",
+		"title": "The Truth about Artificial Intelligence and ChatGPT | Dhruv Rathee",
+		"channel": "Dhruv Rathee",
+		"views": "11M views",
+		"uploaded": "1 year ago"
+	},
+	{
+		"id": 1,
+		"thumbnail": "https://i.ytimg.com/vi/vJefOB8kec8/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCo3BIJWY_1qEZykIWQ4a2A9jT3Pw",
+		"title": "The Truth about Artificial Intelligence and ChatGPT | Dhruv Rathee",
+		"channel": "Dhruv Rathee",
+		"views": "11M views",
+		"uploaded": "1 year ago"
+	},
+	{
+		"id": 1,
+		"thumbnail": "https://i.ytimg.com/vi/vJefOB8kec8/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCo3BIJWY_1qEZykIWQ4a2A9jT3Pw",
+		"title": "The Truth about Artificial Intelligence and ChatGPT | Dhruv Rathee",
+		"channel": "Dhruv Rathee",
+		"views": "11M views",
+		"uploaded": "1 year ago"
+	},
+	{
+		"id": 1,
+		"thumbnail": "https://i.ytimg.com/vi/vJefOB8kec8/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCo3BIJWY_1qEZykIWQ4a2A9jT3Pw",
+		"title": "The Truth about Artificial Intelligence and ChatGPT | Dhruv Rathee",
+		"channel": "Dhruv Rathee",
+		"views": "11M views",
+		"uploaded": "1 year ago"
+	},
+	{
+		"id": 1,
+		"thumbnail": "https://i.ytimg.com/vi/vJefOB8kec8/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCo3BIJWY_1qEZykIWQ4a2A9jT3Pw",
+		"title": "The Truth about Artificial Intelligence and ChatGPT | Dhruv Rathee",
+		"channel": "Dhruv Rathee",
+		"views": "11M views",
+		"uploaded": "1 year ago"
+	},
+	{
+		"id": 1,
+		"thumbnail": "https://i.ytimg.com/vi/vJefOB8kec8/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCo3BIJWY_1qEZykIWQ4a2A9jT3Pw",
+		"title": "The Truth about Artificial Intelligence and ChatGPT | Dhruv Rathee",
+		"channel": "Dhruv Rathee",
+		"views": "11M views",
+		"uploaded": "1 year ago"
+	},
+	{
+		"id": 1,
+		"thumbnail": "https://i.ytimg.com/vi/vJefOB8kec8/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCo3BIJWY_1qEZykIWQ4a2A9jT3Pw",
+		"title": "The Truth about Artificial Intelligence and ChatGPT | Dhruv Rathee",
+		"channel": "Dhruv Rathee",
+		"views": "11M views",
+		"uploaded": "1 year ago"
+	},
+	{
+		"id": 1,
+		"thumbnail": "https://i.ytimg.com/vi/vJefOB8kec8/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCo3BIJWY_1qEZykIWQ4a2A9jT3Pw",
+		"title": "The Truth about Artificial Intelligence and ChatGPT | Dhruv Rathee",
+		"channel": "Dhruv Rathee",
+		"views": "11M views",
+		"uploaded": "1 year ago"
+	},
+	{
+		"id": 1,
+		"thumbnail": "https://i.ytimg.com/vi/vJefOB8kec8/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCo3BIJWY_1qEZykIWQ4a2A9jT3Pw",
+		"title": "The Truth about Artificial Intelligence and ChatGPT | Dhruv Rathee",
+		"channel": "Dhruv Rathee",
+		"views": "11M views",
+		"uploaded": "1 year ago"
+	},
+	{
+		"id": 1,
+		"thumbnail": "https://i.ytimg.com/vi/vJefOB8kec8/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCo3BIJWY_1qEZykIWQ4a2A9jT3Pw",
+		"title": "The Truth about Artificial Intelligence and ChatGPT | Dhruv Rathee",
+		"channel": "Dhruv Rathee",
+		"views": "11M views",
+		"uploaded": "1 year ago"
+	}
 ]
