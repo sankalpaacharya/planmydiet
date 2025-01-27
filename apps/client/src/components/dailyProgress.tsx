@@ -6,7 +6,6 @@ import {
   CardDescription,
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { ScrollArea } from "@/components/ui/scroll-area";
 
 const defaultData = {
   consumedCal: 600,
@@ -68,21 +67,21 @@ const NutrientProgress = ({
   return (
     <div className="w-full">
       <div className="flex justify-between">
-        <h3 className="text-2xl font-medium mb-2">{title}</h3>
-        <div className="font-medium text-xl">
+        <h3 className="text-xl font-medium mb-2">{title}</h3>
+        <div className="font-medium text-lg">
           {data.consumed}/{data.target}g
         </div>
       </div>
       <Progress
         value={(data.consumed * 100) / data.target}
-        className="w-full h-2 mt-1"
+        className="w-full h-2 my-1"
       />
 
       <div className="mt-3 text-gray-500">
         {Object.entries(data.meals).map(
           ([meal, value]) =>
             value > 0 && (
-              <div key={meal} className="flex justify-between">
+              <div key={meal} className="flex text-sm justify-between">
                 <span>{meal.charAt(0).toUpperCase() + meal.slice(1)}</span>
                 <span>{value}g</span>
               </div>
@@ -95,34 +94,29 @@ const NutrientProgress = ({
 
 export default function DailyProgress({ dailyData = defaultData }) {
   return (
-    <Card className="w-96 rounded-lg">
-      <CardHeader className="pb-6">
-        <CardTitle className="text-2xl font-semibold text-center mb-2">
+    <Card className="w-full rounded-lg">
+      <CardHeader className="pb-3">
+        <CardTitle className="text-2xl font-semibold text-center mb-1">
           Daily Progress
         </CardTitle>
         <CardDescription className="text-center">
-          <div className="text-4xl font-bold text-slate-100">
+          <div className="text-3xl font-bold text-slate-100">
             {dailyData.consumedCal}
           </div>
           <div className="text-gray-500">out of {dailyData.targetCal} kcal</div>
           <div className="flex justify-center">
             <Progress
               value={(dailyData.consumedCal * 100) / dailyData.targetCal}
-              className="h-2 mt-3 max-w-60"
+              className="h-2 my-3 max-w-60"
             />
           </div>
         </CardDescription>
       </CardHeader>
-      <ScrollArea className="w-full h-125 p-3 mb-1">
-        <CardContent className="flex flex-col items-center gap-4">
-          <NutrientProgress title="Fat" data={dailyData.nutrients.fats} />
-          <NutrientProgress title="Carbs" data={dailyData.nutrients.carbs} />
-          <NutrientProgress
-            title="Protein"
-            data={dailyData.nutrients.proteins}
-          />
-        </CardContent>
-      </ScrollArea>
+      <CardContent className="flex flex-col items-center gap-4">
+        <NutrientProgress title="Fat" data={dailyData.nutrients.fats} />
+        <NutrientProgress title="Carbs" data={dailyData.nutrients.carbs} />
+        <NutrientProgress title="Protein" data={dailyData.nutrients.proteins} />
+      </CardContent>
     </Card>
   );
 }

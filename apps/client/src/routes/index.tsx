@@ -9,7 +9,7 @@ export const Route = createFileRoute("/")({
 
 function RouteComponent() {
   return (
-    <div>
+    <div className="max-w-7xl m-auto p-4">
       <Navbar />
       <HomePage />
       <Menubar />

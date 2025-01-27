@@ -4,7 +4,7 @@ import {
   Card,
   CardHeader,
   CardTitle,
-  CardContent,  
+  CardContent,
   CardFooter,
 } from "@/components/ui/card";
 import { Plus } from "lucide-react";
@@ -48,12 +48,17 @@ interface Meals {
 
 export default function MealLogger({ meal = defaultData }) {
   function renderMeal(mealType: keyof Meals, mealData: MealData[]) {
-    if (!mealData || mealData.length === 0) return null;
+    if (!mealData || mealData.length === 0)
+      return (
+        <p className="text-sm text-gray-500 text-center">
+          No meals logged for {mealType}.
+        </p>
+      );
 
     return (
-      <div className="flex flex-col">
+      <div className="w-full flex flex-col pb-6">
         <div className="flex justify-between items-center mb-4">
-          <p className="text-lg font-semibold text-white">
+          <p className="text-lg font-semibold ">
             {mealType.charAt(0).toUpperCase() +
               mealType.slice(1).replace("_", "-")}
           </p>
@@ -65,19 +70,17 @@ export default function MealLogger({ meal = defaultData }) {
         <div className="space-y-4">
           {mealData.map((item, index) => (
             <div
-              className="flex items-center justify-between bg-gray-600 bg-opacity-20 p-4 rounded-md shadow-md"
+              className="flex items-center justify-between bg-gray-600 bg-opacity-20 p-3 rounded-md "
               key={index}
             >
-              <div className="text-base font-medium text-slate-100 text-left">
+              <div className="text-base font-medium text-left">
                 {item.food}
                 <div className="text-sm text-gray-400 mt-1">
                   {item.count > 0 ? `${item.count} Pcs` : `${item.amount} Grms`}
                 </div>
               </div>
 
-              <div className="text-base font-normal text-slate-100">
-                {item.cal} kcal
-              </div>
+              <div className="text-base font-normal ">{item.cal} kcal</div>
             </div>
           ))}
         </div>
@@ -86,20 +89,20 @@ export default function MealLogger({ meal = defaultData }) {
   }
 
   return (
-    <Card className="w-150 h-max flex flex-col items-center pb-2">
+    <Card className="w-full h-full flex flex-col items-center pb-2">
       <CardHeader>
         <CardTitle className="text-2xl font-semibold ">Today's Meals</CardTitle>
       </CardHeader>
-      <CardContent>
-        <Tabs defaultValue="all">
-          <TabsList className="w-144 justify-around mb-4">
+      <CardContent className="w-full">
+        <Tabs defaultValue="all" className="w-full ">
+          <TabsList className="w-full justify-around mb-4 overflow-x-scroll xs:overflow-clip">
             <TabsTrigger value="all">ALL</TabsTrigger>
             <TabsTrigger value="breakfast">Breakfast</TabsTrigger>
             <TabsTrigger value="lunch">Lunch</TabsTrigger>
             <TabsTrigger value="high_tea">High-Tea</TabsTrigger>
             <TabsTrigger value="dinner">Dinner</TabsTrigger>
           </TabsList>
-          <ScrollArea className="h-72 rounded-md mb-2">
+          <ScrollArea className="w-full h-85 rounded-md mb-2">
             <TabsContent value="all">
               {(
                 ["breakfast", "lunch", "high_tea", "dinner"] as Array<
@@ -124,8 +127,8 @@ export default function MealLogger({ meal = defaultData }) {
           </ScrollArea>
         </Tabs>
       </CardContent>
-      <CardFooter className="flex justify-center hover:text-rose-500 ">
-        <div className="w-96 p-3 h-24 flex items-center justify-center space-x-2 border-dashed border-2 border-neutral-500 rounded-md">
+      <CardFooter className="flex justify-center hover:text-rose-500 w-full">
+        <div className="w-full h-24 flex items-center justify-center space-x-2 border-dashed border-2 border-neutral-500 rounded-md">
           <Plus size={24} strokeWidth={3} />
           <span className="text-2xl font-normal">Add Meal</span>
         </div>

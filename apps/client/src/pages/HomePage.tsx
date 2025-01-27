@@ -5,9 +5,9 @@ import DailyProgress from "@/components/dailyProgress";
 
 export default function HomePage() {
   return (
-    <div className="m-auto pb-16">
-      <main className="flex gap-6 px-12 py-2">
-        <div className="flex flex-col gap-6">
+    <div className="container mx-auto py-4 mb-16">
+      <div className="flex flex-col lg:flex-row gap-6">
+        <div className="flex flex-col sm:flex-row lg:flex-col gap-6 w-full lg:w-[350px] lg:min-w-[300px]">
           <ChallengeProgress planDuration={30} currDay={14} />
           <QuickStats
             currentStreak={7}
@@ -16,13 +16,15 @@ export default function HomePage() {
             teamSize={12}
           />
         </div>
-        <div className="flex">
-          <MealLogger />
+        <div className="flex-1 flex flex-col md:flex-row gap-6">
+          <div className="w-full md:flex-[2]">
+            <MealLogger />
+          </div>
+          <div className="w-full md:flex-1">
+            <DailyProgress />
+          </div>
         </div>
-        <div className="flex">
-          <DailyProgress />
-        </div>
-      </main>
+      </div>
     </div>
   );
 }

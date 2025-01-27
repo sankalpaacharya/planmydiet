@@ -19,7 +19,7 @@ const ChallengeProgress = ({ planDuration, currDay }: ChallengeProps) => {
   const currIndex = days.findIndex((day) => day === curDay);
 
   return (
-    <Card className="w-96 h-72 flex flex-col gap-4">
+    <Card className="w-full flex flex-col gap-4">
       <CardHeader>
         <CardTitle className="text-2xl font-semibold text-center">
           Challenge Progress
@@ -32,7 +32,7 @@ const ChallengeProgress = ({ planDuration, currDay }: ChallengeProps) => {
           {planDuration - currDay} days remaining
         </p>
       </CardContent>
-      <CardFooter className="flex justify-around gap-2 w-full">
+      <CardFooter className="flex justify-around gap-1 sm:gap-2 w-full">
         {days.map((day, index) => (
           <div
             key={index}
