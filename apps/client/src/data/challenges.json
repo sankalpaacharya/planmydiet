@@ -1,0 +1,61 @@
+{
+  "habits": {
+    "workout": {
+      "title": "Daily Workout",
+      "emoji": "💪",
+      "streak": 5,
+      "consistency": 85,
+      "checkins": 142,
+      "data": [
+        { "date": "2025-01-28", "type": "checkin" },
+        { "date": "2025-01-27", "type": "checkin" },
+        { "date": "2025-01-26", "type": "miss" },
+        { "date": "2025-01-25", "type": "checkin" },
+        { "date": "2025-01-24", "type": "checkin" },
+        { "date": "2025-01-23", "type": "checkin" },
+        { "date": "2025-01-22", "type": "off" },
+        { "date": "2025-01-21", "type": "checkin" },
+        { "date": "2025-01-20", "type": "checkin" },
+        { "date": "2025-01-19", "type": "miss" }
+      ]
+    },
+    "diet": {
+      "title": "Clean Eating",
+      "emoji": "🥗",
+      "streak": 3,
+      "consistency": 78,
+      "checkins": 156,
+      "data": [
+        { "date": "2025-01-28", "type": "checkin" },
+        { "date": "2025-01-27", "type": "checkin" },
+        { "date": "2025-01-26", "type": "checkin" },
+        { "date": "2025-01-25", "type": "miss" },
+        { "date": "2025-01-24", "type": "miss" },
+        { "date": "2025-01-23", "type": "checkin" },
+        { "date": "2025-01-22", "type": "checkin" },
+        { "date": "2025-01-21", "type": "checkin" },
+        { "date": "2025-01-20", "type": "off" },
+        { "date": "2025-01-19", "type": "checkin" }
+      ]
+    },
+    "meditation": {
+      "title": "Daily Meditation",
+      "emoji": "🧘",
+      "streak": 7,
+      "consistency": 92,
+      "checkins": 168,
+      "data": [
+        { "date": "2025-01-28", "type": "checkin" },
+        { "date": "2025-01-27", "type": "checkin" },
+        { "date": "2025-01-26", "type": "checkin" },
+        { "date": "2025-01-25", "type": "checkin" },
+        { "date": "2025-01-24", "type": "checkin" },
+        { "date": "2025-01-23", "type": "checkin" },
+        { "date": "2025-01-22", "type": "checkin" },
+        { "date": "2025-01-21", "type": "miss" },
+        { "date": "2025-01-20", "type": "checkin" },
+        { "date": "2025-01-19", "type": "off" }
+      ]
+    }
+  }
+}

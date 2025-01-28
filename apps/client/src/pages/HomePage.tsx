@@ -5,9 +5,9 @@ import DailyProgress from "@/components/dailyProgress";
 
 export default function HomePage() {
   return (
-    <div className="container mx-auto py-4 mb-16">
+    <div className="mb-16">
       <div className="flex flex-col lg:flex-row gap-6">
-        <div className="flex flex-col sm:flex-row lg:flex-col gap-6 w-full lg:w-[350px] lg:min-w-[300px]">
+        <div className="flex flex-col sm:flex-row lg:flex-col gap-6 w-full lg:w-[300px] lg:min-w-[330px]">
           <ChallengeProgress planDuration={30} currDay={14} />
           <QuickStats
             currentStreak={7}
@@ -20,7 +20,7 @@ export default function HomePage() {
           <div className="w-full md:flex-[2]">
             <MealLogger />
           </div>
-          <div className="w-full md:flex-1">
+          <div className="w-full md:flex-1 lg:min-w-[330px]">
             <DailyProgress />
           </div>
         </div>

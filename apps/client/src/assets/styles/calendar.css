@@ -1,0 +1,24 @@
+.react-calendar-heatmap rect {
+	rx: 2px;
+}
+
+.react-calendar-heatmap .empty {
+	fill: rgb(60, 60, 60);
+}
+
+.react-calendar-heatmap .checkin {
+	fill: rgb(16, 185, 129);
+}
+
+.react-calendar-heatmap .miss {
+	fill: rgb(248, 113, 113);
+}
+
+.react-calendar-heatmap .off {
+	fill: rgb(71, 85, 105);
+}
+
+.react-calendar-heatmap text {
+	font-size: 10px;
+	fill: rgb(156, 163, 175);
+}

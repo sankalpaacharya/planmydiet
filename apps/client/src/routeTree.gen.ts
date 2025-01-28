@@ -12,6 +12,7 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as VideosImport } from './routes/videos'
+import { Route as ChallengesImport } from './routes/challenges'
 import { Route as AboutImport } from './routes/about'
 import { Route as IndexImport } from './routes/index'
 import { Route as PlanIdImport } from './routes/plan/$id'
@@ -21,6 +22,12 @@ import { Route as PlanIdImport } from './routes/plan/$id'
 const VideosRoute = VideosImport.update({
   id: '/videos',
   path: '/videos',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ChallengesRoute = ChallengesImport.update({
+  id: '/challenges',
+  path: '/challenges',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -60,6 +67,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutImport
       parentRoute: typeof rootRoute
     }
+    '/challenges': {
+      id: '/challenges'
+      path: '/challenges'
+      fullPath: '/challenges'
+      preLoaderRoute: typeof ChallengesImport
+      parentRoute: typeof rootRoute
+    }
     '/videos': {
       id: '/videos'
       path: '/videos'
@@ -82,6 +96,7 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/challenges': typeof ChallengesRoute
   '/videos': typeof VideosRoute
   '/plan/$id': typeof PlanIdRoute
 }
@@ -89,6 +104,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/challenges': typeof ChallengesRoute
   '/videos': typeof VideosRoute
   '/plan/$id': typeof PlanIdRoute
 }
@@ -97,22 +113,24 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/challenges': typeof ChallengesRoute
   '/videos': typeof VideosRoute
   '/plan/$id': typeof PlanIdRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/videos' | '/plan/$id'
+  fullPaths: '/' | '/about' | '/challenges' | '/videos' | '/plan/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/videos' | '/plan/$id'
-  id: '__root__' | '/' | '/about' | '/videos' | '/plan/$id'
+  to: '/' | '/about' | '/challenges' | '/videos' | '/plan/$id'
+  id: '__root__' | '/' | '/about' | '/challenges' | '/videos' | '/plan/$id'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  ChallengesRoute: typeof ChallengesRoute
   VideosRoute: typeof VideosRoute
   PlanIdRoute: typeof PlanIdRoute
 }
@@ -120,6 +138,7 @@ export interface RootRouteChildren {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  ChallengesRoute: ChallengesRoute,
   VideosRoute: VideosRoute,
   PlanIdRoute: PlanIdRoute,
 }
@@ -136,6 +155,7 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/about",
+        "/challenges",
         "/videos",
         "/plan/$id"
       ]
@@ -145,6 +165,9 @@ export const routeTree = rootRoute
     },
     "/about": {
       "filePath": "about.tsx"
+    },
+    "/challenges": {
+      "filePath": "challenges.tsx"
     },
     "/videos": {
       "filePath": "videos.tsx"
