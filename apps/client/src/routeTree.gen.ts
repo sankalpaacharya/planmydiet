@@ -11,29 +11,18 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as VideosImport } from './routes/videos'
-import { Route as ChallengesImport } from './routes/challenges'
-import { Route as AboutImport } from './routes/about'
+import { Route as LayoutImport } from './routes/_layout'
 import { Route as IndexImport } from './routes/index'
-import { Route as PlanIdImport } from './routes/plan/$id'
+import { Route as LayoutVideosImport } from './routes/_layout/videos'
+import { Route as LayoutDashboardImport } from './routes/_layout/dashboard'
+import { Route as LayoutChallengesImport } from './routes/_layout/challenges'
+import { Route as LayoutAboutImport } from './routes/_layout/about'
+import { Route as LayoutPlanIdImport } from './routes/_layout/plan/$id'
 
 // Create/Update Routes
 
-const VideosRoute = VideosImport.update({
-  id: '/videos',
-  path: '/videos',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const ChallengesRoute = ChallengesImport.update({
-  id: '/challenges',
-  path: '/challenges',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const AboutRoute = AboutImport.update({
-  id: '/about',
-  path: '/about',
+const LayoutRoute = LayoutImport.update({
+  id: '/_layout',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -43,10 +32,34 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const PlanIdRoute = PlanIdImport.update({
+const LayoutVideosRoute = LayoutVideosImport.update({
+  id: '/videos',
+  path: '/videos',
+  getParentRoute: () => LayoutRoute,
+} as any)
+
+const LayoutDashboardRoute = LayoutDashboardImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => LayoutRoute,
+} as any)
+
+const LayoutChallengesRoute = LayoutChallengesImport.update({
+  id: '/challenges',
+  path: '/challenges',
+  getParentRoute: () => LayoutRoute,
+} as any)
+
+const LayoutAboutRoute = LayoutAboutImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => LayoutRoute,
+} as any)
+
+const LayoutPlanIdRoute = LayoutPlanIdImport.update({
   id: '/plan/$id',
   path: '/plan/$id',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => LayoutRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
@@ -60,87 +73,142 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/about': {
-      id: '/about'
+    '/_layout': {
+      id: '/_layout'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof LayoutImport
+      parentRoute: typeof rootRoute
+    }
+    '/_layout/about': {
+      id: '/_layout/about'
       path: '/about'
       fullPath: '/about'
-      preLoaderRoute: typeof AboutImport
-      parentRoute: typeof rootRoute
+      preLoaderRoute: typeof LayoutAboutImport
+      parentRoute: typeof LayoutImport
     }
-    '/challenges': {
-      id: '/challenges'
+    '/_layout/challenges': {
+      id: '/_layout/challenges'
       path: '/challenges'
       fullPath: '/challenges'
-      preLoaderRoute: typeof ChallengesImport
-      parentRoute: typeof rootRoute
+      preLoaderRoute: typeof LayoutChallengesImport
+      parentRoute: typeof LayoutImport
     }
-    '/videos': {
-      id: '/videos'
+    '/_layout/dashboard': {
+      id: '/_layout/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof LayoutDashboardImport
+      parentRoute: typeof LayoutImport
+    }
+    '/_layout/videos': {
+      id: '/_layout/videos'
       path: '/videos'
       fullPath: '/videos'
-      preLoaderRoute: typeof VideosImport
-      parentRoute: typeof rootRoute
+      preLoaderRoute: typeof LayoutVideosImport
+      parentRoute: typeof LayoutImport
     }
-    '/plan/$id': {
-      id: '/plan/$id'
+    '/_layout/plan/$id': {
+      id: '/_layout/plan/$id'
       path: '/plan/$id'
       fullPath: '/plan/$id'
-      preLoaderRoute: typeof PlanIdImport
-      parentRoute: typeof rootRoute
+      preLoaderRoute: typeof LayoutPlanIdImport
+      parentRoute: typeof LayoutImport
     }
   }
 }
 
 // Create and export the route tree
 
+interface LayoutRouteChildren {
+  LayoutAboutRoute: typeof LayoutAboutRoute
+  LayoutChallengesRoute: typeof LayoutChallengesRoute
+  LayoutDashboardRoute: typeof LayoutDashboardRoute
+  LayoutVideosRoute: typeof LayoutVideosRoute
+  LayoutPlanIdRoute: typeof LayoutPlanIdRoute
+}
+
+const LayoutRouteChildren: LayoutRouteChildren = {
+  LayoutAboutRoute: LayoutAboutRoute,
+  LayoutChallengesRoute: LayoutChallengesRoute,
+  LayoutDashboardRoute: LayoutDashboardRoute,
+  LayoutVideosRoute: LayoutVideosRoute,
+  LayoutPlanIdRoute: LayoutPlanIdRoute,
+}
+
+const LayoutRouteWithChildren =
+  LayoutRoute._addFileChildren(LayoutRouteChildren)
+
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/challenges': typeof ChallengesRoute
-  '/videos': typeof VideosRoute
-  '/plan/$id': typeof PlanIdRoute
+  '': typeof LayoutRouteWithChildren
+  '/about': typeof LayoutAboutRoute
+  '/challenges': typeof LayoutChallengesRoute
+  '/dashboard': typeof LayoutDashboardRoute
+  '/videos': typeof LayoutVideosRoute
+  '/plan/$id': typeof LayoutPlanIdRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/challenges': typeof ChallengesRoute
-  '/videos': typeof VideosRoute
-  '/plan/$id': typeof PlanIdRoute
+  '': typeof LayoutRouteWithChildren
+  '/about': typeof LayoutAboutRoute
+  '/challenges': typeof LayoutChallengesRoute
+  '/dashboard': typeof LayoutDashboardRoute
+  '/videos': typeof LayoutVideosRoute
+  '/plan/$id': typeof LayoutPlanIdRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/challenges': typeof ChallengesRoute
-  '/videos': typeof VideosRoute
-  '/plan/$id': typeof PlanIdRoute
+  '/_layout': typeof LayoutRouteWithChildren
+  '/_layout/about': typeof LayoutAboutRoute
+  '/_layout/challenges': typeof LayoutChallengesRoute
+  '/_layout/dashboard': typeof LayoutDashboardRoute
+  '/_layout/videos': typeof LayoutVideosRoute
+  '/_layout/plan/$id': typeof LayoutPlanIdRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/challenges' | '/videos' | '/plan/$id'
+  fullPaths:
+    | '/'
+    | ''
+    | '/about'
+    | '/challenges'
+    | '/dashboard'
+    | '/videos'
+    | '/plan/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/challenges' | '/videos' | '/plan/$id'
-  id: '__root__' | '/' | '/about' | '/challenges' | '/videos' | '/plan/$id'
+  to:
+    | '/'
+    | ''
+    | '/about'
+    | '/challenges'
+    | '/dashboard'
+    | '/videos'
+    | '/plan/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/_layout'
+    | '/_layout/about'
+    | '/_layout/challenges'
+    | '/_layout/dashboard'
+    | '/_layout/videos'
+    | '/_layout/plan/$id'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AboutRoute: typeof AboutRoute
-  ChallengesRoute: typeof ChallengesRoute
-  VideosRoute: typeof VideosRoute
-  PlanIdRoute: typeof PlanIdRoute
+  LayoutRoute: typeof LayoutRouteWithChildren
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AboutRoute: AboutRoute,
-  ChallengesRoute: ChallengesRoute,
-  VideosRoute: VideosRoute,
-  PlanIdRoute: PlanIdRoute,
+  LayoutRoute: LayoutRouteWithChildren,
 }
 
 export const routeTree = rootRoute
@@ -154,26 +222,41 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/about",
-        "/challenges",
-        "/videos",
-        "/plan/$id"
+        "/_layout"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
-    "/about": {
-      "filePath": "about.tsx"
+    "/_layout": {
+      "filePath": "_layout.tsx",
+      "children": [
+        "/_layout/about",
+        "/_layout/challenges",
+        "/_layout/dashboard",
+        "/_layout/videos",
+        "/_layout/plan/$id"
+      ]
     },
-    "/challenges": {
-      "filePath": "challenges.tsx"
+    "/_layout/about": {
+      "filePath": "_layout/about.tsx",
+      "parent": "/_layout"
     },
-    "/videos": {
-      "filePath": "videos.tsx"
+    "/_layout/challenges": {
+      "filePath": "_layout/challenges.tsx",
+      "parent": "/_layout"
     },
-    "/plan/$id": {
-      "filePath": "plan/$id.tsx"
+    "/_layout/dashboard": {
+      "filePath": "_layout/dashboard.tsx",
+      "parent": "/_layout"
+    },
+    "/_layout/videos": {
+      "filePath": "_layout/videos.tsx",
+      "parent": "/_layout"
+    },
+    "/_layout/plan/$id": {
+      "filePath": "_layout/plan/$id.tsx",
+      "parent": "/_layout"
     }
   }
 }

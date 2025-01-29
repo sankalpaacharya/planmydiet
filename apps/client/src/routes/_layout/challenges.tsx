@@ -1,15 +1,16 @@
 import Menubar from '@/components/menubar'
-import Videos from '@/pages/Videos'
+import Challenges from '@/pages/Challenges'
 import { createFileRoute } from '@tanstack/react-router'
 
-export const Route = createFileRoute('/videos')({
+export const Route = createFileRoute('/_layout/challenges')({
   component: RouteComponent,
 })
 
 function RouteComponent() {
   return (
-  <div className='flex justify-center'>
-    <Videos />
-    <Menubar />
-  </div>)
+    <div>
+      <Challenges />
+      <Menubar />
+    </div>
+  )
 }

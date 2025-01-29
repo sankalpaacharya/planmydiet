@@ -94,7 +94,7 @@ const NutrientProgress = ({
 
 export default function DailyProgress({ dailyData = defaultData }) {
   return (
-    <Card className="w-full rounded-lg">
+    <Card className="rounded-lg">
       <CardHeader className="pb-3">
         <CardTitle className="text-2xl font-semibold text-center mb-1">
           Daily Progress
@@ -112,7 +112,7 @@ export default function DailyProgress({ dailyData = defaultData }) {
           </div>
         </CardDescription>
       </CardHeader>
-      <CardContent className="flex flex-col items-center gap-4">
+      <CardContent className="flex flex-col items-center gap-6">
         <NutrientProgress title="Fat" data={dailyData.nutrients.fats} />
         <NutrientProgress title="Carbs" data={dailyData.nutrients.carbs} />
         <NutrientProgress title="Protein" data={dailyData.nutrients.proteins} />

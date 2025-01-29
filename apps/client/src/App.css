@@ -20,3 +20,11 @@ body{
   border-radius: 10px;
   border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
+
+.container{ 
+  @apply max-w-[1600px] mx-auto border border-red-500;
+}
+
+.mark{
+  border: 2px solid red;
+}

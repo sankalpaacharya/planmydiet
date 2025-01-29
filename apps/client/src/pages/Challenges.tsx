@@ -1,15 +1,15 @@
 import HabitCard from "@/components/habitCard";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
-import {habits} from "@/data/challenges.json"
+import { habits } from "@/data/challenges.json";
 
 const Dashboard = () => {
   return (
-    <div className="p-6 mb-16">
+    <div className="mb-16">
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center mb-4">
-          <Button className="px-4 py-2 rounded text-base">
-            <span className="hidden sm:block"> Create New Challenge </span>
+          <Button className="px-4 py-5 rounded text-base" variant={"outline"}>
+            Create New Challenge
             <Plus />
           </Button>
           <div className="flex items-center gap-2 ">

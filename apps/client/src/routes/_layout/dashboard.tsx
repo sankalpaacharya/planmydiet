@@ -1,18 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
 import HomePage from "@/pages/HomePage";
 import Navbar from "@/components/navbar";
-import Menubar from "@/components/menubar";
+// import Menubar from "@/components/menubar";
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/_layout/dashboard")({
   component: RouteComponent,
 });
 
 function RouteComponent() {
   return (
-    <div className="max-w-7xl m-auto pt-4">
+    <div>
       <Navbar />
       <HomePage />
-      <Menubar />
     </div>
   );
 }
