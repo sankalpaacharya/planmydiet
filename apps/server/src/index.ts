@@ -1,6 +1,7 @@
 import express from 'express';
 import planRouter from "./routes/planRoute"
 import challengeRoute from "./routes/challengeRoute"
+import mealLogRoute from "./routes/mealLogRoute"
 import { checkUserAuth } from './middleware';
 const app = express();
 
@@ -11,6 +12,7 @@ app.use(checkUserAuth)
 
 app.use("/challenge",challengeRoute)
 app.use("/plan",planRouter)
+app.use("/meallog",mealLogRoute)
 
 
 app.get("/",(req,res)=>{

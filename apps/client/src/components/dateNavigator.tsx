@@ -14,21 +14,19 @@ export default function DateNavigator() {
   };
 
   return (
-    <div className="flex items-center justify-center gap-4">
+    <div className="flex items-center justify- max-w-80 ">
       <button
         onClick={handlePreviousDay}
-        className="pr-3"
       >
         <ChevronLeft size={30} className="hover:text-rose-500"/>
       </button>
 
-      <div className="text-lg font-medium text-white">
+      <div className="text-lg font-medium sm:min-w-64 flex justify-center ">
         {format(currentDate, "eeee, MMMM d, yyyy")}
       </div>
 
       <button
         onClick={handleNextDay}
-        className="pl-3"
       >
         <ChevronRight size={30} className="hover:text-rose-500"/>
       </button>

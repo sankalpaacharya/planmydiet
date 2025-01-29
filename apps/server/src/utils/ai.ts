@@ -1,6 +1,5 @@
 import Groq from "groq-sdk";
-import { generatePlanPrompt } from "./prompt";
-import {DietPlanPromptType} from "./prompt";
+import { generatePlanPrompt, DietPlanPromptType, mealLogPrompt } from "./prompt";
 import { config } from "dotenv";
 
 config({ path: ".env" });
@@ -33,22 +32,42 @@ export const promptData: DietPlanPromptType = {
   weight: 70,
   height: 175,
   gender: "Male",
-  dietpreference: "vegetarian",
+  dietpreference: "non-vegetarian",
   age: 30,
-  goal: "2kg weight loss",
-  activitylevel: "moderate",
+  goal: "muscle build",
+  activitylevel: "easy",
   calorieintake: 2000,
   duration: 12,
-  foodAllergies: "none",
-  medicalConditions: "none",
-  existingSupplements: "none",
-  budget: "medium",
+  foodAllergies: "nuts",
+  medicalConditions: "diabetes",
+  existingSupplements: "whey protein",
+  budget: "rich",
 };
 
 export async function getPlan(promptData:DietPlanPromptType) {
   const chatCompletion = await getGroqChatCompletion({
     promptMaker: generatePlanPrompt,
     promptData: promptData,
+  });
+
+  const planData = chatCompletion.choices[0]?.message?.content || "";
+  if (planData === "") {
+    throw new Error("Couldn't generate the data");
+  }
+  return planData;
+}
+
+
+//meal log 
+
+export const promptText: string = 
+  "I ate a bowl of nuts, a glass of wine for snacks and a 4 rotis and 1 bowl of panner palak for lunch"
+;
+
+export async function getNewMealLog(promptText:string) {
+  const chatCompletion = await getGroqChatCompletion({
+    promptMaker: mealLogPrompt,
+    promptData: promptText,
   });
 
   const planData = chatCompletion.choices[0]?.message?.content || "";

@@ -78,15 +78,15 @@ export default function PersonalDetails(props: PersonalDataProps) {
               {diet_prefrence ? (
               diet_prefrence.toLowerCase().includes("vegan") ? (
                 <>
-                Vegan <Vegan className="inline ml-2" />
+                <span className="hidden xs:block"> Vegan</span> <Vegan className="inline ml-2" />
                 </>
               ) : diet_prefrence.toLowerCase().includes("vegetarian") ? (
                 <>
-                Vegetarian <Carrot className="inline ml-2" />
+                <span className="hidden xs:block"> Vegetarian</span> <Carrot className="inline ml-2" />
                 </>
               ) : diet_prefrence.toLowerCase().includes("non-vegeterian") ? (
                 <>
-                Non-Vegeterian <Beef className="inline ml-2" />
+                <span className="hidden xs:block"> Non-Vegeterian</span> <Beef className="inline ml-2" />
                 </>
               ) : (
                 diet_prefrence

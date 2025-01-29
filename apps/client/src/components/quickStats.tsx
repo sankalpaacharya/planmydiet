@@ -14,7 +14,7 @@ const QuickStats = ({
   rank,
 }: QuickStatsProps) => {
   return (
-    <Card className="w-96 flex flex-col gap-3 pb-0.5">
+    <Card className="w-full flex flex-col gap-3">
       <CardHeader>
         <CardTitle className="text-2xl font-semibold text-center">
           Quick Stats
