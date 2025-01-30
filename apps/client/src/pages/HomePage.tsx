@@ -34,11 +34,11 @@ const HomePage = () => {
                 Reminder
               </CardTitle>
               <CardDescription className="mt-5 space-y-2">
-                <div className="bg-gray-100 dark:bg-gray-800 p-3 rounded-md flex items-center space-x-2">
+                <div className="bg-gray-100/10 p-3 rounded-md flex items-center space-x-2">
                   <Target className="h-5 w-5" />
                   <span>Add breakfast meal</span>
                 </div>
-                <div className="bg-gray-100 dark:bg-gray-800 p-3 rounded-md flex items-center space-x-2">
+                <div className="bg-gray-100/10 p-3 rounded-md flex items-center space-x-2">
                   <Target className="h-5 w-5" />
                   <span>Add breakfast meal</span>
                 </div>
