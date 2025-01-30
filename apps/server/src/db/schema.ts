@@ -83,27 +83,18 @@ export const dailyGoalCompletion = pgTable("daily_goal_completion", {
     isCompleted: boolean().notNull().default(false)
 });
 
-export const allPlans = pgTable("plan", {
-    user_id: text().primaryKey().references(() => userTable.clerkUserId),
-    goal: text().notNull(),
-    dietPreference: text().notNull(),
-    activityLevel: text().notNull(),
-    duration: integer().notNull(),
-    foodAllergies: text(),
-    medicalConditions: text(),
-})
 
 export type SelectUser = typeof userTable.$inferSelect
 export type InsertChallenge = typeof challenge.$inferInsert
 export type InsertChallengeParticipant = typeof challengeParticipant.$inferInsert
 export type SelectUserMeasurement = typeof userMeasurement.$inferSelect
-export type InserPlan = typeof plan.$inferInsert
+export type InsertPlan = typeof plan.$inferInsert
+export type SelectPlan = typeof plan.$inferSelect
 export type InserMealLog = typeof mealLog.$inferInsert
-export type SelectAllPlans = typeof allPlans.$inferSelect
 
 
 export const insertChallengeSchema = createInsertSchema(challenge)
-export const selectAllPlanSchema = createSelectSchema(allPlans)
+export const selectPlanSchema = createSelectSchema(plan)
 export const insertChallengeParticipantSchema = createInsertSchema(challengeParticipant)
 export const insertPlanSchema = createInsertSchema(plan)
 export const insertMealLogSchema = createInsertSchema(mealLog)
