@@ -9,7 +9,6 @@ import {
   UsersRound,
   Utensils,
 } from "lucide-react";
-
 export const Route = createFileRoute("/_layout")({
   component: RouteComponent,
 });
@@ -26,8 +25,8 @@ const sideBarItems = [
     icon: Swords,
   },
   {
-    name: "Plans",
-    link: "/",
+    name: "Diet",
+    link: "/diet",
     icon: Utensils,
   },
   {
@@ -46,7 +45,7 @@ function RouteComponent() {
   return (
     <div className="container">
       <div className="flex gap-10">
-        <aside>
+        <aside className="h-screen">
           <div className="mt-10 space-y-3">
             <Link
               className="flex font-bold text-2xl gap-2 items-center mb-7"
