@@ -14,6 +14,7 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as LayoutImport } from './routes/_layout'
 import { Route as LayoutIndexImport } from './routes/_layout/index'
 import { Route as LayoutVideosImport } from './routes/_layout/videos'
+import { Route as LayoutShopImport } from './routes/_layout/shop'
 import { Route as LayoutDashboardImport } from './routes/_layout/dashboard'
 import { Route as LayoutDailycheckImport } from './routes/_layout/dailycheck'
 import { Route as LayoutAboutImport } from './routes/_layout/about'
@@ -35,6 +36,12 @@ const LayoutIndexRoute = LayoutIndexImport.update({
 const LayoutVideosRoute = LayoutVideosImport.update({
   id: '/videos',
   path: '/videos',
+  getParentRoute: () => LayoutRoute,
+} as any)
+
+const LayoutShopRoute = LayoutShopImport.update({
+  id: '/shop',
+  path: '/shop',
   getParentRoute: () => LayoutRoute,
 } as any)
 
@@ -94,6 +101,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutDashboardImport
       parentRoute: typeof LayoutImport
     }
+    '/_layout/shop': {
+      id: '/_layout/shop'
+      path: '/shop'
+      fullPath: '/shop'
+      preLoaderRoute: typeof LayoutShopImport
+      parentRoute: typeof LayoutImport
+    }
     '/_layout/videos': {
       id: '/_layout/videos'
       path: '/videos'
@@ -124,6 +138,7 @@ interface LayoutRouteChildren {
   LayoutAboutRoute: typeof LayoutAboutRoute
   LayoutDailycheckRoute: typeof LayoutDailycheckRoute
   LayoutDashboardRoute: typeof LayoutDashboardRoute
+  LayoutShopRoute: typeof LayoutShopRoute
   LayoutVideosRoute: typeof LayoutVideosRoute
   LayoutIndexRoute: typeof LayoutIndexRoute
   LayoutPlanIdRoute: typeof LayoutPlanIdRoute
@@ -133,6 +148,7 @@ const LayoutRouteChildren: LayoutRouteChildren = {
   LayoutAboutRoute: LayoutAboutRoute,
   LayoutDailycheckRoute: LayoutDailycheckRoute,
   LayoutDashboardRoute: LayoutDashboardRoute,
+  LayoutShopRoute: LayoutShopRoute,
   LayoutVideosRoute: LayoutVideosRoute,
   LayoutIndexRoute: LayoutIndexRoute,
   LayoutPlanIdRoute: LayoutPlanIdRoute,
@@ -146,6 +162,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof LayoutAboutRoute
   '/dailycheck': typeof LayoutDailycheckRoute
   '/dashboard': typeof LayoutDashboardRoute
+  '/shop': typeof LayoutShopRoute
   '/videos': typeof LayoutVideosRoute
   '/': typeof LayoutIndexRoute
   '/plan/$id': typeof LayoutPlanIdRoute
@@ -155,6 +172,7 @@ export interface FileRoutesByTo {
   '/about': typeof LayoutAboutRoute
   '/dailycheck': typeof LayoutDailycheckRoute
   '/dashboard': typeof LayoutDashboardRoute
+  '/shop': typeof LayoutShopRoute
   '/videos': typeof LayoutVideosRoute
   '/': typeof LayoutIndexRoute
   '/plan/$id': typeof LayoutPlanIdRoute
@@ -166,6 +184,7 @@ export interface FileRoutesById {
   '/_layout/about': typeof LayoutAboutRoute
   '/_layout/dailycheck': typeof LayoutDailycheckRoute
   '/_layout/dashboard': typeof LayoutDashboardRoute
+  '/_layout/shop': typeof LayoutShopRoute
   '/_layout/videos': typeof LayoutVideosRoute
   '/_layout/': typeof LayoutIndexRoute
   '/_layout/plan/$id': typeof LayoutPlanIdRoute
@@ -178,17 +197,26 @@ export interface FileRouteTypes {
     | '/about'
     | '/dailycheck'
     | '/dashboard'
+    | '/shop'
     | '/videos'
     | '/'
     | '/plan/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/about' | '/dailycheck' | '/dashboard' | '/videos' | '/' | '/plan/$id'
+  to:
+    | '/about'
+    | '/dailycheck'
+    | '/dashboard'
+    | '/shop'
+    | '/videos'
+    | '/'
+    | '/plan/$id'
   id:
     | '__root__'
     | '/_layout'
     | '/_layout/about'
     | '/_layout/dailycheck'
     | '/_layout/dashboard'
+    | '/_layout/shop'
     | '/_layout/videos'
     | '/_layout/'
     | '/_layout/plan/$id'
@@ -222,6 +250,7 @@ export const routeTree = rootRoute
         "/_layout/about",
         "/_layout/dailycheck",
         "/_layout/dashboard",
+        "/_layout/shop",
         "/_layout/videos",
         "/_layout/",
         "/_layout/plan/$id"
@@ -237,6 +266,10 @@ export const routeTree = rootRoute
     },
     "/_layout/dashboard": {
       "filePath": "_layout/dashboard.tsx",
+      "parent": "/_layout"
+    },
+    "/_layout/shop": {
+      "filePath": "_layout/shop.tsx",
       "parent": "/_layout"
     },
     "/_layout/videos": {
