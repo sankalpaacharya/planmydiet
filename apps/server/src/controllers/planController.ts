@@ -3,7 +3,7 @@ import { getPlan } from "../utils/ai"
 import { ZodError } from "zod"
 import { zodErrorParser } from "../utils/zodErrorParser"
 import { insertPlanSchema } from "../db/schema"
-import { selectAllPlansById, selectUserMeasurementById } from "../db/queries/select"
+import { selectAllPlansById, selectParticularPlanById, selectUserMeasurementById } from "../db/queries/select"
 import { promptData } from "../utils/ai"
 import { DietPlanPromptType } from "utils/prompt"
 import { insertPlan } from "../db/queries/insert"
@@ -46,6 +46,18 @@ export const getAllPlansController = async (req:Request,res:Response):Promise<an
     try{
 		const userId = req.auth.userId
         res.send({data:(await selectAllPlansById(userId)), error: null})
+    }catch(error){
+        if(error instanceof ZodError ){
+            return res.send({data:[],errors:zodErrorParser(error)})
+        }
+        res.send({data:[],error:error})
+    }
+}
+
+export const getParticularPlanController = async (req:Request,res:Response):Promise<any>=>{
+    try{
+		const planId = req.body.planId
+        res.send({data:(await selectParticularPlanById(planId)), error: null})
     }catch(error){
         if(error instanceof ZodError ){
             return res.send({data:[],errors:zodErrorParser(error)})

@@ -1,4 +1,4 @@
-import { InserMealLog, InserPlan, InsertChallenge,InsertChallengeParticipant,challenge, challengeParticipant, plan, mealLog } from "../schema";
+import { InserMealLog, InsertPlan, InsertChallenge,InsertChallengeParticipant,challenge, challengeParticipant, plan, mealLog } from "../schema";
 import { db } from "../db";
 
 export const insertChallenge = async (challengeData:InsertChallenge):Promise<{ challengeId: string}[]>=>{
@@ -10,7 +10,7 @@ export const insertChallengeParticipant = async (challengeParticipantData:Insert
     await db.insert(challengeParticipant).values(challengeParticipantData)
 }
 
-export const insertPlan = async (planData:InserPlan)=>{
+export const insertPlan = async (planData:InsertPlan)=>{
   await db.insert(plan).values(planData)
 }
 
