@@ -3,22 +3,11 @@ import { getPlan } from "../utils/ai"
 import { ZodError } from "zod"
 import { zodErrorParser } from "../utils/zodErrorParser"
 import { insertPlanSchema } from "../db/schema"
-import { selectUserMeasurementById } from "../db/queries/select"
+import { selectAllPlansById, selectUserMeasurementById } from "../db/queries/select"
 import { promptData } from "../utils/ai"
 import { DietPlanPromptType } from "utils/prompt"
 import { insertPlan } from "../db/queries/insert"
 
-
-export const getPlanController = async (req:Request,res:Response):Promise<any>=>{
-    try{
-        const planData = await getPlan(promptData)
-        res.send(JSON.parse(planData)) 
-    }catch(error){
-        if(error instanceof ZodError ){
-            return {errors:zodErrorParser(error)}
-        }
-    }
-}
 
 /*  
 req.body =
@@ -42,12 +31,25 @@ export const createPlanController = async (req:Request,res:Response):Promise<any
         const aiPlan = JSON.parse(await getPlan(promptData))
         const planData = insertPlanSchema.parse({userId,...promptData,aiPlan})
         await insertPlan(planData)
-        res.send({status:"data added successfully",error:null})
+        res.send({data:["data added successfully"],error:null})
     }
     catch(error){ 
         if(error instanceof ZodError) {
-            return res.send({status:null,error:zodErrorParser(error)})
+            return res.send({data:[],error:zodErrorParser(error)})
         }
-        res.send({status:null,error:error})
+        res.send({data:[],error:error})
+    }
+}
+
+
+export const getAllPlansController = async (req:Request,res:Response):Promise<any>=>{
+    try{
+		const userId = req.auth.userId
+        res.send({data:(await selectAllPlansById(userId)), error: null})
+    }catch(error){
+        if(error instanceof ZodError ){
+            return res.send({data:[],errors:zodErrorParser(error)})
+        }
+        res.send({data:[],error:error})
     }
 }

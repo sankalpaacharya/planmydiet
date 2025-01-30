@@ -40,7 +40,6 @@ export const promptData: DietPlanPromptType = {
   duration: 12,
   foodAllergies: "nuts",
   medicalConditions: "diabetes",
-  existingSupplements: "whey protein",
   budget: "rich",
 };
 
@@ -70,9 +69,9 @@ export async function getNewMealLog(promptText:string) {
     promptData: promptText,
   });
 
-  const planData = chatCompletion.choices[0]?.message?.content || "";
-  if (planData === "") {
-    throw new Error("Couldn't generate the data");
+  const nutritionData = chatCompletion.choices[0]?.message?.content || "";
+  if (nutritionData === "") {
+    throw new Error("Couldn't generate the nutrition from mealLog");
   }
-  return planData;
+  return nutritionData;
 }
