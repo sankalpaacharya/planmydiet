@@ -1,9 +1,9 @@
 import express from 'express'
-import { getPlanController, createPlanController} from '../controllers/planController'
+import { getAllPlansController, createPlanController} from '../controllers/planController'
 
 const router = express.Router()
 
-router.get("/get",getPlanController)
+router.get("/get",getAllPlansController)
 router.post("/create",createPlanController)
 
 export default router
