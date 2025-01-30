@@ -16,16 +16,6 @@ interface QuickStatsProps {
   longestStreak?: number;
 }
 
-const StatRow: React.FC<StatItem> = ({ icon, label, value }) => (
-  <div className="flex justify-between items-center p-2 hover:bg-neutral-800/50 rounded-lg transition-colors">
-    <div className="flex items-center gap-2">
-      <div className="text-neutral-400">{icon}</div>
-      <p className="text-lg font-normal">{label}</p>
-    </div>
-    <p className="text-xl font-semibold text-rose-500">{value}</p>
-  </div>
-);
-
 const QuickStats: React.FC<QuickStatsProps> = ({
   currentStreak,
   teamSize,
@@ -57,21 +47,22 @@ const QuickStats: React.FC<QuickStatsProps> = ({
   ];
 
   return (
-    <Card className="w-full">
-      <CardHeader className="pb-2">
-        <CardTitle className="text-2xl font-semibold text-center">
-          Quick Stats
-        </CardTitle>
+    <Card>
+      <CardHeader>
+        <CardTitle>Quick Stats</CardTitle>
       </CardHeader>
-      <CardContent className="flex flex-col gap-2">
-        {stats.map((stat, index) => (
-          <StatRow
-            key={index}
-            icon={stat.icon}
-            label={stat.label}
-            value={stat.value}
-          />
-        ))}
+      <CardContent>
+        <div className="grid grid-cols-2 md:grid-cols-4 ">
+          {stats.map((stat) => (
+            <div key={stat.label} className="py-4 rounded-lg">
+              <div className="flex items-center gap-2 mb-1">
+                {stat.icon}
+                <span className="text-sm">{stat.label}</span>
+              </div>
+              <div className="text-xl font-bold">{stat.value}</div>
+            </div>
+          ))}
+        </div>
       </CardContent>
     </Card>
   );

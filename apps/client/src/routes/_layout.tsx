@@ -1,7 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Outlet } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
-import { Flame, TrendingUp, Swords, UsersRound, Utensils } from "lucide-react";
+import {
+  SquareCheckBig,
+  Flame,
+  TrendingUp,
+  Swords,
+  UsersRound,
+  Utensils,
+} from "lucide-react";
 
 export const Route = createFileRoute("/_layout")({
   component: RouteComponent,
@@ -27,6 +34,11 @@ const sideBarItems = [
     name: "Social",
     link: "/",
     icon: UsersRound,
+  },
+  {
+    name: "Daily check",
+    link: "/dailycheck",
+    icon: SquareCheckBig,
   },
 ];
 
