@@ -10,6 +10,20 @@ import {
 } from "@/components/ui/card";
 import { Plus } from "lucide-react";
 
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import {
+  DialogHeader,
+  DialogFooter,
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Input } from "./ui/input";
+import { DropdownMenu } from "./ui/dropdown-menu";
+
 type MealType = "breakfast" | "lunch" | "high_tea" | "dinner";
 
 interface MealItem {
@@ -94,25 +108,60 @@ const MealSection: React.FC<{ type: MealType; items: MealItem[] }> = ({
   );
 };
 
-const AddMealButton: React.FC<{ onClick?: () => void }> = ({ onClick }) => (
-  <div
-    onClick={onClick}
-    className="w-full h-24 flex items-center justify-center space-x-2 border-dashed border-2 border-neutral-500 rounded-md cursor-pointer hover:text-rose-500 hover:border-rose-500 transition-colors"
-  >
-    <Plus size={24} strokeWidth={3} />
-    <span className="text-2xl font-normal">Add Meal</span>
-  </div>
+const AddMealButton = () => (
+  <Dialog>
+    <DialogTrigger asChild>
+      <div className="w-full h-24 flex items-center justify-center space-x-2 border-dashed border-2 border-neutral-500 rounded-md cursor-pointer hover:text-rose-500 hover:border-rose-500 transition-colors">
+        <Plus size={24} strokeWidth={3} />
+        <span className="text-2xl font-normal">Add Meal</span>
+      </div>
+    </DialogTrigger>
+    <DialogContent className="fixed left-1/2 bottom-5 sm:max-w-[425px]">
+      <DialogHeader>
+        <DialogTitle>Add Meal</DialogTitle>
+        <DialogDescription>
+          Add a new meal to your meal log. Fill in the details below and click
+          save.
+        </DialogDescription>
+      </DialogHeader>
+      <div className="grid gap-4 py-4">
+        <div className="grid grid-cols-4 items-center gap-4">
+          <Label htmlFor="food" className="text-right">
+            Food
+          </Label>
+          <Input
+            id="food"
+            placeholder="Enter food name"
+            className="col-span-3"
+          />
+        </div>
+        <div className="grid grid-cols-4 items-center gap-4">
+          <DropdownMenu>
+            <Label htmlFor="mealType" className="text-right">
+              Meal Type
+            </Label>
+            <select id="mealType" className="col-span-3" aria-label="Meal Type">
+              {MEAL_TYPES.map((type) => (
+                <option key={type} value={type}>
+                  {type.charAt(0).toUpperCase() + type.slice(1).replace("_", "-")}
+                </option>
+              ))}
+            </select>
+          </DropdownMenu>
+        </div>
+      </div>
+      <DialogFooter>
+        <Button type="submit">Add Meal</Button>
+      </DialogFooter>
+    </DialogContent>
+  </Dialog>
 );
 
 interface MealLoggerProps {
   meals?: MealData;
-  onAddMeal?: () => void;
 }
 
-const MealLogger: React.FC<MealLoggerProps> = ({
-  meals = DEFAULT_MEALS,
-  onAddMeal,
-}) => {
+const MealLogger: React.FC<MealLoggerProps> = ({ meals = DEFAULT_MEALS }) => {
   return (
     <Card>
       <CardHeader>
@@ -145,7 +194,7 @@ const MealLogger: React.FC<MealLoggerProps> = ({
         </Tabs>
       </CardContent>
       <CardFooter>
-        <AddMealButton onClick={onAddMeal} />
+        <AddMealButton />
       </CardFooter>
     </Card>
   );
