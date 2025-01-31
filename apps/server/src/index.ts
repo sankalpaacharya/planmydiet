@@ -13,7 +13,6 @@ app.use(express.json());
 app.use(checkUserAuth)
 app.use(cors())
 
-
 app.use("/challenge",challengeRoute)
 app.use("/plan",planRouter)
 app.use("/meallog",mealLogRoute)
