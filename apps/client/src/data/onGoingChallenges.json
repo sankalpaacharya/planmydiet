@@ -1,0 +1,32 @@
+[
+	{
+		"title": "Lose 5 Pounds",
+		"goal": "Lose 5 pounds in 30 days",
+		"participants": ["Alice", "Bob", "Charlie", "David", "Eve"],
+		"endsIn": "2023-11-30"
+	},
+	{
+		"title": "Run 50 Miles",
+		"goal": "Run 50 miles in 30 days",
+		"participants": ["Frank", "Grace", "Heidi", "Ivan", "Judy"],
+		"endsIn": "2023-12-15"
+	},
+	{
+		"title": "Eat Healthy",
+		"goal": "Eat healthy meals for 30 days",
+		"participants": ["Mallory", "Niaj", "Olivia", "Peggy", "Sybil"],
+		"endsIn": "2023-12-01"
+	},
+	{
+		"title": "Drink More Water",
+		"goal": "Drink 8 glasses of water daily for 30 days",
+		"participants": ["Trent", "Victor", "Walter", "Xander", "Yvonne"],
+		"endsIn": "2023-12-10"
+	},
+	{
+		"title": "Meditate Daily",
+		"goal": "Meditate for 10 minutes daily for 30 days",
+		"participants": ["Zara", "Quinn", "Riley", "Sam", "Taylor"],
+		"endsIn": "2023-12-20"
+	}
+]
