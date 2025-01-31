@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { Link } from "@tanstack/react-router";
+import { api } from "@/lib/axios";
 
 interface SelectPlan {
   goal: string;
@@ -18,9 +18,9 @@ export default function DietPlanPage() {
   useEffect(() => {
     const fetchPlans = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/plan/get");
-        const data = await response.data;
-        setMealPlans(data.data);
+        const response = await api.get("/plan/get");
+        console.log(response);
+        setMealPlans(response.data.data);
       } catch (err) {
         console.error("Error fetching meal plans:", err);
         setError("Failed to fetch meal plans.");
