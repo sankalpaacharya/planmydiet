@@ -33,7 +33,6 @@ export const plan = pgTable("plan", {
     gender: gendertypeEnum().notNull(),
     age: integer().notNull(),
     calorieIntake: integer().notNull(),
-    duration: integer().notNull(),
     foodAllergies: text(),
     medicalConditions: text(),
     budget: text().notNull(),

@@ -22,7 +22,6 @@ export async function selectAllPlansById(clerkUserId: SelectPlan["userId"]) {
 		gender: plan.gender,
 		age: plan.age,
 		calorieIntake: plan.calorieIntake,
-		duration: plan.duration,
 		foodAllergies: plan.foodAllergies,
 		medicalConditions: plan.medicalConditions,
 		budget: plan.budget

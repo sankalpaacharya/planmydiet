@@ -116,7 +116,7 @@ const AddMealButton = () => (
         <span className="text-2xl font-normal">Add Meal</span>
       </div>
     </DialogTrigger>
-    <DialogContent className="fixed left-1/2 bottom-5 sm:max-w-[425px]">
+    <DialogContent>
       <DialogHeader>
         <DialogTitle>Add Meal</DialogTitle>
         <DialogDescription>
@@ -143,7 +143,8 @@ const AddMealButton = () => (
             <select id="mealType" className="col-span-3" aria-label="Meal Type">
               {MEAL_TYPES.map((type) => (
                 <option key={type} value={type}>
-                  {type.charAt(0).toUpperCase() + type.slice(1).replace("_", "-")}
+                  {type.charAt(0).toUpperCase() +
+                    type.slice(1).replace("_", "-")}
                 </option>
               ))}
             </select>

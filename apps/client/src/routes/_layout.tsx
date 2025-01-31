@@ -8,6 +8,7 @@ import {
   Swords,
   UsersRound,
   Utensils,
+  ShoppingCart,
 } from "lucide-react";
 export const Route = createFileRoute("/_layout")({
   component: RouteComponent,
@@ -38,6 +39,11 @@ const sideBarItems = [
     name: "Daily check",
     link: "/dailycheck",
     icon: SquareCheckBig,
+  },
+  {
+    name: "Shop",
+    link: "/shop",
+    icon: ShoppingCart,
   },
 ];
 

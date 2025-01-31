@@ -30,6 +30,7 @@ export const createPlanController = async (req:Request,res:Response):Promise<any
         const promptData:DietPlanPromptType = {height,weight,age,gender,...req.body}
         const aiPlan = JSON.parse(await getPlan(promptData))
         const planData = insertPlanSchema.parse({userId,...promptData,aiPlan})
+        console.log(planData)
         await insertPlan(planData)
         res.send({data:["data added successfully"],error:null})
     }
@@ -40,7 +41,6 @@ export const createPlanController = async (req:Request,res:Response):Promise<any
         res.send({data:[],error:error})
     }
 }
-
 
 export const getAllPlansController = async (req:Request,res:Response):Promise<any>=>{
     try{

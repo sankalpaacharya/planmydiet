@@ -7,7 +7,6 @@ export interface DietPlanPromptType {
   goal: string;
   activitylevel: string;
   calorieintake: number;
-  duration: number;
   foodAllergies: string;
   medicalConditions: string;
   budget: string;
@@ -22,7 +21,6 @@ export const generatePlanPrompt = ({
   goal,
   activitylevel,
   calorieintake,
-  duration,
   foodAllergies,
   medicalConditions,
   budget,
@@ -41,7 +39,6 @@ Design a personalized nutrition and diet plan for a user based on their provided
 - Budget for meal: ${budget} per day
 - Activity level: ${activitylevel}
 - Daily calorie intake limit: ${calorieintake}
-- Duration: ${duration} days
 
 You have to provide the diet according to the diet preferences if user is veg, do not provide the non-veg food items, and same for vegan—do not include any dairy products or non-vegetarian food items.
 If user has any medical conditions or allergies towards a food item, avoid those items that enhance the medical condition or allergies in the diet.

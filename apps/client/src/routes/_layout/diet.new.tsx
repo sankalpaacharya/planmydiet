@@ -32,10 +32,10 @@ type FormData = {
   goal: string;
   dietPreference: "veg" | "non-veg";
   activityLevel: "low" | "moderate" | "high";
-  calorieIntake: string;
+  calorieIntake: number;
   foodAllergies: string;
   medicalCondition: string;
-  budget: number;
+  budget: string;
 };
 
 function RouteComponent() {
@@ -44,10 +44,10 @@ function RouteComponent() {
     goal: "",
     dietPreference: "veg",
     activityLevel: "moderate",
-    calorieIntake: "2000",
+    calorieIntake: 2000,
     foodAllergies: "",
     medicalCondition: "",
-    budget: 0,
+    budget: "none",
   });
 
   const handleSubmit = async () => {
@@ -108,7 +108,7 @@ function RouteComponent() {
               onChange={(e) =>
                 setFormData({
                   ...formData,
-                  calorieIntake: e.target.value,
+                  calorieIntake: parseInt(e.target.value),
                 })
               }
               type="number"
@@ -152,10 +152,10 @@ function RouteComponent() {
               onChange={(e) =>
                 setFormData({
                   ...formData,
-                  budget: parseInt(e.target.value),
+                  budget: e.target.value,
                 })
               }
-              type="text"
+              type="number"
               id="medicalCondition"
               placeholder="Medical Condition"
               value={formData.budget}
@@ -163,7 +163,6 @@ function RouteComponent() {
           </div>
           <Button onClick={handleSubmit} disabled={isLoading}>
             {isLoading ? <Loader className="animate-spin" /> : null}
-            <Loader />
             Create a Diet Plan
           </Button>
         </CardContent>

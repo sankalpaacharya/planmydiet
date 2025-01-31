@@ -5,7 +5,6 @@ import { zodErrorParser } from "../utils/zodErrorParser"
 import { insertMealLogSchema } from "../db/schema"
 import { insertMealLog } from "../db/queries/insert"
 
-
 export const newMealLogController = async (req: Request, res: Response): Promise<any> => {
 	try {
 		const userId = req.auth.userId

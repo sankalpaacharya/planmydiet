@@ -9,6 +9,6 @@ export default defineConfig({
   dialect: "postgresql",
   casing:"snake_case",
   dbCredentials: {
-    url: process.env.DATABASE_URL!,
+    url:"postgresql://neondb_owner:NT9tw5WgYHdB@ep-hidden-sunset-a8oc1a6r.eastus2.azure.neon.tech/neondb?sslmode=require" ,
   },
 });

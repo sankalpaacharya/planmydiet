@@ -37,7 +37,6 @@ export const promptData: DietPlanPromptType = {
   goal: "muscle build",
   activitylevel: "easy",
   calorieintake: 2000,
-  duration: 12,
   foodAllergies: "nuts",
   medicalConditions: "diabetes",
   budget: "rich",

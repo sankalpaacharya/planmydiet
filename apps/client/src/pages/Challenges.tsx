@@ -17,7 +17,6 @@ const Dashboard = () => {
             <span>Reward awaits!</span>
           </div>
         </div>
-
         <div className="grid gap-4 sm:grid-cols-2">
           {Object.values(habits).map((habit) => (
             <HabitCard key={habit.title} {...habit} />
