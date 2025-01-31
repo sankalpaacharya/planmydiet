@@ -116,7 +116,7 @@ const AddMealButton = () => (
         <span className="text-2xl font-normal">Add Meal</span>
       </div>
     </DialogTrigger>
-    <DialogContent className="fixed left-1/2 bottom-5 sm:max-w-[425px]">
+    <DialogContent >
       <DialogHeader>
         <DialogTitle>Add Meal</DialogTitle>
         <DialogDescription>
@@ -124,7 +124,7 @@ const AddMealButton = () => (
           save.
         </DialogDescription>
       </DialogHeader>
-      <div className="grid gap-4 py-4">
+      <div className="grid gap-4">
         <div className="grid grid-cols-4 items-center gap-4">
           <Label htmlFor="food" className="text-right">
             Food
