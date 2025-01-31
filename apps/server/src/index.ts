@@ -5,11 +5,13 @@ import Groq from "groq-sdk";
 import mealLogRoute from "./routes/mealLogRoute"
 import { checkUserAuth } from './middleware';
 import { config } from "dotenv";
+import cors from 'cors'
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(checkUserAuth)
+app.use(cors())
 
 
 app.use("/challenge",challengeRoute)
