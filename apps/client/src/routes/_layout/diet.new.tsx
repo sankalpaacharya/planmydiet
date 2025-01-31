@@ -10,6 +10,7 @@ import { Ham } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Loader } from "lucide-react";
 import { api } from "@/lib/axios";
 
 import {
@@ -31,27 +32,33 @@ type FormData = {
   goal: string;
   dietPreference: "veg" | "non-veg";
   activityLevel: "low" | "moderate" | "high";
-  calorieIntakeLimit: string;
+  calorieIntake: string;
   foodAllergies: string;
   medicalCondition: string;
+  budget: "low" | "medium" | "high";
 };
 
 function RouteComponent() {
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     goal: "",
     dietPreference: "veg",
-    activityLevel: "moderate", // Added default value
-    calorieIntakeLimit: "2000",
+    activityLevel: "moderate",
+    calorieIntake: "2000",
     foodAllergies: "",
     medicalCondition: "",
+    budget: "medium",
   });
 
   const handleSubmit = async () => {
     try {
-      // Add your API call here
-      // await api.post('/diet-plans', formData);
+      setIsLoading(true);
+      const response = await api.post("/plan/create", formData);
+      setIsLoading(false);
+      console.log("response from the backend", response);
       console.log("Submitting form data:", formData);
     } catch (error) {
+      setIsLoading(false);
       console.error("Error submitting form:", error);
     }
   };
@@ -101,13 +108,13 @@ function RouteComponent() {
               onChange={(e) =>
                 setFormData({
                   ...formData,
-                  calorieIntakeLimit: e.target.value,
+                  calorieIntake: e.target.value,
                 })
               }
               type="number"
               id="calorieIntakeLimit"
               placeholder="2000"
-              value={formData.calorieIntakeLimit}
+              value={formData.calorieIntake}
             />
           </div>
           <div className="grid w-full max-w-sm items-center gap-1.5">
@@ -139,7 +146,10 @@ function RouteComponent() {
               value={formData.medicalCondition}
             />
           </div>
-          <Button onClick={handleSubmit}>Create Diet</Button>
+          <Button onClick={handleSubmit} disabled={isLoading}>
+            {isLoading ? <Loader className="animate-spin" /> : null}
+            Create Diet Plan
+          </Button>
         </CardContent>
       </Card>
     </div>
@@ -169,8 +179,12 @@ const SelectDietPreference = ({ formData, setFormData }: SelectProps) => {
       <SelectContent>
         <SelectGroup>
           <SelectLabel>Diet Plan</SelectLabel>
-          <SelectItem value="non-veg">Non-Veg</SelectItem>
-          <SelectItem value="veg">Veg</SelectItem>
+          <SelectItem key={"non-veg"} value="non-veg">
+            Non-Veg
+          </SelectItem>
+          <SelectItem key={"veg"} value="veg">
+            Veg
+          </SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>
@@ -195,9 +209,47 @@ const SelectActivityLevel = ({ formData, setFormData }: SelectProps) => {
       <SelectContent>
         <SelectGroup>
           <SelectLabel>Activity</SelectLabel>
-          <SelectItem value="low">Low</SelectItem>
-          <SelectItem value="moderate">Moderate</SelectItem>
-          <SelectItem value="high">High</SelectItem>
+          <SelectItem key={"low"} value="low">
+            Low
+          </SelectItem>
+          <SelectItem key={"moderate"} value="moderate">
+            Moderate
+          </SelectItem>
+          <SelectItem key={"high"} value="high">
+            High
+          </SelectItem>
+        </SelectGroup>
+      </SelectContent>
+    </Select>
+  );
+};
+const SelectBudget = ({ formData, setFormData }: SelectProps) => {
+  return (
+    <Select
+      onValueChange={(activity: "low" | "medium" | "high") =>
+        setFormData((prev) => ({
+          ...prev,
+          budget: activity,
+        }))
+      }
+      value={formData.activityLevel}
+      defaultValue="moderate"
+    >
+      <SelectTrigger>
+        <SelectValue placeholder="Select Your Activity Level" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectGroup>
+          <SelectLabel>Activity</SelectLabel>
+          <SelectItem key={"low"} value="low">
+            Low
+          </SelectItem>
+          <SelectItem key={"moderate"} value="moderate">
+            Moderate
+          </SelectItem>
+          <SelectItem key={"high"} value="high">
+            High
+          </SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>
