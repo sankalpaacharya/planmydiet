@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Select,
   SelectContent,
@@ -36,6 +36,7 @@ export const Route = createFileRoute("/_layout/challenge/new")({
 });
 
 function RouteComponent() {
+  useEffect(() => {}, []);
   return (
     <div>
       <Card>
