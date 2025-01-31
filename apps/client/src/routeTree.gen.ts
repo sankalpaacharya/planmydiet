@@ -14,7 +14,7 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as LayoutImport } from './routes/_layout'
 import { Route as LayoutIndexImport } from './routes/_layout/index'
 import { Route as LayoutVideosImport } from './routes/_layout/videos'
-import { Route as LayoutDietImport } from './routes/_layout/diet'
+import { Route as LayoutDietsImport } from './routes/_layout/diets'
 import { Route as LayoutDashboardImport } from './routes/_layout/dashboard'
 import { Route as LayoutDailycheckImport } from './routes/_layout/dailycheck'
 import { Route as LayoutChallengesImport } from './routes/_layout/challenges'
@@ -42,9 +42,9 @@ const LayoutVideosRoute = LayoutVideosImport.update({
   getParentRoute: () => LayoutRoute,
 } as any)
 
-const LayoutDietRoute = LayoutDietImport.update({
-  id: '/diet',
-  path: '/diet',
+const LayoutDietsRoute = LayoutDietsImport.update({
+  id: '/diets',
+  path: '/diets',
   getParentRoute: () => LayoutRoute,
 } as any)
 
@@ -79,9 +79,9 @@ const LayoutPlanIdRoute = LayoutPlanIdImport.update({
 } as any)
 
 const LayoutDietNewRoute = LayoutDietNewImport.update({
-  id: '/new',
-  path: '/new',
-  getParentRoute: () => LayoutDietRoute,
+  id: '/diet/new',
+  path: '/diet/new',
+  getParentRoute: () => LayoutRoute,
 } as any)
 
 const LayoutChallengeNewRoute = LayoutChallengeNewImport.update({
@@ -129,11 +129,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutDashboardImport
       parentRoute: typeof LayoutImport
     }
-    '/_layout/diet': {
-      id: '/_layout/diet'
-      path: '/diet'
-      fullPath: '/diet'
-      preLoaderRoute: typeof LayoutDietImport
+    '/_layout/diets': {
+      id: '/_layout/diets'
+      path: '/diets'
+      fullPath: '/diets'
+      preLoaderRoute: typeof LayoutDietsImport
       parentRoute: typeof LayoutImport
     }
     '/_layout/videos': {
@@ -159,10 +159,10 @@ declare module '@tanstack/react-router' {
     }
     '/_layout/diet/new': {
       id: '/_layout/diet/new'
-      path: '/new'
+      path: '/diet/new'
       fullPath: '/diet/new'
       preLoaderRoute: typeof LayoutDietNewImport
-      parentRoute: typeof LayoutDietImport
+      parentRoute: typeof LayoutImport
     }
     '/_layout/plan/$id': {
       id: '/_layout/plan/$id'
@@ -176,27 +176,16 @@ declare module '@tanstack/react-router' {
 
 // Create and export the route tree
 
-interface LayoutDietRouteChildren {
-  LayoutDietNewRoute: typeof LayoutDietNewRoute
-}
-
-const LayoutDietRouteChildren: LayoutDietRouteChildren = {
-  LayoutDietNewRoute: LayoutDietNewRoute,
-}
-
-const LayoutDietRouteWithChildren = LayoutDietRoute._addFileChildren(
-  LayoutDietRouteChildren,
-)
-
 interface LayoutRouteChildren {
   LayoutAboutRoute: typeof LayoutAboutRoute
   LayoutChallengesRoute: typeof LayoutChallengesRoute
   LayoutDailycheckRoute: typeof LayoutDailycheckRoute
   LayoutDashboardRoute: typeof LayoutDashboardRoute
-  LayoutDietRoute: typeof LayoutDietRouteWithChildren
+  LayoutDietsRoute: typeof LayoutDietsRoute
   LayoutVideosRoute: typeof LayoutVideosRoute
   LayoutIndexRoute: typeof LayoutIndexRoute
   LayoutChallengeNewRoute: typeof LayoutChallengeNewRoute
+  LayoutDietNewRoute: typeof LayoutDietNewRoute
   LayoutPlanIdRoute: typeof LayoutPlanIdRoute
 }
 
@@ -205,10 +194,11 @@ const LayoutRouteChildren: LayoutRouteChildren = {
   LayoutChallengesRoute: LayoutChallengesRoute,
   LayoutDailycheckRoute: LayoutDailycheckRoute,
   LayoutDashboardRoute: LayoutDashboardRoute,
-  LayoutDietRoute: LayoutDietRouteWithChildren,
+  LayoutDietsRoute: LayoutDietsRoute,
   LayoutVideosRoute: LayoutVideosRoute,
   LayoutIndexRoute: LayoutIndexRoute,
   LayoutChallengeNewRoute: LayoutChallengeNewRoute,
+  LayoutDietNewRoute: LayoutDietNewRoute,
   LayoutPlanIdRoute: LayoutPlanIdRoute,
 }
 
@@ -221,7 +211,7 @@ export interface FileRoutesByFullPath {
   '/challenges': typeof LayoutChallengesRoute
   '/dailycheck': typeof LayoutDailycheckRoute
   '/dashboard': typeof LayoutDashboardRoute
-  '/diet': typeof LayoutDietRouteWithChildren
+  '/diets': typeof LayoutDietsRoute
   '/videos': typeof LayoutVideosRoute
   '/': typeof LayoutIndexRoute
   '/challenge/new': typeof LayoutChallengeNewRoute
@@ -234,7 +224,7 @@ export interface FileRoutesByTo {
   '/challenges': typeof LayoutChallengesRoute
   '/dailycheck': typeof LayoutDailycheckRoute
   '/dashboard': typeof LayoutDashboardRoute
-  '/diet': typeof LayoutDietRouteWithChildren
+  '/diets': typeof LayoutDietsRoute
   '/videos': typeof LayoutVideosRoute
   '/': typeof LayoutIndexRoute
   '/challenge/new': typeof LayoutChallengeNewRoute
@@ -249,7 +239,7 @@ export interface FileRoutesById {
   '/_layout/challenges': typeof LayoutChallengesRoute
   '/_layout/dailycheck': typeof LayoutDailycheckRoute
   '/_layout/dashboard': typeof LayoutDashboardRoute
-  '/_layout/diet': typeof LayoutDietRouteWithChildren
+  '/_layout/diets': typeof LayoutDietsRoute
   '/_layout/videos': typeof LayoutVideosRoute
   '/_layout/': typeof LayoutIndexRoute
   '/_layout/challenge/new': typeof LayoutChallengeNewRoute
@@ -265,7 +255,7 @@ export interface FileRouteTypes {
     | '/challenges'
     | '/dailycheck'
     | '/dashboard'
-    | '/diet'
+    | '/diets'
     | '/videos'
     | '/'
     | '/challenge/new'
@@ -277,7 +267,7 @@ export interface FileRouteTypes {
     | '/challenges'
     | '/dailycheck'
     | '/dashboard'
-    | '/diet'
+    | '/diets'
     | '/videos'
     | '/'
     | '/challenge/new'
@@ -290,7 +280,7 @@ export interface FileRouteTypes {
     | '/_layout/challenges'
     | '/_layout/dailycheck'
     | '/_layout/dashboard'
-    | '/_layout/diet'
+    | '/_layout/diets'
     | '/_layout/videos'
     | '/_layout/'
     | '/_layout/challenge/new'
@@ -327,10 +317,11 @@ export const routeTree = rootRoute
         "/_layout/challenges",
         "/_layout/dailycheck",
         "/_layout/dashboard",
-        "/_layout/diet",
+        "/_layout/diets",
         "/_layout/videos",
         "/_layout/",
         "/_layout/challenge/new",
+        "/_layout/diet/new",
         "/_layout/plan/$id"
       ]
     },
@@ -350,12 +341,9 @@ export const routeTree = rootRoute
       "filePath": "_layout/dashboard.tsx",
       "parent": "/_layout"
     },
-    "/_layout/diet": {
-      "filePath": "_layout/diet.tsx",
-      "parent": "/_layout",
-      "children": [
-        "/_layout/diet/new"
-      ]
+    "/_layout/diets": {
+      "filePath": "_layout/diets.tsx",
+      "parent": "/_layout"
     },
     "/_layout/videos": {
       "filePath": "_layout/videos.tsx",
@@ -371,7 +359,7 @@ export const routeTree = rootRoute
     },
     "/_layout/diet/new": {
       "filePath": "_layout/diet.new.tsx",
-      "parent": "/_layout/diet"
+      "parent": "/_layout"
     },
     "/_layout/plan/$id": {
       "filePath": "_layout/plan/$id.tsx",

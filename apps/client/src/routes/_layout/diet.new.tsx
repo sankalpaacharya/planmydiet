@@ -1,9 +1,207 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from "@tanstack/react-router";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+} from "@/components/ui/card";
+import { Ham } from "lucide-react";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { api } from "@/lib/axios";
 
-export const Route = createFileRoute('/_layout/diet/new')({
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { useState } from "react";
+
+export const Route = createFileRoute("/_layout/diet/new")({
   component: RouteComponent,
-})
+});
+
+type FormData = {
+  goal: string;
+  dietPreference: "veg" | "non-veg";
+  activityLevel: "low" | "moderate" | "high";
+  calorieIntakeLimit: string;
+  foodAllergies: string;
+  medicalCondition: string;
+};
 
 function RouteComponent() {
-  return <div>Hello "/_layout/plan/new"!</div>
+  const [formData, setFormData] = useState<FormData>({
+    goal: "",
+    dietPreference: "veg",
+    activityLevel: "moderate", // Added default value
+    calorieIntakeLimit: "2000",
+    foodAllergies: "",
+    medicalCondition: "",
+  });
+
+  const handleSubmit = async () => {
+    try {
+      // Add your API call here
+      // await api.post('/diet-plans', formData);
+      console.log("Submitting form data:", formData);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
+  };
+
+  return (
+    <div>
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex space-x-2">
+            <Ham />
+            <span>Creating new Diet Plan</span>
+          </CardTitle>
+          <CardDescription>
+            Please fill the respective input fields
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid w-full max-w-sm items-center gap-1.5">
+            <Label htmlFor="goal">Goal</Label>
+            <Input
+              onChange={(e) =>
+                setFormData({ ...formData, goal: e.target.value })
+              }
+              type="text"
+              id="goal"
+              placeholder="Weight loss 2 kg"
+              value={formData.goal}
+            />
+          </div>
+          <div className="grid w-full max-w-sm items-center gap-1.5">
+            <Label htmlFor="dietPreference">Diet Preference</Label>
+            <SelectDietPreference
+              formData={formData}
+              setFormData={setFormData}
+            />
+          </div>
+          <div className="grid w-full max-w-sm items-center gap-1.5">
+            <Label htmlFor="activityLevel">Activity Level</Label>
+            <SelectActivityLevel
+              formData={formData}
+              setFormData={setFormData}
+            />
+          </div>
+          <div className="grid w-full max-w-sm items-center gap-1.5">
+            <Label htmlFor="calorieIntakeLimit">Calorie Intake Limit</Label>
+            <Input
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  calorieIntakeLimit: e.target.value,
+                })
+              }
+              type="number"
+              id="calorieIntakeLimit"
+              placeholder="2000"
+              value={formData.calorieIntakeLimit}
+            />
+          </div>
+          <div className="grid w-full max-w-sm items-center gap-1.5">
+            <Label htmlFor="foodAllergies">Food Allergies (Optional)</Label>
+            <Input
+              onChange={(e) =>
+                setFormData({ ...formData, foodAllergies: e.target.value })
+              }
+              type="text"
+              id="foodAllergies"
+              placeholder="Allergies"
+              value={formData.foodAllergies}
+            />
+          </div>
+          <div className="grid w-full max-w-sm items-center gap-1.5">
+            <Label htmlFor="medicalCondition">
+              Medical Condition (Optional)
+            </Label>
+            <Input
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  medicalCondition: e.target.value,
+                })
+              }
+              type="text"
+              id="medicalCondition"
+              placeholder="Medical Condition"
+              value={formData.medicalCondition}
+            />
+          </div>
+          <Button onClick={handleSubmit}>Create Diet</Button>
+        </CardContent>
+      </Card>
+    </div>
+  );
 }
+
+interface SelectProps {
+  formData: FormData;
+  setFormData: React.Dispatch<React.SetStateAction<FormData>>;
+}
+
+const SelectDietPreference = ({ formData, setFormData }: SelectProps) => {
+  return (
+    <Select
+      onValueChange={(preference: "veg" | "non-veg") =>
+        setFormData((prev) => ({
+          ...prev,
+          dietPreference: preference,
+        }))
+      }
+      value={formData.dietPreference}
+      defaultValue="veg"
+    >
+      <SelectTrigger>
+        <SelectValue placeholder="Select Your Diet Preference" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectGroup>
+          <SelectLabel>Diet Plan</SelectLabel>
+          <SelectItem value="non-veg">Non-Veg</SelectItem>
+          <SelectItem value="veg">Veg</SelectItem>
+        </SelectGroup>
+      </SelectContent>
+    </Select>
+  );
+};
+
+const SelectActivityLevel = ({ formData, setFormData }: SelectProps) => {
+  return (
+    <Select
+      onValueChange={(activity: "low" | "moderate" | "high") =>
+        setFormData((prev) => ({
+          ...prev,
+          activityLevel: activity,
+        }))
+      }
+      value={formData.activityLevel}
+      defaultValue="moderate"
+    >
+      <SelectTrigger>
+        <SelectValue placeholder="Select Your Activity Level" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectGroup>
+          <SelectLabel>Activity</SelectLabel>
+          <SelectItem value="low">Low</SelectItem>
+          <SelectItem value="moderate">Moderate</SelectItem>
+          <SelectItem value="high">High</SelectItem>
+        </SelectGroup>
+      </SelectContent>
+    </Select>
+  );
+};
+
+export default RouteComponent;

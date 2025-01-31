@@ -26,7 +26,7 @@ const sideBarItems = [
   },
   {
     name: "Diet",
-    link: "/diet",
+    link: "/diets",
     icon: Utensils,
   },
   {
