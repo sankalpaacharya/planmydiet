@@ -25,3 +25,10 @@ export const createChallengeController = async (req:Request,res:Response):Promis
         res.send({error:"oops some error has occured"})
     }
 }
+
+
+export const getChallenges = (req:Request,res:Response)=>{
+
+    
+
+}
