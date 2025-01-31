@@ -2,7 +2,13 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { api } from "@/lib/axios";
-import { Salad, CircleDollarSign , BicepsFlexed, UtensilsCrossed, ShieldPlus } from "lucide-react";
+import {
+  Salad,
+  CircleDollarSign,
+  BicepsFlexed,
+  UtensilsCrossed,
+  ShieldPlus,
+} from "lucide-react";
 
 interface SelectPlan {
   goal: string;
@@ -20,6 +26,7 @@ export default function DietPlanPage() {
     const fetchPlans = async () => {
       try {
         const response = await api.get("/plan/get");
+        console.log(response.data.data);
         console.log(response.data.data);
         setMealPlans(response.data.data);
       } catch (err) {

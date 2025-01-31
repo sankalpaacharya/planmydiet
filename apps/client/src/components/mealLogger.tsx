@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import {
@@ -22,7 +22,8 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "./ui/input";
-import { DropdownMenu } from "./ui/dropdown-menu";
+import { api } from "@/lib/axios";
+import { Loader } from "lucide-react";
 
 type MealType = "breakfast" | "lunch" | "high_tea" | "dinner";
 
@@ -108,55 +109,85 @@ const MealSection: React.FC<{ type: MealType; items: MealItem[] }> = ({
   );
 };
 
-const AddMealButton = () => (
-  <Dialog>
-    <DialogTrigger asChild>
-      <div className="w-full h-24 flex items-center justify-center space-x-2 border-dashed border-2 border-neutral-500 rounded-md cursor-pointer hover:text-rose-500 hover:border-rose-500 transition-colors">
-        <Plus size={24} strokeWidth={3} />
-        <span className="text-2xl font-normal">Add Meal</span>
-      </div>
-    </DialogTrigger>
-    <DialogContent>
-      <DialogHeader>
-        <DialogTitle>Add Meal</DialogTitle>
-        <DialogDescription>
-          Add a new meal to your meal log. Fill in the details below and click
-          save.
-        </DialogDescription>
-      </DialogHeader>
-      <div className="grid gap-4 py-4">
-        <div className="grid grid-cols-4 items-center gap-4">
-          <Label htmlFor="food" className="text-right">
-            Food
-          </Label>
+const AddMealButton = () => {
+  const [selectedMeal, setSelectedMeal] = useState<string>("");
+  const [log, setLog] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const formData = {
+    log,
+    type: selectedMeal,
+    challengeId: "5d10e2b6-32c2-4f8e-9b8d-f608aeff8342",
+  };
+  const submitLogData = async () => {
+    setIsLoading(true);
+    console.log(formData);
+    const response = await api.post("/meal/new", formData);
+    setIsLoading(false);
+    console.log(response);
+  };
+
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <div className="w-full h-24 flex items-center justify-center space-x-2 border-dashed border-2 border-neutral-500 rounded-md cursor-pointer hover:text-rose-500 hover:border-rose-500 transition-colors">
+          <Plus size={24} strokeWidth={3} />
+          <span className="text-2xl font-normal">Add Meal</span>
+        </div>
+      </DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Add Meal</DialogTitle>
+          <DialogDescription>
+            Add a new meal to your meal log. Fill in the details below and click
+            save.
+          </DialogDescription>
+        </DialogHeader>
+        <div className="grid w-full max-w-sm items-center gap-1.5">
+          <Label htmlFor="meallog">Meal Log</Label>
           <Input
-            id="food"
-            placeholder="Enter food name"
-            className="col-span-3"
+            onChange={(e) => setLog(e.target.value)}
+            type="text"
+            id="email"
+            placeholder="Log"
           />
         </div>
-        <div className="grid grid-cols-4 items-center gap-4">
-          <DropdownMenu>
-            <Label htmlFor="mealType" className="text-right">
-              Meal Type
-            </Label>
-            <select id="mealType" className="col-span-3" aria-label="Meal Type">
-              {MEAL_TYPES.map((type) => (
-                <option key={type} value={type}>
-                  {type.charAt(0).toUpperCase() +
-                    type.slice(1).replace("_", "-")}
-                </option>
-              ))}
-            </select>
-          </DropdownMenu>
+        <div className="flex gap-4">
+          <Button
+            onClick={() => setSelectedMeal("breakfast")}
+            variant={selectedMeal == "breakfast" ? "default" : "secondary"}
+          >
+            Breakfast
+          </Button>
+          <Button
+            onClick={() => setSelectedMeal("lunch")}
+            variant={selectedMeal == "lunch" ? "default" : "secondary"}
+          >
+            Lunch
+          </Button>
+          <Button
+            variant={selectedMeal == "snacks" ? "default" : "secondary"}
+            onClick={() => setSelectedMeal("snacks")}
+          >
+            Snacks
+          </Button>
+          <Button
+            variant={selectedMeal == "dinner" ? "default" : "secondary"}
+            onClick={() => setSelectedMeal("dinner")}
+          >
+            Dinner
+          </Button>
         </div>
-      </div>
-      <DialogFooter>
-        <Button type="submit">Add Meal</Button>
-      </DialogFooter>
-    </DialogContent>
-  </Dialog>
-);
+        <DialogFooter>
+          <Button onClick={submitLogData} type="submit" disabled={isLoading}>
+            {isLoading ? <Loader className="animate-spin" /> : null}
+            Add Meal
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+};
 
 interface MealLoggerProps {
   meals?: MealData;

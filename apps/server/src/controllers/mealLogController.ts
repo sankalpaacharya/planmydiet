@@ -5,6 +5,7 @@ import { zodErrorParser } from "../utils/zodErrorParser"
 import { insertMealLogSchema } from "../db/schema"
 import { insertMealLog } from "../db/queries/insert"
 
+
 export const newMealLogController = async (req: Request, res: Response): Promise<any> => {
 	try {
 		const userId = req.auth.userId
@@ -12,7 +13,6 @@ export const newMealLogController = async (req: Request, res: Response): Promise
 		const nutrition = JSON.parse(await getNewMealLog(log))
 		console.log({userId,challengeId,nutrition,type})
 		const logData = insertMealLogSchema.parse({userId,challengeId,nutrition,type})
-		console.log(logData)
 		await insertMealLog(logData)
 		res.send({data:["meal log added successfully"],error:null})
 
