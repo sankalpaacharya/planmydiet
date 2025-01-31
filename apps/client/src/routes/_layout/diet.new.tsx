@@ -35,7 +35,7 @@ type FormData = {
   calorieIntake: string;
   foodAllergies: string;
   medicalCondition: string;
-  budget: "low" | "medium" | "high";
+  budget: number;
 };
 
 function RouteComponent() {
@@ -47,7 +47,7 @@ function RouteComponent() {
     calorieIntake: "2000",
     foodAllergies: "",
     medicalCondition: "",
-    budget: "medium",
+    budget: 0,
   });
 
   const handleSubmit = async () => {
@@ -146,9 +146,25 @@ function RouteComponent() {
               value={formData.medicalCondition}
             />
           </div>
+          <div className="grid w-full max-w-sm items-center gap-1.5">
+            <Label htmlFor="medicalCondition">Budget</Label>
+            <Input
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  budget: parseInt(e.target.value),
+                })
+              }
+              type="text"
+              id="medicalCondition"
+              placeholder="Medical Condition"
+              value={formData.budget}
+            />
+          </div>
           <Button onClick={handleSubmit} disabled={isLoading}>
             {isLoading ? <Loader className="animate-spin" /> : null}
-            Create Diet Plan
+            <Loader />
+            Create a Diet Plan
           </Button>
         </CardContent>
       </Card>
@@ -223,37 +239,4 @@ const SelectActivityLevel = ({ formData, setFormData }: SelectProps) => {
     </Select>
   );
 };
-const SelectBudget = ({ formData, setFormData }: SelectProps) => {
-  return (
-    <Select
-      onValueChange={(activity: "low" | "medium" | "high") =>
-        setFormData((prev) => ({
-          ...prev,
-          budget: activity,
-        }))
-      }
-      value={formData.activityLevel}
-      defaultValue="moderate"
-    >
-      <SelectTrigger>
-        <SelectValue placeholder="Select Your Activity Level" />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectGroup>
-          <SelectLabel>Activity</SelectLabel>
-          <SelectItem key={"low"} value="low">
-            Low
-          </SelectItem>
-          <SelectItem key={"moderate"} value="moderate">
-            Moderate
-          </SelectItem>
-          <SelectItem key={"high"} value="high">
-            High
-          </SelectItem>
-        </SelectGroup>
-      </SelectContent>
-    </Select>
-  );
-};
-
 export default RouteComponent;
