@@ -3,6 +3,7 @@ import planRouter from "./routes/planRoute"
 import challengeRoute from "./routes/challengeRoute"
 import Groq from "groq-sdk";
 import mealLogRoute from "./routes/mealLogRoute"
+import mailRoute from "./routes/mailRoute"
 import { checkUserAuth } from './middleware';
 import { config } from "dotenv";
 import cors from 'cors'
@@ -16,6 +17,7 @@ app.use(cors())
 app.use("/challenge",challengeRoute)
 app.use("/plan",planRouter)
 app.use("/meallog",mealLogRoute)
+app.use("/mail",mailRoute)
 
 config({ path: ".env" });
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
