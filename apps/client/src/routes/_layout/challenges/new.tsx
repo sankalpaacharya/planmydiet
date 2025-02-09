@@ -1,19 +1,19 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from '@tanstack/react-router'
 import {
   Card,
   CardHeader,
   CardTitle,
   CardDescription,
   CardContent,
-} from "@/components/ui/card";
-import { Sword } from "lucide-react";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
-import { format } from "date-fns";
-import { useEffect, useState } from "react";
+} from '@/components/ui/card'
+import { Sword } from 'lucide-react'
+import { Label } from '@/components/ui/label'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
+import { Calendar } from '@/components/ui/calendar'
+import { cn } from '@/lib/utils'
+import { format } from 'date-fns'
+import { useEffect, useState } from 'react'
 import {
   Select,
   SelectContent,
@@ -22,21 +22,21 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from '@/components/ui/select'
 
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
-import { CalendarIcon } from "lucide-react";
+} from '@/components/ui/popover'
+import { CalendarIcon } from 'lucide-react'
 
-export const Route = createFileRoute("/_layout/challenge/new")({
+export const Route = createFileRoute('/_layout/challenges/new')({
   component: RouteComponent,
-});
+})
 
 function RouteComponent() {
-  useEffect(() => {}, []);
+  useEffect(() => {}, [])
   return (
     <div>
       <Card>
@@ -70,22 +70,22 @@ function RouteComponent() {
         </CardContent>
       </Card>
     </div>
-  );
+  )
 }
 
 const SelectDietPlan = () => {
-  const [dietId, setDietId] = useState<string>();
-  console.log(dietId);
+  const [dietId, setDietId] = useState<string>()
+  console.log(dietId)
   const DietPlan = [
     {
-      id: "1",
-      title: "My january plan 2023",
+      id: '1',
+      title: 'My january plan 2023',
     },
     {
-      id: "2",
-      title: "I have to lose weight else i will be super fat",
+      id: '2',
+      title: 'I have to lose weight else i will be super fat',
     },
-  ];
+  ]
   return (
     <Select onValueChange={(id) => setDietId(id)}>
       <SelectTrigger>
@@ -100,23 +100,23 @@ const SelectDietPlan = () => {
         </SelectGroup>
       </SelectContent>
     </Select>
-  );
-};
+  )
+}
 
 const DatePicker = () => {
-  const [date, setDate] = useState<Date>();
+  const [date, setDate] = useState<Date>()
   return (
     <Popover>
       <PopoverTrigger asChild>
         <Button
-          variant={"secondary"}
+          variant={'secondary'}
           className={cn(
-            "w-[280px] justify-start text-left font-normal",
-            !date && "text-muted-foreground"
+            'w-[280px] justify-start text-left font-normal',
+            !date && 'text-muted-foreground',
           )}
         >
           <CalendarIcon size={20} />
-          {date ? format(date, "PPP") : <span>Pick a date</span>}
+          {date ? format(date, 'PPP') : <span>Pick a date</span>}
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0">
@@ -128,5 +128,5 @@ const DatePicker = () => {
         />
       </PopoverContent>
     </Popover>
-  );
-};
+  )
+}

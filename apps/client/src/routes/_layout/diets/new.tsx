@@ -1,17 +1,17 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from '@tanstack/react-router'
 import {
   Card,
   CardHeader,
   CardTitle,
   CardDescription,
   CardContent,
-} from "@/components/ui/card";
-import { Ham } from "lucide-react";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Loader } from "lucide-react";
-import { api } from "@/lib/axios";
+} from '@/components/ui/card'
+import { Ham } from 'lucide-react'
+import { Label } from '@/components/ui/label'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
+import { Loader } from 'lucide-react'
+import { api } from '@/lib/axios'
 
 import {
   Select,
@@ -21,47 +21,47 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { useState } from "react";
+} from '@/components/ui/select'
+import { useState } from 'react'
 
-export const Route = createFileRoute("/_layout/diet/new")({
+export const Route = createFileRoute('/_layout/diets/new')({
   component: RouteComponent,
-});
+})
 
 type FormData = {
-  goal: string;
-  dietPreference: "veg" | "non-veg";
-  activityLevel: "low" | "moderate" | "high";
-  calorieIntake: number;
-  foodAllergies: string;
-  medicalCondition: string;
-  budget: string;
-};
+  goal: string
+  dietPreference: 'veg' | 'non-veg'
+  activityLevel: 'low' | 'moderate' | 'high'
+  calorieIntake: number
+  foodAllergies: string
+  medicalCondition: string
+  budget: string
+}
 
 function RouteComponent() {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false)
   const [formData, setFormData] = useState<FormData>({
-    goal: "",
-    dietPreference: "veg",
-    activityLevel: "moderate",
+    goal: '',
+    dietPreference: 'veg',
+    activityLevel: 'moderate',
     calorieIntake: 2000,
-    foodAllergies: "",
-    medicalCondition: "",
-    budget: "none",
-  });
+    foodAllergies: '',
+    medicalCondition: '',
+    budget: 'none',
+  })
 
   const handleSubmit = async () => {
     try {
-      setIsLoading(true);
-      const response = await api.post("/plan/create", formData);
-      setIsLoading(false);
-      console.log("response from the backend", response);
-      console.log("Submitting form data:", formData);
+      setIsLoading(true)
+      const response = await api.post('/plan/create', formData)
+      setIsLoading(false)
+      console.log('response from the backend', response)
+      console.log('Submitting form data:', formData)
     } catch (error) {
-      setIsLoading(false);
-      console.error("Error submitting form:", error);
+      setIsLoading(false)
+      console.error('Error submitting form:', error)
     }
-  };
+  }
 
   return (
     <div>
@@ -168,18 +168,18 @@ function RouteComponent() {
         </CardContent>
       </Card>
     </div>
-  );
+  )
 }
 
 interface SelectProps {
-  formData: FormData;
-  setFormData: React.Dispatch<React.SetStateAction<FormData>>;
+  formData: FormData
+  setFormData: React.Dispatch<React.SetStateAction<FormData>>
 }
 
 const SelectDietPreference = ({ formData, setFormData }: SelectProps) => {
   return (
     <Select
-      onValueChange={(preference: "veg" | "non-veg") =>
+      onValueChange={(preference: 'veg' | 'non-veg') =>
         setFormData((prev) => ({
           ...prev,
           dietPreference: preference,
@@ -194,22 +194,22 @@ const SelectDietPreference = ({ formData, setFormData }: SelectProps) => {
       <SelectContent>
         <SelectGroup>
           <SelectLabel>Diet Plan</SelectLabel>
-          <SelectItem key={"non-veg"} value="non-veg">
+          <SelectItem key={'non-veg'} value="non-veg">
             Non-Veg
           </SelectItem>
-          <SelectItem key={"veg"} value="veg">
+          <SelectItem key={'veg'} value="veg">
             Veg
           </SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>
-  );
-};
+  )
+}
 
 const SelectActivityLevel = ({ formData, setFormData }: SelectProps) => {
   return (
     <Select
-      onValueChange={(activity: "low" | "moderate" | "high") =>
+      onValueChange={(activity: 'low' | 'moderate' | 'high') =>
         setFormData((prev) => ({
           ...prev,
           activityLevel: activity,
@@ -224,18 +224,18 @@ const SelectActivityLevel = ({ formData, setFormData }: SelectProps) => {
       <SelectContent>
         <SelectGroup>
           <SelectLabel>Activity</SelectLabel>
-          <SelectItem key={"low"} value="low">
+          <SelectItem key={'low'} value="low">
             Low
           </SelectItem>
-          <SelectItem key={"moderate"} value="moderate">
+          <SelectItem key={'moderate'} value="moderate">
             Moderate
           </SelectItem>
-          <SelectItem key={"high"} value="high">
+          <SelectItem key={'high'} value="high">
             High
           </SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>
-  );
-};
-export default RouteComponent;
+  )
+}
+export default RouteComponent
