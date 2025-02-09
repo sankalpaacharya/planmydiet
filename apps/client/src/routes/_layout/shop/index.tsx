@@ -1,18 +1,22 @@
-import { useState } from "react";
-import IngredientList from "@/components/IngredientList";
-import IngredientSelector from "@/components/IngredientSelector";
+import { createFileRoute } from '@tanstack/react-router'
+import IngredientList from '@/components/IngredientList'
+import IngredientSelector from '@/components/IngredientSelector'
+import { useState } from 'react'
 
-export default function ShopPage() {
-  const [selectedItems, setSelectedItems] = useState<number[]>([]);
+export const Route = createFileRoute('/_layout/shop/')({
+  component: RouteComponent,
+})
+
+function RouteComponent() {
+  const [selectedItems, setSelectedItems] = useState<number[]>([])
 
   const handleBuy = () => {
     if (selectedItems.length === 0) {
-      alert("Please select at least one item to proceed!");
-      return;
+      alert('Please select at least one item to proceed!')
+      return
     }
-    window.location.href = "https://www.blinkit.com";
-  };
-
+    window.location.href = 'https://www.blinkit.com'
+  }
   return (
     <div className="max-w-full shadow-sm">
       {/* Header */}
@@ -42,5 +46,5 @@ export default function ShopPage() {
         </div>
       </div>
     </div>
-  );
+  )
 }

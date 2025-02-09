@@ -13,11 +13,9 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as LayoutImport } from './routes/_layout'
 import { Route as LayoutIndexImport } from './routes/_layout/index'
-import { Route as LayoutVideosImport } from './routes/_layout/videos'
-import { Route as LayoutShopImport } from './routes/_layout/shop'
 import { Route as LayoutAboutImport } from './routes/_layout/about'
+import { Route as LayoutShopIndexImport } from './routes/_layout/shop/index'
 import { Route as LayoutDietsIndexImport } from './routes/_layout/diets/index'
-import { Route as LayoutDashboardIndexImport } from './routes/_layout/dashboard/index'
 import { Route as LayoutDailycheckIndexImport } from './routes/_layout/dailycheck/index'
 import { Route as LayoutChallengesIndexImport } from './routes/_layout/challenges/index'
 import { Route as LayoutPlanIdImport } from './routes/_layout/plan/$id'
@@ -37,33 +35,21 @@ const LayoutIndexRoute = LayoutIndexImport.update({
   getParentRoute: () => LayoutRoute,
 } as any)
 
-const LayoutVideosRoute = LayoutVideosImport.update({
-  id: '/videos',
-  path: '/videos',
-  getParentRoute: () => LayoutRoute,
-} as any)
-
-const LayoutShopRoute = LayoutShopImport.update({
-  id: '/shop',
-  path: '/shop',
-  getParentRoute: () => LayoutRoute,
-} as any)
-
 const LayoutAboutRoute = LayoutAboutImport.update({
   id: '/about',
   path: '/about',
   getParentRoute: () => LayoutRoute,
 } as any)
 
-const LayoutDietsIndexRoute = LayoutDietsIndexImport.update({
-  id: '/diets/',
-  path: '/diets/',
+const LayoutShopIndexRoute = LayoutShopIndexImport.update({
+  id: '/shop/',
+  path: '/shop/',
   getParentRoute: () => LayoutRoute,
 } as any)
 
-const LayoutDashboardIndexRoute = LayoutDashboardIndexImport.update({
-  id: '/dashboard/',
-  path: '/dashboard/',
+const LayoutDietsIndexRoute = LayoutDietsIndexImport.update({
+  id: '/diets/',
+  path: '/diets/',
   getParentRoute: () => LayoutRoute,
 } as any)
 
@@ -115,20 +101,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutAboutImport
       parentRoute: typeof LayoutImport
     }
-    '/_layout/shop': {
-      id: '/_layout/shop'
-      path: '/shop'
-      fullPath: '/shop'
-      preLoaderRoute: typeof LayoutShopImport
-      parentRoute: typeof LayoutImport
-    }
-    '/_layout/videos': {
-      id: '/_layout/videos'
-      path: '/videos'
-      fullPath: '/videos'
-      preLoaderRoute: typeof LayoutVideosImport
-      parentRoute: typeof LayoutImport
-    }
     '/_layout/': {
       id: '/_layout/'
       path: '/'
@@ -171,18 +143,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutDailycheckIndexImport
       parentRoute: typeof LayoutImport
     }
-    '/_layout/dashboard/': {
-      id: '/_layout/dashboard/'
-      path: '/dashboard'
-      fullPath: '/dashboard'
-      preLoaderRoute: typeof LayoutDashboardIndexImport
-      parentRoute: typeof LayoutImport
-    }
     '/_layout/diets/': {
       id: '/_layout/diets/'
       path: '/diets'
       fullPath: '/diets'
       preLoaderRoute: typeof LayoutDietsIndexImport
+      parentRoute: typeof LayoutImport
+    }
+    '/_layout/shop/': {
+      id: '/_layout/shop/'
+      path: '/shop'
+      fullPath: '/shop'
+      preLoaderRoute: typeof LayoutShopIndexImport
       parentRoute: typeof LayoutImport
     }
   }
@@ -192,30 +164,26 @@ declare module '@tanstack/react-router' {
 
 interface LayoutRouteChildren {
   LayoutAboutRoute: typeof LayoutAboutRoute
-  LayoutShopRoute: typeof LayoutShopRoute
-  LayoutVideosRoute: typeof LayoutVideosRoute
   LayoutIndexRoute: typeof LayoutIndexRoute
   LayoutChallengesNewRoute: typeof LayoutChallengesNewRoute
   LayoutDietsNewRoute: typeof LayoutDietsNewRoute
   LayoutPlanIdRoute: typeof LayoutPlanIdRoute
   LayoutChallengesIndexRoute: typeof LayoutChallengesIndexRoute
   LayoutDailycheckIndexRoute: typeof LayoutDailycheckIndexRoute
-  LayoutDashboardIndexRoute: typeof LayoutDashboardIndexRoute
   LayoutDietsIndexRoute: typeof LayoutDietsIndexRoute
+  LayoutShopIndexRoute: typeof LayoutShopIndexRoute
 }
 
 const LayoutRouteChildren: LayoutRouteChildren = {
   LayoutAboutRoute: LayoutAboutRoute,
-  LayoutShopRoute: LayoutShopRoute,
-  LayoutVideosRoute: LayoutVideosRoute,
   LayoutIndexRoute: LayoutIndexRoute,
   LayoutChallengesNewRoute: LayoutChallengesNewRoute,
   LayoutDietsNewRoute: LayoutDietsNewRoute,
   LayoutPlanIdRoute: LayoutPlanIdRoute,
   LayoutChallengesIndexRoute: LayoutChallengesIndexRoute,
   LayoutDailycheckIndexRoute: LayoutDailycheckIndexRoute,
-  LayoutDashboardIndexRoute: LayoutDashboardIndexRoute,
   LayoutDietsIndexRoute: LayoutDietsIndexRoute,
+  LayoutShopIndexRoute: LayoutShopIndexRoute,
 }
 
 const LayoutRouteWithChildren =
@@ -224,46 +192,40 @@ const LayoutRouteWithChildren =
 export interface FileRoutesByFullPath {
   '': typeof LayoutRouteWithChildren
   '/about': typeof LayoutAboutRoute
-  '/shop': typeof LayoutShopRoute
-  '/videos': typeof LayoutVideosRoute
   '/': typeof LayoutIndexRoute
   '/challenges/new': typeof LayoutChallengesNewRoute
   '/diets/new': typeof LayoutDietsNewRoute
   '/plan/$id': typeof LayoutPlanIdRoute
   '/challenges': typeof LayoutChallengesIndexRoute
   '/dailycheck': typeof LayoutDailycheckIndexRoute
-  '/dashboard': typeof LayoutDashboardIndexRoute
   '/diets': typeof LayoutDietsIndexRoute
+  '/shop': typeof LayoutShopIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/about': typeof LayoutAboutRoute
-  '/shop': typeof LayoutShopRoute
-  '/videos': typeof LayoutVideosRoute
   '/': typeof LayoutIndexRoute
   '/challenges/new': typeof LayoutChallengesNewRoute
   '/diets/new': typeof LayoutDietsNewRoute
   '/plan/$id': typeof LayoutPlanIdRoute
   '/challenges': typeof LayoutChallengesIndexRoute
   '/dailycheck': typeof LayoutDailycheckIndexRoute
-  '/dashboard': typeof LayoutDashboardIndexRoute
   '/diets': typeof LayoutDietsIndexRoute
+  '/shop': typeof LayoutShopIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/_layout': typeof LayoutRouteWithChildren
   '/_layout/about': typeof LayoutAboutRoute
-  '/_layout/shop': typeof LayoutShopRoute
-  '/_layout/videos': typeof LayoutVideosRoute
   '/_layout/': typeof LayoutIndexRoute
   '/_layout/challenges/new': typeof LayoutChallengesNewRoute
   '/_layout/diets/new': typeof LayoutDietsNewRoute
   '/_layout/plan/$id': typeof LayoutPlanIdRoute
   '/_layout/challenges/': typeof LayoutChallengesIndexRoute
   '/_layout/dailycheck/': typeof LayoutDailycheckIndexRoute
-  '/_layout/dashboard/': typeof LayoutDashboardIndexRoute
   '/_layout/diets/': typeof LayoutDietsIndexRoute
+  '/_layout/shop/': typeof LayoutShopIndexRoute
 }
 
 export interface FileRouteTypes {
@@ -271,43 +233,37 @@ export interface FileRouteTypes {
   fullPaths:
     | ''
     | '/about'
-    | '/shop'
-    | '/videos'
     | '/'
     | '/challenges/new'
     | '/diets/new'
     | '/plan/$id'
     | '/challenges'
     | '/dailycheck'
-    | '/dashboard'
     | '/diets'
+    | '/shop'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/about'
-    | '/shop'
-    | '/videos'
     | '/'
     | '/challenges/new'
     | '/diets/new'
     | '/plan/$id'
     | '/challenges'
     | '/dailycheck'
-    | '/dashboard'
     | '/diets'
+    | '/shop'
   id:
     | '__root__'
     | '/_layout'
     | '/_layout/about'
-    | '/_layout/shop'
-    | '/_layout/videos'
     | '/_layout/'
     | '/_layout/challenges/new'
     | '/_layout/diets/new'
     | '/_layout/plan/$id'
     | '/_layout/challenges/'
     | '/_layout/dailycheck/'
-    | '/_layout/dashboard/'
     | '/_layout/diets/'
+    | '/_layout/shop/'
   fileRoutesById: FileRoutesById
 }
 
@@ -336,28 +292,18 @@ export const routeTree = rootRoute
       "filePath": "_layout.tsx",
       "children": [
         "/_layout/about",
-        "/_layout/shop",
-        "/_layout/videos",
         "/_layout/",
         "/_layout/challenges/new",
         "/_layout/diets/new",
         "/_layout/plan/$id",
         "/_layout/challenges/",
         "/_layout/dailycheck/",
-        "/_layout/dashboard/",
-        "/_layout/diets/"
+        "/_layout/diets/",
+        "/_layout/shop/"
       ]
     },
     "/_layout/about": {
       "filePath": "_layout/about.tsx",
-      "parent": "/_layout"
-    },
-    "/_layout/shop": {
-      "filePath": "_layout/shop.tsx",
-      "parent": "/_layout"
-    },
-    "/_layout/videos": {
-      "filePath": "_layout/videos.tsx",
       "parent": "/_layout"
     },
     "/_layout/": {
@@ -384,12 +330,12 @@ export const routeTree = rootRoute
       "filePath": "_layout/dailycheck/index.tsx",
       "parent": "/_layout"
     },
-    "/_layout/dashboard/": {
-      "filePath": "_layout/dashboard/index.tsx",
-      "parent": "/_layout"
-    },
     "/_layout/diets/": {
       "filePath": "_layout/diets/index.tsx",
+      "parent": "/_layout"
+    },
+    "/_layout/shop/": {
+      "filePath": "_layout/shop/index.tsx",
       "parent": "/_layout"
     }
   }

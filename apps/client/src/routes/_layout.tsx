@@ -17,7 +17,7 @@ export const Route = createFileRoute("/_layout")({
 const sideBarItems = [
   {
     name: "Progress",
-    link: "/dashboard",
+    link: "/",
     icon: TrendingUp,
   },
   {

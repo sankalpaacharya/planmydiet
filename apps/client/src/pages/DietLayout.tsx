@@ -50,15 +50,14 @@ export default function DietPlanPage() {
           {mealPlans.length > 0 ? (
             mealPlans.map((meal: any, index) => (
               <Link
-                href={`/plan/${meal.id}`}
-                to={`/plan/${meal.id}`}
-                key={index}>
+                href={`/diets/${meal.id}`}
+                to={`/diets/${meal.id}`}
+                key={index}
+              >
                 <Card className="max-w-md w-full">
                   <CardHeader className="space-y-1">
                     <div className="flex items-center justify-between">
-                      <h2 className="text-2xl font-bold ">
-                        {meal.goal}
-                      </h2>
+                      <h2 className="text-2xl font-bold ">{meal.goal}</h2>
                     </div>
                   </CardHeader>
                   <CardContent className="space-y-4">
@@ -72,7 +71,7 @@ export default function DietPlanPage() {
                       </div>
                     </div>
                     <div className="flex items-start gap-2">
-                      <CircleDollarSign  className="w-5 h-5 text-green-500 mt-1" />
+                      <CircleDollarSign className="w-5 h-5 text-green-500 mt-1" />
                       <div>
                         <h3 className="font-semibold text-gray-400">
                           Budget : {meal.budget}
@@ -80,19 +79,19 @@ export default function DietPlanPage() {
                       </div>
                     </div>
                     <div className="flex items-center gap-2 text-gray-400">
-                      <BicepsFlexed  className="w-5 h-5 text-orange-500" />
+                      <BicepsFlexed className="w-5 h-5 text-orange-500" />
                       <span className="font-medium">
                         Activity Level : {meal.activityLevel}
                       </span>
                     </div>
                     <div className="flex items-center gap-2 text-gray-400">
-                      <UtensilsCrossed   className="w-5 h-5 text-amber-300" />
+                      <UtensilsCrossed className="w-5 h-5 text-amber-300" />
                       <span className="font-medium">
                         Calorie Intake Limit : {meal.calorieIntake}
                       </span>
                     </div>
                     <div className="flex items-center gap-2 text-gray-400">
-                      <ShieldPlus   className="w-5 h-5 text-teal-600" />
+                      <ShieldPlus className="w-5 h-5 text-teal-600" />
                       <span className="font-medium">
                         Medical Conditions : {meal.medicalConditions}
                       </span>
